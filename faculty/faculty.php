@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="../css/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <title>Faculty and Staff</title>
 </head>
@@ -70,19 +72,50 @@
             </li>
             <hr class="line">
             <li id="logout-link">
-                <a href="../login/logout.php">
+                <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
         </ul>
     </div>
+    <div id="logout-dialog" class="dialog" title="Logout">
+        <p><span>Are you sure you want to logout?</span></p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#logout-dialog").dialog({
+                resizable: false,
+                draggable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                autoOpen: false
+            });
+            $(".logout-link").on('click', function(e) {
+                e.preventDefault();
+                var theHREF = $(this).attr("href");
+
+                $("#logout-dialog").dialog('option', 'buttons', {
+                    "Yes" : function() {
+                        window.location.href = theHREF;
+                    },
+                    "No" : function() {
+                        $(this).dialog("close");
+                    }
+                });
+
+                $("#logout-dialog").dialog("open");
+            });
+        });
+    </script>
 
 <section class="home-section">
 
     <div class="wrapper">
         <br>
-        <center><h1 style = "font-size:45px;"> Faculty and Staff </h1></center>
+        <center><h1 style = "font-size:40px;">CCS Faculty and Staff </h1></center>
         
         <div class="links">
 

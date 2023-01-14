@@ -70,14 +70,14 @@
             </li>
             <hr class="line">
             <li id="logout-link">
-                <a href="../login/logout.php">
+                <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
         </ul>
     </div>
-    
+
     <div id="logout-dialog" class="dialog" title="Logout">
         <p><span>Are you sure you want to logout?</span></p>
     </div>
