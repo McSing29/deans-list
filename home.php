@@ -118,27 +118,27 @@
         </div>
         <div class="row about">
             <div class="col-lg-4">
-                <img src="./img/male.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                <img src="./img/josh.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
                 <h3>Joshua A. Yasil</h3>
                 <h4>Project Manager</h4>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./img/female.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                <img src="./img/bush.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
                 <h3>Bushra Adjaluddin</h3>
                 <h4>Architectural Engineer</h4>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./img/male.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                <img src="./img/ej.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
                 <h3>Emil John Q. Magcanta</h3>
                 <h4>Lead Developer</h4>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./img/male.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                <img src="./img/hamja.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
                 <h3>Abdulasis Hamja</h3>
                 <h4>Business Analyst</h4>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./img/female.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
+                <img src="./img/denise.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
                 <h3>Denise Vonn Gerzon</h3>
                 <h4>UX Designer</h4>
             </div><!-- /.col-lg-4 -->
