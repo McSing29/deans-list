@@ -116,11 +116,10 @@
     <div class="wrapper">
         <br>
         <center><h1 style = "font-size:40px;">CCS Faculty and Staff </h1></center>
-        
+
         <div class="links">
 
             <ul>
-                
                 <li data-view="list-view" class="li-list active">
                 <i class="fas fa-th-list"></i>
                 </li>
@@ -129,7 +128,7 @@
                 </li>
             </ul>
         </div>
-        
+
             <div class="view_main">
                 <div class="view_wrap list-view" style="display: block;">
                     <div class="view_item">
@@ -389,7 +388,6 @@
                             <h2 class="content">College Dean</h2>
                         </div>
                     </div>
-
                     <div class="view_item">
                         <div class="vi_left">
                             <img src="./img/odon.png">
@@ -397,7 +395,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Odon A. Maravillas, Jr., MSCS</h1>
                             <h2 class="content">Associate Dean</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -407,7 +404,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Gadmar M. Belamide, MEnggEd-ICT</h1>
                             <h2 class="content">College Secretary</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -417,7 +413,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Lucy Felix-Sadiwa, MSCS</h1>
                             <h2 class="content">CS Department Head</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -427,7 +422,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. John Augustus A. Escorial, MIT</h1>
                             <h2 class="content">IT Department</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -437,7 +431,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mrs. Aida A. Escorial, MIT</h1>
                             <h2 class="content">Graduate Program Chair</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -447,7 +440,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Edwip I. Arip, MEnggEd-ICT</h1>
                             <h2 class="content">External Studies Unit Technical Associate</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -457,7 +449,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. John Paul I. Arip</h1>
                             <h2 class="content">LMS Quality Assurance</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -467,7 +458,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mrs. Justin Anne Albay-Arip</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -477,7 +467,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. Jaydee C. Ballaho</h1>
                             <h2 class="content">LMS Lead Developer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -487,7 +476,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. Jason A. Catadman</h1>
                             <h2 class="content">LMS Assistant Developer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -497,7 +485,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Mark L. Flores, MEnggEd-ICT</h1>
                             <h2 class="content">Director, Data Protection and Security</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -507,7 +494,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Pauleen Jean E. Gregana</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -517,7 +503,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Aradzna M. Kamman</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -527,7 +512,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Mara Marie Liao</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -537,7 +521,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Marvic A. Lines, MEnggEd-ICT</h1>
                             <h2 class="content">LMS Training and Management</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -547,7 +530,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Ceed Janelle B. Lorenzo</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -557,7 +539,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Ceed Jezreel B. Lorenzo, MIT</h1>
                             <h2 class="content">Research Coordinator</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -567,7 +548,6 @@
                         <div class="vi_right">
                             <h1 class="title">Engr. Marjorie A. Rojas</h1>
                             <h2 class="content">Student Affairs and Guidance Coordinator</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -577,7 +557,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. Theo Jay M'lleno Sanson</h1>
                             <h2 class="content">Visiting Lecturer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -587,7 +566,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. Salimar B. Tahil, MEnggEd-ICT</h1>
                             <h2 class="content">Asst. Director, MISTO</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -597,7 +575,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. Whesley G. Timpangco</h1>
                             <h2 class="content">LMS Network Engineer</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -607,7 +584,6 @@
                         <div class="vi_right">
                             <h1 class="title">Ms. Alhadzra M. Jackaria</h1>
                             <h2 class="content">Laboratory Technician</h2>
-                            
                         </div>
                     </div>
                     <div class="view_item">
@@ -617,7 +593,6 @@
                         <div class="vi_right">
                             <h1 class="title">Mr. John Roy S. Velario</h1>
                             <h2 class="content">Administrative Assistant</h2>
-                            
                         </div>
                     </div>
 

@@ -23,6 +23,14 @@ function validate_user_email($POST){
     return true;
 }
 
+function validate_add_users($POST){
+    return true;
+    if(!validate_user_email($POST) || !validate_user_password($POST) || !validate_user_firstname($POST) ||
+    !validate_user_lastname($POST)){
+        return false;
+     }
+    return true;
+}
 
 
 ?>

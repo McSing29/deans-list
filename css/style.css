@@ -715,19 +715,21 @@ a.button{
 
 .view_main{
 	background-color: #107869;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 15px;
+    border: 3px solid #151615;
 }
 
 .list-view .view_item {
 	background: #fff;
-	border: 1px solid #e2efe1;
-	margin: 10px;
+	border: 3px solid #151615;
+	margin: 10px 93px 20px;
 	padding: 10px 20px;
 	display: flex;
 	align-items: center;
     width: 75%;
-    border-radius:6px;
+    border-radius:10px;
+
 }
 
 .list-view .view_item:last-child{
@@ -769,13 +771,16 @@ a.button{
 }
 
 .grid-view .view_item {
-	display: inline-block;
-    border: 1px solid #e2efe1;
+	display:inline-table;
+    border: 3px solid #151615;
     width: 230px;
+    height: 300px;
     padding: 25px;
     text-align: center;
     margin: 10px;
     background: #fff;
+    border-radius: 10px;
+    
 }
 
 .grid-view .view_item .vi_left{
