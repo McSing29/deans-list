@@ -48,7 +48,7 @@
     <div class="login-container">
         <form class="login-form" action="login.php" method="post">
         <div class="box-image">
-			<br><center><img src="ccslogo.png" width ="100" height = "100"></center>
+			<center><img src="ccslogo.png" width ="100" height = "100"></center>
             <div class="title">Dean's List Application</div>
 		</div>
        

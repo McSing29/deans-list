@@ -60,11 +60,10 @@
     <div class="login-container">
         <form class="login-form" action="create.php" method="post">
         <div class="box-image">
-            <br><center><img src="ccslogo.png" width ="100" height = "100"></center>
-			<div class="title">Dean's List Application</div>
+            <center><img src="ccslogo.png" width ="100" height = "100"></center>
+			<div class="title">Dean's List Application</div><br>
 		</div>
 
-           
             <label for="user_email"></label>
             <input type="email" id="user_email" name="user_email" required placeholder="Enter email" value="<?php if(isset($_POST['user_email'])) { echo $_POST['user_email']; } ?>">
             <?php

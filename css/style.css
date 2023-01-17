@@ -25,9 +25,9 @@
 .title {
     font-size: 18px;
     /* color: #062321; */
-    color: black;
+    color: #107869;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
 
@@ -774,7 +774,7 @@ a.button{
 	display:inline-table;
     border: 3px solid #151615;
     width: 230px;
-    height: 300px;
+    height: 335px;
     padding: 25px;
     text-align: center;
     margin: 10px;
@@ -784,7 +784,7 @@ a.button{
 }
 
 .grid-view .view_item .vi_left{
-	margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .grid-view .view_item .btn{
