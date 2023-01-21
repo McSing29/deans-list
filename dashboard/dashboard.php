@@ -23,9 +23,10 @@
 </head>
 <body>
     <div class="side-bar">
-        <div class="box-image">
-			<br><center><img src="ccslogo.png" width ="100" height = "100"></center>
-            <div class="title">Dean's List Application</div>
+        <br></br>
+        <div class="logo-details" title="Forecast">
+            <center><img src="ccslogo.png" width ="75" height = "75"></center>
+            <span class="logo-name" style="display:inline-block">Dean's List Application <br> System</span>
 		</div>
         <br></br>
         <ul class="nav-links">
@@ -109,9 +110,8 @@
             });
         });
     </script>
-        
+
     <section class="home-section">
-        <!-- NAVBAR -->
         <nav>
             <div class="side-bar-button">
                 <i class='bx bx-menu small'></i>
@@ -123,48 +123,48 @@
             </div>
         </nav>
 
-        <script>
-        var reference = (function self(){
-            if(sessionStorage.getItem("sidebar") == "small"){
-                small();
-            }else{
-                large();
-            }
-        }());
+            <script>
+                var reference = (function self(){
+                    if(sessionStorage.getItem("sidebar") == "small"){
+                        small();
+                    }else{
+                        large();
+                    }
+                }());
 
-        $('.bx-menu.small').on('click', function(){
-            small();
-        });
-        $('.bx-menu.large').on('click', function(){
-            large();
-        });
+                $('.bx-menu.small').on('click', function(){
+                    small();
+                });
+                $('.bx-menu.large').on('click', function(){
+                    large();
+                });
 
-        function small(){
-            $('.bx-menu.small').hide();
-            $('.bx-menu.large').show();
+                function small(){
+                    $('.bx-menu.small').hide();
+                    $('.bx-menu.large').show();
 
-            $('.side-bar').css('width', '60px');
-            $('.home-section').css('width', 'calc(100% - 60px)');
-            $('.home-section').css('left', '60px');
-            $('.home-section nav').css('width', 'calc(100% - 60px)');
-            $('.home-section nav').css('left', '60px');
+                    $('.side-bar').css('width', '60px');
+                    $('.home-section').css('width', 'calc(100% - 60px)');
+                    $('.home-section').css('left', '60px');
+                    $('.home-section nav').css('width', 'calc(100% - 60px)');
+                    $('.home-section nav').css('left', '60px');
 
-            sessionStorage.setItem("sidebar", "small");
-        }
+                    sessionStorage.setItem("sidebar", "small");
+                }
 
-        function large(){
-            $('.bx-menu.small').show();
-            $('.bx-menu.large').hide();
+                function large(){
+                    $('.bx-menu.small').show();
+                    $('.bx-menu.large').hide();
 
-            $('.side-bar').css('width', '250px');
-            $('.home-section').css('width', 'calc(100% - 250px)');
-            $('.home-section').css('left', '250px');
-            $('.home-section nav').css('width', 'calc(100% - 250px)');
-            $('.home-section nav').css('left', '250px');
+                    $('.side-bar').css('width', '250px');
+                    $('.home-section').css('width', 'calc(100% - 250px)');
+                    $('.home-section').css('left', '250px');
+                    $('.home-section nav').css('width', 'calc(100% - 250px)');
+                    $('.home-section nav').css('left', '250px');
 
-            sessionStorage.setItem("sidebar", "large");
-        }
-    </script>
+                    sessionStorage.setItem("sidebar", "large");
+                }
+            </script>
         <!-- NAVBAR -->
 
         <div class="home-content">
@@ -220,14 +220,10 @@
 
                 </div>
 
-
-
         </div>
-
 
     </section>
 
-        
 </body>
 
 </html>

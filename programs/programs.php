@@ -26,9 +26,10 @@
 </head>
 <body>
     <div class="side-bar">
-        <div class="box-image">
-			<br><center><img src="ccslogo.png" width ="100" height = "100"></center>
-            <div class="title">Dean's List Application</div>
+        <br></br>
+        <div class="logo-details" title="Forecast">
+            <center><img src="ccslogo.png" width ="75" height = "75"></center>
+            <span class="logo-name" style="display:inline-block">Dean's List Application <br> System</span>
 		</div>
         <br></br>
         <ul class="nav-links">
@@ -176,7 +177,7 @@
                 <?php
                     if($_SESSION['user_type'] == 'admin'){ 
                 ?>
-                    <a href="addprogram.php" class="button">Add New Program</a>
+                    <a href="addprogram.php" class="button">Add Program</a>
                 <?php
                     }
                 ?>

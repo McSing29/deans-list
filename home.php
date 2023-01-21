@@ -1,184 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Emil John Q. Magcanta">
+   <title>Home Page</title>
 
-    <!-- Box Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+   <!-- swiper css link  -->
+   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200&display=swap" rel="stylesheet">
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Custom styles for this template -->
-    <link href="./css/carousel.css" rel="stylesheet">
-    <link href="./css/features.css" rel="stylesheet">
-    <link href="./css/custom.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-    <title>Home Page</title>
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top background-color-green">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <span class="logo-name">Dean's List Application</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home" id="home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#applynow" id="applynow">Apply Now</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact" id="contact">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about" id="about">About</a>
-          </li>
-        </ul>
-        <a href="./login/login.php"><button class="btn btn-outline-success btn-login">Login</button></a>
+
+<!-- header section starts  -->
+
+<section class="header">
+			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application</a>
+   <nav class="navbar">
+      <a href="#home">Home</a>
+      <a href="#features">Feature</a>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact us</a>
+      <a href="./login/login.php"><button class="btn btn-outline-success btn-login">Login</button></a>
+   </nav>
+
+   <div id="menu-btn" class="fas fa-bars"></div>
+
+</section>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+   <div class="swiper home-slider">
+
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide slide" style="background: linear-gradient(45deg,
+            rgba(98, 156, 148, 0.75),
+            rgba(19, 115, 104, 0.75)),
+            url('img/banner-1.jpg'); background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;">
+            <div class="content">
+                <h3>We are the</h3>
+                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+               <a href="./login/login.php" class="btn">Apply Now</a>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide" style="background: linear-gradient(45deg,
+            rgba(98, 156, 148, 0.75),
+            rgba(19, 115, 104, 0.75)),
+            url('img/banner-2.jpg'); background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;">
+            <div class="content">
+                <h3>Group 6</h3>
+                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+               <a href="./login/login.php" class="btn">Apply Now</a>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide" style="background: linear-gradient(45deg,
+            rgba(98, 156, 148, 0.75),
+            rgba(19, 115, 104, 0.75)),
+            url('img/banner-3.jpg'); background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;">
+            <div class="content">
+                <h3>sheesh XD</h3>
+                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+               <a href="./login/login.php" class="btn">Apply Now</a>
+            </div>
+         </div>
+         
       </div>
-    </div>
-  </nav>
-</header>
-<main id="home">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-        <div class="carousel-item banner-1 active">
-            <div class="container">
-            <div class="carousel-caption">
-                <h1>We are</h1>
-                
-            </div>
-            </div>
-        </div>
-        <div class="carousel-item banner-2">
-            <div class="container">
-            <div class="carousel-caption">
-                <h1>The</h1>
-                
-            </div>
-            </div>
-        </div>
-        <div class="carousel-item banner-3">
-            <div class="container">
-            <div class="carousel-caption">
-                <h1>Group 6 XD</h1>
-                
-            </div>
-            </div>
-        </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+
+   </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="features">
+
+   <h1 class="heading-title"> Features</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <img src="images/icon-1.png" alt="">
+         <h3>Hassle Free</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-2.png" alt="">
+         <h3>Paperless</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-3.png" alt="">
+         <h3>Smart Admissions</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-4.png" alt="">
+         <h3>Early Invention</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-5.png" alt="">
+         <h3>Automation</h3>
+      </div>
+
+      <div class="box">
+         <img src="images/icon-6.png" alt="">
+         <h3>Streamline process</h3>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- home about section starts  -->
+
+<section class="home-about" id="about">
+   <div class="content">
+      <center><h3>About the System</h3></center>
+      <p style="font-size: 2.3rem; font-weight:200">Dean's list Application System is an online Web Application, where it brings the process of
+         dean's list transaction into online form. Managing dean's list forms could be a challenge
+         because of the paperworks and processes. As we propose a more convenient way of doing these tasks.</p>
+      <center><a href="about.php" class="btn">XD</a></center>
+   </div>
+
+</section>
+   <h1 class="heading-title" id ="programs">Programs</h1>
+<section class="home-about" >
+   
+   <div class="image">
+      <img src="images/cs.png" alt="">
+   </div>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="content">
+      <h2>BS in Computer Science</h2>
+      <p align="justify" style="font-size:1.6rem; font-weight:200">
+         Bachelor of Science in Computer Science (BSCS) is a four-year program that includes the study of 
+         computing concepts and theories, algorithmic foundations, and new developments in computing. 
+         The program includes the study of the standards and practices in Software Engineering. It prepares 
+         students to acquire skills and disciplines required for designing, writing, and modifying software components, 
+         modules, and applications that comprise software solutions.</p>
+   </div>
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+   <div class="content">
+      <h2>BS in Information Technology</h2>
+      <p align="justify" style="font-size:1.6rem; font-weight:200">
+         Bachelor of Science in Information Technology (BSIT) is a four-year program that prepares students to be IT 
+         professionals who are able to perform installation, operation, development, maintenance and administration of 
+         computer applications. The goal of the program is to gear up students as "information technologists" who can 
+         assist individuals and organizations in solving problems using information technology (IT) techniques.</p>
+   </div>
+   <br>
+   <br>
+   <br>
+   <div class="image">
+      <img src="images/it.png" alt="">
+   </div>
+
+</section>
+<!-- home about section ends -->
+
+<!-- home packages section starts  -->
+
+<section class="home-packages" id="team">
+
+   <h1 class="heading-title"> Our Team </h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/josh.png" alt="" width="100" height="100"></center>
+         </div>
+         <div class="content">
+            <h3>Joshua A. Yasil</h3>
+            <p>Project Manager</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/bush.png" alt=""></center>
+         </div>
+         <div class="content">
+            <h3>Bushra Adjaluddin</h3>
+            <p>Quality Assurance</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+      
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/ejaypogi.png" alt="" height="10"></center>
+         </div>
+         <div class="content">
+            <h3>Emil John Magcanta</h3>
+            <p>Lead Developer</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/hamja.png" alt="" height="10"></center>
+         </div>
+         <div class="content">
+            <h3>Abdulasis Hamja</h3>
+            <p>Business Analyst</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/denise.png" alt="" height="10"></center>
+         </div>
+         <div class="content">
+            <h3>Denise Vonn Gerzon</h3>
+            <p>UX Designer</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+      <div class="box">
+         <div class="image">
+            <br><center><img src="./img/male.png" alt="" height="10"></center>
+         </div>
+         <div class="content">
+            <h3>Abdar Talib</h3>
+            <p>UI Designer</p>
+            <a href="book.php" class="btn">XD</a>
+         </div>
+      </div>
+
+   </div>
 
 
-    <hr class="featurette-divider">
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center" id="home">
-        <div class="h-100 p-5 text-white background-color-green rounded-3">
-            <h1 class="display-4 fw-normal">About the System</h1>
-            <p class="justify">
-                Dean's list Application System is an online Web Application, 
-                where it brings the process of dean's list transaction into online form.
-                Managing dean's list forms could be a challenge because of the paperworks and processes. 
-                As we propose a more convenient way of doing these tasks.
-            </p>
-        </div>
-    </div>
-    <hr class="featurette-divider">
+</section>
 
-    <div class="container marketing">
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center" id="about">
-            <h1 class="display-4 fw-normal">Our Team</h1>
-        </div>
-        <div class="row about">
-            <div class="col-lg-4">
-                <img src="./img/josh.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Joshua A. Yasil</h3>
-                <h4>Project Manager</h4>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="./img/bush.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Bushra Adjaluddin</h3>
-                <h4>Architectural Engineer</h4>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="./img/ej.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Emil John Q. Magcanta</h3>
-                <h4>Lead Developer</h4>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="./img/hamja.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Abdulasis Hamja</h3>
-                <h4>Business Analyst</h4>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="./img/denise.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Denise Vonn Gerzon</h3>
-                <h4>UX Designer</h4>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="./img/male.png" alt="" class="bd-placeholder-img rounded-circle" width="140" height="140">
-                <h3>Abdar Talib</h3>
-                <h4>UI Designer</h4>
-            </div><!-- /.col-lg-4 -->
-        </div>
-    </div><!-- /.container -->
-    <hr class="featurette-divider">
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function(){
-      $('a#home').on('click', function(){
-        $('.nav-link').removeClass('active');
-        $('a#home').addClass('active');
-        $('html,body').animate({
-                    scrollTop:$('main#home').offset().top -100}, 'fast');
-      });
-      $('a#academics').on('click', function(){
-        $('.nav-link').removeClass('active');
-        $('a#academics').addClass('active');
-        $('html,body').animate({
-                    scrollTop:$('div#academics').offset().top -100}, 'fast');
-      });
-      $('a#admissions').on('click', function(){
-        $('.nav-link').removeClass('active');
-        $('a#admissions').addClass('active');
-        $('html,body').animate({
-                    scrollTop:$('div#admissions').offset().top -100}, 'fast');
-      });
-      $('a#faculty').on('click', function(){
-        $('.nav-link').removeClass('active');
-        $('a#faculty').addClass('active');
-        $('html,body').animate({
-                    scrollTop:$('div#faculty').offset().top -100}, 'fast');
-      });
-    });
-  </script>
+<!-- home packages section ends -->
+
+<!-- home offer section starts  -->
+
+<section class="home-offer">
+   <div class="content">
+      
+   </div>
+</section>
+
+<!-- home offer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer" id=contact>
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3>quick links</h3>
+         <a href="#home"> <i class="fas fa-angle-right"></i> Home</a>
+         <a href="#about"> <i class="fas fa-angle-right"></i> About</a>
+         <a href="#team"> <i class="fas fa-angle-right"></i> Team</a>
+         <a href="#contact"> <i class="fas fa-angle-right"></i>Contact us</a>
+      </div>
+
+      <div class="box">
+         <h3>extra links</h3>
+         <a href="#"> <i class="fas fa-angle-right"></i> Ask questions</a>
+         <a href="#team"> <i class="fas fa-angle-right"></i> About us</a>
+         <a href="#"> <i class="fas fa-angle-right"></i> Privacy Policy</a>
+         <a href="#"> <i class="fas fa-angle-right"></i> Terms of use</a>
+      </div>
+
+      <div class="box">
+         <h3>contact info</h3>
+         <a href="#"> <i class="fas fa-phone"></i> 01-234 </a>
+         <a href="#"> <i class="fas fa-phone"></i> 56-789 </a>
+         <a href="#"> <i class="fas fa-envelope"></i> xt202001281@wmsu.edu.ph </a>
+         <a href="#"> <i class="fas fa-map"></i> Zamboanga City, Ph 7000 </a>
+      </div>
+
+      <div class="box">
+         <h3>follow us</h3>
+         <a href="https://www.facebook.com/emiljohn.magcanta.5"> <i class="fab fa-facebook-f"></i> Facebook </a>
+         <a href="#"> <i class="fab fa-twitter"></i> Twitter </a>
+         <a href="#"> <i class="fab fa-instagram"></i> Instagram </a>
+         <a href="https://github.com/McSing29"> <i class="fab fa-github"></i> Github </a>
+      </div>
+
+   </div>
+   
+   <div  class="credit"> &copy; Developed by <span>Group 6 XD</span> | All Rights Reserved! <p class="float-end"><br><a href="#" style="color: #107869">Back to top</a></p></div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+<!-- swiper js link  -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="faculty/scripts.js"></script>
+
 </body>
 </html>
