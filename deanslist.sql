@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2023 at 03:40 PM
+-- Generation Time: Jan 22, 2023 at 11:56 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -48,7 +48,8 @@ INSERT INTO `programs` (`id`, `code`, `description`, `years`, `level`, `cet`, `s
 (2, 'BSIT', 'BS Information Technology', 4, 'Bachelor', 70, 'Offering', '2022-11-03 07:24:14', '2022-11-13 15:07:16'),
 (3, 'BSCS-ST', 'BS Computer Science major in Software Technology', 4, 'Bachelor', 90, 'Phase-Out', '2022-11-03 07:17:36', '2022-11-13 15:07:49'),
 (4, 'ACT', 'Associate in Computer Technology', 2, 'Associate', 55, 'Offering', '2022-11-13 05:26:06', '2022-11-13 15:06:10'),
-(5, 'ACS', 'Associate in Computer Science', 2, 'Associate', 55, 'Phase-Out', '2022-11-13 06:20:18', '2022-11-13 15:06:13');
+(5, 'ACS', 'Associate in Computer Science', 2, 'Associate', 55, 'Phase-Out', '2022-11-13 06:20:18', '2022-11-13 15:06:13'),
+(6, 'BSCE', 'BS Computer Engineering', 5, 'Bachelor', 90, 'Offering', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL,
   `user_firstname` varchar(255) NOT NULL,
   `user_lastname` varchar(255) NOT NULL,
-  `user_type` int(11) NOT NULL
+  `user_type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -70,13 +71,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_type`) VALUES
-(1, 'emiljohn1129@gmail.com', 'password', 'Ejay', 'McSing', 0),
-(2, 'xt202001281@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 0),
-(3, 'ejaymcsing@gmail.com', 'password', 'Ejay', 'McSing', 0),
-(6, 'markvlad@wmsu.edu.ph', 'password', 'mark', 'Vladimir', 0),
-(10, 'ejaypogi@gmail.com', 'password', 'Ejay', 'Pogi', 0),
-(11, 'ejaypogi@wmsu.edu.ph', 'password', 'Ejay ', 'Pogi', 0),
-(12, 'ejaymagcanta@gmail.com', 'password', 'Emil', 'John', 0);
+(1, 'emiljohn1129@gmail.com', 'password', 'Ejay', 'McSing', '0'),
+(2, 'xt202001281@wmsu.edu.ph', 'password', 'Ejay', 'McSing', '0'),
+(3, 'ejaymcsing@gmail.com', 'password', 'Ejay', 'McSing', '0'),
+(6, 'markvlad@wmsu.edu.ph', 'password', 'mark', 'Vladimir', '0'),
+(13, 'joshuayasil@wmsu.edu.ph', 'password', 'Joshua', 'Yasil', '1'),
+(14, 'joshyasil@gmail.com', 'password', 'Josh', 'Yasil', '1'),
+(15, 'ejaymcsing@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'admin'),
+(16, 'ejaypogi@wmsu.edu.ph', 'password', 'Ejay', 'Pogi', 'staff'),
+(17, 'ejaypogi@gmail.com', 'password', 'Ejay', 'Pogi', 'admin'),
+(18, 'ejmagcanta@gmail.com', 'password', 'Ejay', 'Magcanta', 'staff');
 
 --
 -- Indexes for dumped tables
@@ -104,13 +108,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

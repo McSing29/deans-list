@@ -177,7 +177,7 @@
                 <?php
                     if($_SESSION['user_type'] == 'admin'){ 
                 ?>
-                    <a href="addprogram.php" class="button">Add Program</a>
+                    <a href="addprogram.php" class="button"><center>Add Program</center></a>
                 <?php
                     }
                 ?>
@@ -228,7 +228,7 @@
                                 <td>
                                     <div class="action">
                                         <a class="action-edit" href="editprogram.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                        <a class="action-delete" href="deleteprogram.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                        <br></br><a class="action-delete" href="deleteprogram.php?id=<?php echo $value['id'] ?>">Delete</a>
                                     </div>
                                 </td>
                             <?php

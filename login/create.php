@@ -65,7 +65,7 @@
 		</div>
 
             <label for="user_email"></label>
-            <input type="email" id="user_email" name="user_email" required placeholder="Enter email" value="<?php if(isset($_POST['user_email'])) { echo $_POST['user_email']; } ?>">
+            <input type="email" id="user_email" name="user_email" required tabindex="1" placeholder="Enter email" value="<?php if(isset($_POST['user_email'])) { echo $_POST['user_email']; } ?>">
             <?php
                 if(isset($_POST['save']) && !validate_user_email($_POST)){
             ?>
@@ -75,10 +75,13 @@
             ?>
             <label for="user_password"></label>
             <input type="password" id="user_password" name="user_password" placeholder="Enter password" required tabindex="2">
+
             <label for="user_firstname"></label>
             <input type="text" id="user_firstname" name="user_firstname" placeholder="Enter First Name" required tabindex="3">
+
             <label for="user_lastname"></label>
             <input type="text" id="user_lastname" name="user_lastname" placeholder="Enter Last Name" required tabindex="4">
+
             <input class="button" type="submit" value="Create" name="login" tabindex="5">
             <a class = "back" href="login.php" style ="text-decoration: none;"><i class='bx bx-caret-left'></i>Back to Login</a>
             <?php

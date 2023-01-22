@@ -350,11 +350,11 @@ a.action-edit{
     background-color: rgb(0, 255, 38);
 }
   
-a.action-remove{
+a.action-delete{
     background-color: red;
 }
   
-a.action-edit:hover, a.action-remove:hover{
+a.action-edit:hover, a.action-delete:hover{
     opacity: 0.6;
     cursor: pointer;
 }
