@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Create an Account</title>
 </head>
-<body background = "ccs6.png"><br>
+<body>
     <div class="login-container">
         <form class="login-form" action="create.php" method="post">
         <div class="box-image">

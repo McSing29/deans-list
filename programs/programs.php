@@ -26,10 +26,10 @@
 </head>
 <body>
     <div class="side-bar">
-        <br></br>
-        <div class="logo-details" title="Forecast">
-            <center><img src="ccslogo.png" width ="75" height = "75"></center>
-            <span class="logo-name" style="display:inline-block">Dean's List Application <br> System</span>
+        <br>
+        <div class="logo-details">
+            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+            <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
         <br></br>
         <ul class="nav-links">

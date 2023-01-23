@@ -149,7 +149,7 @@
 <section class="home-about" id="about">
    <div class="content">
       <center><h3>About the System</h3></center>
-      <p style="font-size: 2.3rem; font-weight:200">Dean's list Application System is an online Web Application, where it brings the process of
+      <p align="justify" style="font-size: 2.3rem; font-weight:200">Dean's list Application System is an online Web Application, where it brings the process of
          dean's list transaction into online form. Managing dean's list forms could be a challenge
          because of the paperworks and processes. As we propose a more convenient way of doing these tasks.</p>
       <center><a href="about.php" class="btn">XD</a></center>
@@ -158,7 +158,6 @@
 </section>
    <h1 class="heading-title" id ="programs">Programs</h1>
 <section class="home-about" >
-   
    <div class="image">
       <img src="images/cs.png" alt="">
    </div>
@@ -169,33 +168,29 @@
    <br>
    <div class="content">
       <h2>BS in Computer Science</h2>
-      <p align="justify" style="font-size:1.6rem; font-weight:200">
+      <p align="justify" style="font-size:1.8rem; font-weight:200">
          Bachelor of Science in Computer Science (BSCS) is a four-year program that includes the study of 
          computing concepts and theories, algorithmic foundations, and new developments in computing. 
          The program includes the study of the standards and practices in Software Engineering. It prepares 
          students to acquire skills and disciplines required for designing, writing, and modifying software components, 
-         modules, and applications that comprise software solutions.</p>
+         modules, and applications that comprise software solutions.</p><br>
    </div>
 
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
 
-   <div class="content">
+
+   <br><div class="content">
       <h2>BS in Information Technology</h2>
-      <p align="justify" style="font-size:1.6rem; font-weight:200">
+      <p align="justify" style="font-size:1.8rem; font-weight:200">
          Bachelor of Science in Information Technology (BSIT) is a four-year program that prepares students to be IT 
          professionals who are able to perform installation, operation, development, maintenance and administration of 
          computer applications. The goal of the program is to gear up students as "information technologists" who can 
-         assist individuals and organizations in solving problems using information technology (IT) techniques.</p>
+         assist individuals and organizations in solving problems using information technology (IT) techniques.<br><br><br></p>
    </div>
    <br>
    <br>
    <br>
    <div class="image">
-      <img src="images/it.png" alt="">
+      <br><img src="images/it.png" alt="">
    </div>
 
 </section>
@@ -216,7 +211,7 @@
          <div class="content">
             <h3>Joshua A. Yasil</h3>
             <p>Project Manager</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
 
@@ -227,7 +222,7 @@
          <div class="content">
             <h3>Bushra Adjaluddin</h3>
             <p>Quality Assurance</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       
@@ -238,7 +233,7 @@
          <div class="content">
             <h3>Emil John Magcanta</h3>
             <p>Lead Developer</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
@@ -248,7 +243,7 @@
          <div class="content">
             <h3>Abdulasis Hamja</h3>
             <p>Business Analyst</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
@@ -258,7 +253,7 @@
          <div class="content">
             <h3>Denise Vonn Gerzon</h3>
             <p>UX Designer</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
@@ -268,7 +263,7 @@
          <div class="content">
             <h3>Abdar Talib</h3>
             <p>UI Designer</p>
-            <a href="book.php" class="btn">XD</a>
+            <a href="#home" class="btn">XD</a>
          </div>
       </div>
 

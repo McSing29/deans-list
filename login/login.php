@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Login</title>
 </head>
-<body background = "ccs6.png">
+<body>
     <div class="login-container">
         <form class="login-form" action="login.php" method="post">
         <div class="box-image">
