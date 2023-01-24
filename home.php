@@ -25,7 +25,7 @@
 			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application</a>
    <nav class="navbar">
       <a href="#home">Home</a>
-      <a href="#features">Feature</a>
+      <a href="#features">Features</a>
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
       <a href="#team">Team</a>
@@ -54,7 +54,7 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>We are the</h3>
+                <h3>Announcement</h3>
                 <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
@@ -68,7 +68,7 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>Group 6</h3>
+                <h3>Announcement</h3>
                 <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
@@ -82,7 +82,7 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>sheesh XD</h3>
+                <h3>Announcement</h3>
                 <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
@@ -201,7 +201,6 @@
 <section class="home-packages" id="team">
 
    <h1 class="heading-title"> Our Team </h1>
-
    <div class="box-container">
 
       <div class="box">

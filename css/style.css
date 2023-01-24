@@ -1061,9 +1061,9 @@ a.button{
     padding:1rem 0;
     line-height: 2;
     color:var(--black);
-    
  }
- 
+
+
  .home-packages{
     background: var(--light-bg);
  }
@@ -1076,11 +1076,17 @@ a.button{
  }
  
  .home-packages .box-container .box{
-    border:solid  #107869;
-    box-shadow: var(--box-shadow);
-    background: var(--white);
-    display:inline-block;
-    width: 90%;
+   border-top-style: hidden;
+   border-right-style: hidden;
+   border-left-style: hidden;
+   border-bottom-style: hidden;
+   box-shadow: var(--box-shadow);
+   background: var(--white);
+   display:inline-block;
+   justify-items: center;
+   width: 79%;
+   margin-left: 35px;
+   border-radius: 15px;
  }
  
  .home-packages .box-container .box:hover .image img{
