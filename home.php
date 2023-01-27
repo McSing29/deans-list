@@ -164,8 +164,6 @@
    <br>
    <br>
    <br>
-   <br>
-   <br>
    <div class="content">
       <h2>BS in Computer Science</h2>
       <p align="justify" style="font-size:1.8rem; font-weight:200">

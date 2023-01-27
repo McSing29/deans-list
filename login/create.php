@@ -1,5 +1,6 @@
 <?php
 
+    require_once '../functions/functions.php';
     require_once '../class/users.class.php';
 
     session_start();

@@ -287,8 +287,8 @@ nav .side-bar-button i{
 }
 
 .table-title{
-    font-weight: solid;
-    font-size: 20px;
+    font-weight: 450;
+    font-size: 30px;
     text-align: left;
     color: #333;
     margin: 20px 0;
@@ -303,7 +303,6 @@ nav .side-bar-button i{
 
 .table{
     border-collapse: collapse;
-    
     text-align: left;
     vertical-align: middle;
     width: 100%;
@@ -312,6 +311,7 @@ nav .side-bar-button i{
     border-radius: 10px;
     background-color: rgba(233, 239, 232, 0.974);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    margin-right:100;
 }
 
 th, td{
@@ -381,7 +381,8 @@ a.status-available:hover, a.status-notavailable:hover{
 .table-container .button{
     display: inline;
     float: right;
-    width: 20%;
+    width: fit-content;
+    border-radius: 8px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -513,6 +514,22 @@ a.button{
     text-decoration: none;
 }
 
+.add-form-container{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin-left:33%;
+    border-style:outset;
+    border-style: groove;
+    border-color:#107869;
+}
+
+.add-form-container p.error{
+    text-align: justify;
+    line-height: 20px;
+    padding: 0;
+    font-size: 12px;
+}
 
 .container {
     display: inline-block;
@@ -635,6 +652,7 @@ a.button{
 
   .form-size{
     max-width: 400px;
+    margin-left: 33%;
   }
 
   a.back{

@@ -21,6 +21,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+
     <title>Faculty and Staff</title>
 </head>
 <body>
@@ -59,7 +60,7 @@
             </li>
 
             <li>
-                <a href="../programs/programs.php">
+                <a href="../programs/programs.php" >
                 <i class='bx bx-book-reader'></i>
                     <span class="links-name">Programs</span>
                 </a>
@@ -112,8 +113,8 @@
         });
     </script>
 
-<section class="home-section">
-    <!-- NAVBAR -->
+    <section class="home-section">
+        <!-- NAVBAR -->
         <nav>
             <div class="side-bar-button">
                 <i class='bx bx-menu small'></i>
@@ -126,538 +127,125 @@
         </nav>
 
         <script>
-        var reference = (function self(){
-            if(sessionStorage.getItem("sidebar") == "small"){
+            var reference = (function self(){
+                if(sessionStorage.getItem("sidebar") == "small"){
+                    small();
+                }else{
+                    large();
+                }
+            }());
+
+            $('.bx-menu.small').on('click', function(){
                 small();
-            }else{
+            });
+            $('.bx-menu.large').on('click', function(){
                 large();
+            });
+
+            function small(){
+                $('.bx-menu.small').hide();
+                $('.bx-menu.large').show();
+
+                $('.side-bar').css('width', '60px');
+                $('.home-section').css('width', 'calc(100%)');
+                $('.home-section').css('left', '60px');
+                $('.home-section nav').css('width', 'calc(100% - 60px)');
+                $('.home-section nav').css('left', '60px');
+
+                sessionStorage.setItem("sidebar", "small");
             }
-        }());
 
-        $('.bx-menu.small').on('click', function(){
-            small();
-        });
-        $('.bx-menu.large').on('click', function(){
-            large();
-        });
+            function large(){
+                $('.bx-menu.small').show();
+                $('.bx-menu.large').hide();
 
-        function small(){
-            $('.bx-menu.small').hide();
-            $('.bx-menu.large').show();
+                $('.side-bar').css('width', '250px');
+                $('.home-section').css('width', 'calc(100% - 100px)');
+                $('.home-section').css('left', '170px');
+                $('.home-section nav').css('width', 'calc(100% - 250px)');
+                $('.home-section nav').css('left', '250px');
 
-            $('.side-bar').css('width', '60px');
-            $('.home-section').css('width', 'calc(100% - 60px)');
-            $('.home-section').css('left', '60px');
-            $('.home-section nav').css('width', 'calc(100% - 60px)');
-            $('.home-section nav').css('left', '60px');
-
-            sessionStorage.setItem("sidebar", "small");
-        }
-
-        function large(){
-            $('.bx-menu.small').show();
-            $('.bx-menu.large').hide();
-
-            $('.side-bar').css('width', '250px');
-            $('.home-section').css('width', 'calc(100% - 250px)');
-            $('.home-section').css('left', '250px');
-            $('.home-section nav').css('width', 'calc(100% - 250px)');
-            $('.home-section nav').css('left', '250px');
-
-            sessionStorage.setItem("sidebar", "large");
-        }
-    </script>
+                sessionStorage.setItem("sidebar", "large");
+            }
+        </script>
         <!-- NAVBAR -->
-    <div class="wrapper">
-        <br></br>
-        <center><h1 style = "font-size:35px; font-weight:150">CCS Faculty and Staff </h1></center>
 
-        <div class="links">
+        <div class="home-content">
+            <div class="table-container">
+                <div class="table-heading">
+                    <h3 class="table-title">Faculty and Staff</h3>
+                    <?php
+                        if($_SESSION['user_type'] == 'admin'){ 
+                    ?>
+                        <a href="addfaculty.php" class="button"><center>Add Faculty</center></a>
+                    <?php
+                        }
+                    ?>
+                </div>
+                <br>
+                <?php
+                require '../class/database.php';
+                ?>
 
-            <ul>
-                <li data-view="list-view" class="li-list active">
-                <i class="fas fa-th-list"></i>
-                </li>
-                <li data-view="grid-view" class="li-grid">
-                <i class="fas fa-th-large"></i>
-                </li>
-            </ul>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Academic Rank</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <?php
+                                if($_SESSION['user_type'] == 'admin'){ 
+                            ?>
+                                <th class="action">Action</th>
+                            <?php
+                                }
+                            ?>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            require_once '../class/faculty.class.php';
+
+                            $faculty = new Faculty();
+                            //We will now fetch all the records in the array using loop
+                            //use as a counter, not required but suggested for the table
+                            $i = 1;
+                            //loop for each record found in the array
+                            foreach ($faculty->show() as $value){ //start of loop
+                        ?>
+                            <tr>
+                                <!-- always use echo to output PHP values -->
+                                <td><?php echo $i ?></td>
+                                <td> <img src="img/<?php echo $value["img"]; ?>" width = 100 title="<?php echo $value['img']; ?>"> </td>
+                                <td><?php echo $value['firstname'] . ' ' . $value['lastname'] ?>
+                                <td><?php echo $value['rank'] ?></td>
+                                <td><?php echo $value['email'] ?></td>
+                                <td><?php echo $value['status'] ?></td>
+                                <?php
+                                    if($_SESSION['user_type'] == 'admin'){
+                                ?>
+                                    <td>
+                                        <div class="action">
+                                            <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
+                                            <br></br><a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                        </div>
+                                    </td>
+                                <?php
+                                    }
+                                ?>
+                            </tr>
+                            <?php
+                                $i++;
+                            //end of loop
+                            }
+                            ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-            <div class="view_main">
-                <div class="view_wrap list-view" style="display: block;">
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/go.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Dr. Roderick P. Go</h1>
-                            <h2 class="content">College Dean</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/odon.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Odon A. Maravillas, Jr., MSCS</h1>
-                            <h2 class="content">Associate Dean</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/belamide.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Gadmar M. Belamide, MEnggEd-ICT</h1>
-                            <h2 class="content">College Secretary</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/sadiwa.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Lucy Felix-Sadiwa, MSCS</h1>
-                            <h2 class="content">CS Department Head</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/escorialj.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Augustus A. Escorial, MIT</h1>
-                            <h2 class="content">IT Department</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/escoriala.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mrs. Aida A. Escorial, MIT</h1>
-                            <h2 class="content">Graduate Program Chair</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/aripE.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Edwip I. Arip, MEnggEd-ICT</h1>
-                            <h2 class="content">External Studies Unit Technical Associate</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/aripJ.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Paul I. Arip</h1>
-                            <h2 class="content">LMS Quality Assurance</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mrs. Justin Anne Albay-Arip</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/ballaho.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Jaydee C. Ballaho</h1>
-                            <h2 class="content">LMS Lead Developer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/catadman.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Jason A. Catadman</h1>
-                            <h2 class="content">LMS Assistant Developer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/flores.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Mark L. Flores, MEnggEd-ICT</h1>
-                            <h2 class="content">Director, Data Protection and Security</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/gregana.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Pauleen Jean E. Gregana</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Aradzna M. Kamman</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Mara Marie Liao</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/lines.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Marvic A. Lines, MEnggEd-ICT</h1>
-                            <h2 class="content">LMS Training and Management</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Ceed Janelle B. Lorenzo</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/lorenzo.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Ceed Jezreel B. Lorenzo, MIT</h1>
-                            <h2 class="content">Research Coordinator</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/rojas.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Marjorie A. Rojas</h1>
-                            <h2 class="content">Student Affairs and Guidance Coordinator</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/male.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Theo Jay M'lleno Sanson</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/tahil.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Salimar B. Tahil, MEnggEd-ICT</h1>
-                            <h2 class="content">Asst. Director, MISTO</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/timpangco.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Whesley G. Timpangco</h1>
-                            <h2 class="content">LMS Network Engineer</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/jackaria.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Alhadzra M. Jackaria</h1>
-                            <h2 class="content">Laboratory Technician</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/male.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Roy S. Velario</h1>
-                            <h2 class="content">Administrative Assistant</h2>
-                            
-                        </div>
-                    </div>
-
-
-
-		</div>
-
-
-
-		<div class="view_wrap grid-view" style="display: none;">
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/go.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Dr. Roderick P. Go</h1>
-                            <h2 class="content">College Dean</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/odon.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Odon A. Maravillas, Jr., MSCS</h1>
-                            <h2 class="content">Associate Dean</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/belamide.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Gadmar M. Belamide, MEnggEd-ICT</h1>
-                            <h2 class="content">College Secretary</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/sadiwa.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Lucy Felix-Sadiwa, MSCS</h1>
-                            <h2 class="content">CS Department Head</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/escorialj.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Augustus A. Escorial, MIT</h1>
-                            <h2 class="content">IT Department</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/escoriala.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mrs. Aida A. Escorial, MIT</h1>
-                            <h2 class="content">Graduate Program Chair</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/aripE.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Edwip I. Arip, MEnggEd-ICT</h1>
-                            <h2 class="content">External Studies Unit Technical Associate</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/aripJ.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Paul I. Arip</h1>
-                            <h2 class="content">LMS Quality Assurance</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mrs. Justin Anne Albay-Arip</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/ballaho.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Jaydee C. Ballaho</h1>
-                            <h2 class="content">LMS Lead Developer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/catadman.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Jason A. Catadman</h1>
-                            <h2 class="content">LMS Assistant Developer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/flores.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Mark L. Flores, MEnggEd-ICT</h1>
-                            <h2 class="content">Director, Data Protection and Security</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/gregana.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Pauleen Jean E. Gregana</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Aradzna M. Kamman</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Mara Marie Liao</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/lines.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Marvic A. Lines, MEnggEd-ICT</h1>
-                            <h2 class="content">LMS Training and Management</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/female.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Ceed Janelle B. Lorenzo</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/lorenzo.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Ceed Jezreel B. Lorenzo, MIT</h1>
-                            <h2 class="content">Research Coordinator</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/rojas.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Engr. Marjorie A. Rojas</h1>
-                            <h2 class="content">Student Affairs and Guidance Coordinator</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/male.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Theo Jay M'lleno Sanson</h1>
-                            <h2 class="content">Visiting Lecturer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/tahil.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Salimar B. Tahil, MEnggEd-ICT</h1>
-                            <h2 class="content">Asst. Director, MISTO</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/timpangco.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. Whesley G. Timpangco</h1>
-                            <h2 class="content">LMS Network Engineer</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/jackaria.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Ms. Alhadzra M. Jackaria</h1>
-                            <h2 class="content">Laboratory Technician</h2>
-                        </div>
-                    </div>
-                    <div class="view_item">
-                        <div class="vi_left">
-                            <img src="./img/male.png">
-                        </div>
-                        <div class="vi_right">
-                            <h1 class="title">Mr. John Roy S. Velario</h1>
-                            <h2 class="content">Administrative Assistant</h2>
-                        </div>
-                    </div>
-
-        </div>
-    </div>
-    </div>
-
-    <script src="scripts.js"></script>
-
-</section>
+    </section>
 </body>
-
 </html>

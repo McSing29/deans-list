@@ -153,16 +153,16 @@
                 }
 
                 function large(){
-                    $('.bx-menu.small').show();
-                    $('.bx-menu.large').hide();
+                $('.bx-menu.small').show();
+                $('.bx-menu.large').hide();
 
-                    $('.side-bar').css('width', '250px');
-                    $('.home-section').css('width', 'calc(100% - 250px)');
-                    $('.home-section').css('left', '250px');
-                    $('.home-section nav').css('width', 'calc(100% - 250px)');
-                    $('.home-section nav').css('left', '250px');
+                $('.side-bar').css('width', '250px');
+                $('.home-section').css('width', 'calc(100% - 100px)');
+                $('.home-section').css('left', '170px');
+                $('.home-section nav').css('width', 'calc(100% - 250px)');
+                $('.home-section nav').css('left', '250px');
 
-                    sessionStorage.setItem("sidebar", "large");
+                sessionStorage.setItem("sidebar", "large");
                 }
             </script>
         <!-- NAVBAR -->
