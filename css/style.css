@@ -151,6 +151,7 @@ label{
 	transition: .3s ease;
 	overflow: hidden;
 	scrollbar-width: none;
+   
 }
 
 
@@ -168,7 +169,7 @@ label{
 }
 
 .side-bar .logo-details .logo-name{
-    color: black;
+    color: #fff;
     font-size: 19px;
     font-weight: 470;
     align-items: center;
@@ -198,37 +199,37 @@ label{
 }
 
 .side-bar .nav-links .active{
-    background-color: white;
+   background-color: #1A5653;
 }
 
 .side-bar .nav-links li a:active{
-    background-color: rgb(241, 236, 236);
+   background-color: #1A5653;
 }
 
 .side-bar .nav-links li a:hover{
-    background-color: rgb(245, 240, 240);
+   background-color: #1A5653;
 }
 
 .side-bar .nav-links li i{
-    min-width: 60px;
-    text-align: center;
-    font-size: 18px;
-    color: rgb(31, 30, 30);
+   min-width: 60px;
+   text-align: center;
+   font-size: 18px;
+   color: #fff;
 }
 
 .side-bar .nav-links li a .links-name{
-    color: rgb(16, 15, 15);
+   color: #fff;
     font-size: 15px;
     font-weight: 400;
     white-space: nowrap;
 }
 
 .side-bar .nav-links .line{
-    margin: 10px auto;
-    width: 90%;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid black;
+   margin: 10px auto;
+   width: 90%;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid white;
     
 }
 

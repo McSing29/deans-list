@@ -31,7 +31,7 @@
             <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
             <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
-        <br></br>
+        <br>
         <ul class="nav-links">
             <li>
                 <a href="../dashboard/dashboard.php">
