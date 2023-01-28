@@ -2,7 +2,6 @@
 
     require_once '../functions/functions.php';
     require_once '../class/faculty.class.php';
-    require_once '../class/database.php';
 
     //resume session here to fetch session values
     session_start();
@@ -15,25 +14,36 @@
         header('location: ../login/login.php');
     }
     //if the above code is false then code and html below will be executed
-
+    $faculty = new Faculty;
     //if add faculty is submitted
     if(isset($_POST['save'])){
-
-        $faculty = new Faculty();
         //sanitize user inputs
+        $faculty->id = $_POST['faculty-id'];
         $faculty->img = htmlentities($_POST['img']);
         $faculty->firstname = htmlentities($_POST['firstname']);
         $faculty->lastname = htmlentities($_POST['lastname']);
         $faculty->rank = $_POST['rank'];
-        $faculty->email = htmlentities($_POST['email']);
+        $faculty->email = $_POST['email'];
+        $faculty->status = 'Not Set';
         if(isset($_POST['status'])){
             $faculty->status = $_POST['status'];
         }
         if(validate_add_faculty($_POST)){
-            if($faculty->add()){
+            if($faculty->edit()){
                 //redirect user to faculty page after saving
                 header('location: faculty.php');
             }
+        }
+    }else{
+        if ($faculty->fetch($_GET['id'])){
+            $data = $faculty->fetch($_GET['id']);
+            $faculty->id = $data['id'];
+            $faculty->img = $data['img'];
+            $faculty->firstname = $data['firstname'];
+            $faculty->lastname = $data['lastname'];
+            $faculty->rank = $data['rank'];
+            $faculty->email = $data['email'];
+            $faculty->status = $data['status'];
         }
     }
 
@@ -52,7 +62,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>CCS Programs</title>
+    <title>Edit Faculty</title>
 </head>
 <body>
     <div class="side-bar">
@@ -83,14 +93,14 @@
                 </a>
             </li>
             <li>
-                <a href="../faculty/faculty.php" >
+                <a href="../faculty/faculty.php" class ="active" >
                     <i class='bx bx-group' ></i>
                     <span class="links-name">Faculty</span>
                 </a>
             </li>
 
             <li>
-                <a href="../programs/programs.php" >
+                <a href="../programs/programs.php"  >
                 <i class='bx bx-book-reader'></i>
                     <span class="links-name">Programs</span>
                 </a>
@@ -199,8 +209,7 @@
         }
     </script>
         <!-- NAVBAR -->
-
-    <div class="home-content">
+        <div class="home-content">
         <div class="table-container">
             <div class="table-heading form-size">
                 <h3 class="table-title">Add New Faculty</h3>
@@ -208,12 +217,14 @@
             </div>
             <br>
             <div class="add-form-container">
-                <form class="add-form" action="addfaculty.php" method="post">
+                <form class="add-form" action="editfaculty.php" method="post">
+                    <input type="text" hidden name="faculty-id" value="<?php echo $faculty->id; ?>">
+
                     <label for="img">Image</label>
-                    <input type="file" name="img" id = "img" accept=".jpg, .jpeg, .png" value="">
+                    <input type="file" name="img" id = "img" accept=".jpg, .jpeg, .png" value="<?php if(isset($_POST['img'])) { echo $_POST['img']; } else { echo $faculty->img; }?>">
 
                     <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="firstname" required placeholder="Enter first name" value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                    <input type="text" id="firstname" name="firstname" required placeholder="Enter first name" value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else { echo $faculty->firstname; }?>">
                     <?php
                         if(isset($_POST['save']) && !validate_first_name($_POST)){
                     ?>
@@ -222,7 +233,7 @@
                         }
                     ?>
                     <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname" required placeholder="Enter last name" value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                    <input type="text" id="lastname" name="lastname" required placeholder="Enter last name" value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else { echo $faculty->lastname; }?>">
                     <?php
                         if(isset($_POST['save']) && !validate_last_name($_POST)){
                     ?>
@@ -231,7 +242,7 @@
                         }
                     ?>
                    <label for="rank">Academic Rank</label>
-                    <input type="text" id="rank" name="rank" required placeholder="Enter rank" value="<?php if(isset($_POST['rank'])) { echo $_POST['rank']; } ?>">
+                    <input type="text" id="rank" name="rank" required placeholder="Enter rank" value="<?php if(isset($_POST['rank'])) { echo $_POST['rank']; } else { echo $faculty->rank; }?>">
                     <?php
                         if(isset($_POST['save']) && !validate_rank($_POST)){
                     ?>
@@ -240,7 +251,7 @@
                         }
                     ?>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="Enter email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
+                    <input type="email" id="email" name="email" required placeholder="Enter email" value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else { echo $faculty->email; }?>">
                     <?php
                         if(isset($_POST['save']) && !validate_email($_POST)){
                     ?>

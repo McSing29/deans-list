@@ -159,7 +159,7 @@
    <h1 class="heading-title" id ="programs">Programs</h1>
 <section class="home-about" >
    <div class="image">
-      <img src="images/cs.png" alt="">
+      <img src="images/cspic.jpg" alt="">
    </div>
    <br>
    <br>
@@ -188,7 +188,7 @@
    <br>
    <br>
    <div class="image">
-      <br><img src="images/it.png" alt="">
+      <br><img src="images/itpic.jpg" alt="">
    </div>
 
 </section>

@@ -5,6 +5,7 @@ require_once 'database.php';
 class Faculty{
     //attributes
 
+    public $id;
     public $img;
     public $firstname;
     public $lastname;
