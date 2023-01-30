@@ -212,7 +212,7 @@
         <div class="home-content">
         <div class="table-container">
             <div class="table-heading form-size">
-                <h3 class="table-title">Edit Faculty</h3>
+                <h3 class="table-title">Add New Faculty</h3>
                 <a class="back" href="faculty.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
             <br>
@@ -262,11 +262,11 @@
                     <div>
                         <label for="status">Faculty Status</label><br>
                         <label class="container" for="Active">Active
-                            <input type="checkbox" name="status" id="Active" value="Active" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active') echo ' checked'; } elseif ($faculty->status == 'active') echo ' Active'; ?>>
+                            <input type="radio" name="status" id="Active" value="Active" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active') echo ' checked'; }  elseif ($faculty->status == 'Active') echo ' checked'; ?>>
                             <span class="checkmark"></span>
                         </label><br>
                         <label class="container" for="Inactive">Inactive
-                            <input type="checkbox" name="status" id="Inactive" value="Inactive" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'inactive') echo ' checked'; } elseif ($faculty->status == 'Inactive') echo ' checked'; ?>>
+                            <input type="radio" name="status" id="Inactive" value="Inactive" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive') echo ' checked'; }  elseif ($faculty->status == 'Inactive') echo ' checked'; ?>>
                             <span class="checkmark"></span>
                         </label>
                     </div>

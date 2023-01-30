@@ -309,8 +309,8 @@ nav .side-bar-button i{
     vertical-align: middle;
     width: 100%;
     overflow: auto;
-    border-style: none;
-    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
     background-color: rgba(233, 239, 232, 0.974);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     margin-right:100;
