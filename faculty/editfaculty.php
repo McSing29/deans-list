@@ -212,7 +212,7 @@
         <div class="home-content">
         <div class="table-container">
             <div class="table-heading form-size">
-                <h3 class="table-title">Add New Faculty</h3>
+                <h3 class="table-title">Edit Faculty</h3>
                 <a class="back" href="faculty.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
             <br>

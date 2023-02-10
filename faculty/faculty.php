@@ -173,7 +173,7 @@
         <div class="home-content">
             <div class="table-container">
                 <div class="table-heading">
-                    <h3 class="table-title">Faculty and Staff</h3>
+                    <h3 class="table-title">Faculty and Shiittts!</h3>
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
