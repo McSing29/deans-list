@@ -211,7 +211,7 @@
       </div>
       <div class="box">
          <div class="image">
-            <br><center><img src="./img/daph.png" alt="" height="10"></center>
+            <br><center><img src="./img/daph.png" alt="" height="5"></center>
          </div>
          <div class="content">
             <h3>Abdar Talib</h3>
