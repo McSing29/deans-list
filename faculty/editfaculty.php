@@ -63,6 +63,7 @@
 
 
     <title>Edit Faculty</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">

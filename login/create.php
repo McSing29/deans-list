@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Create an Account</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="login-container">

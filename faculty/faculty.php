@@ -23,6 +23,7 @@
 
 
     <title>Faculty and Staff</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">
