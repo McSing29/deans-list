@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@McSing29 
-McSing29
-/
-deans-list
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-deans-list/application/application.php /
-@McSing29
-McSing29 fixed database connection hehe
-Latest commit 9d3ac1d 6 hours ago
- History
- 1 contributor
-343 lines (317 sloc)  15.9 KB
-
 <?php
 
     //resume session here to fetch session values
