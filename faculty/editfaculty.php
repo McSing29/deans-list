@@ -62,7 +62,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>Edit Faculty</title>
+    <title>Edit Faculty shits</title>
 </head>
 <body>
     <div class="side-bar">
