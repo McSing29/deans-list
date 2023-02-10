@@ -4,7 +4,7 @@ class Database{
     private $host = 'localhost';
     private $database = 'u237957316_ccsdeanslist';
     private $username = 'u237957316_ccsdeanslist';
-    private $password = 'Celebis1*';
+    private $password = '4@q6ARpX*';
     protected $connection;
 
     function connect(){
