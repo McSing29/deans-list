@@ -2,9 +2,9 @@
 
 class Database{
     private $host = 'localhost';
-    private $username = 'u237957316_ccsdeanlist';
-    private $database = 'u237957316_ccsdeanlist';
-    private $password = 'Celebis1*';
+    private $database = 'u237957316_deanlist';
+    private $username = 'u237957316_deanlist';
+    private $password = 'U=lGFvA2ii3';
     protected $connection;
 
     function connect(){
