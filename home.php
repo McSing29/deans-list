@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Emil John Q. Magcanta">
    <title>Home Page</title>
+   <link rel="icon" href="./img/ccslogo.png" type="image/icon type">
 
    <!-- swiper css link  -->
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
@@ -255,7 +256,7 @@
       </div>
       <div class="box">
          <div class="image">
-            <br><center><img src="./img/male.png" alt="" height="10"></center>
+            <br><center><img src="./img/daph.png" alt="" height="5"></center>
          </div>
          <div class="content">
             <h3>Abdar Talib</h3>
@@ -355,7 +356,7 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="faculty/scripts.js"></script>
+<script src="js/scripts.js"></script>
 
 </body>
 </html>
