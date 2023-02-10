@@ -2,7 +2,7 @@
 
 class Database{
     private $host = 'localhost';
-    private $database = 'u237957316_ccsdeanlist';
+    private $database = 'u237957316_ccsdeanslist';
     private $username = 'u237957316_ccsdeanlist';
     private $password = '4@q6ARpX*';
     protected $connection;
