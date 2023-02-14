@@ -789,6 +789,7 @@ a.button{
     font-size: 6rem;
     text-transform: uppercase;
     color:var(--black);
+    padding-top: 10rem;
  }
  
  .header{
