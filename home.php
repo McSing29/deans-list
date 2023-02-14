@@ -23,7 +23,7 @@
 <!-- header section starts  -->
 
 <section class="header">
-			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application System</a>
+			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List pakingshit</a>
    <nav class="navbar">
       <a href="#home">Home</a>
       <a href="#features">Features</a>
