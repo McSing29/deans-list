@@ -141,22 +141,18 @@ label{
 
 
 .side-bar{
-   height: 100%;
-   width: 200px;
-   position: fixed;
-   z-index: 1;
-   top: 0;
-   left: 0;
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: calc(100vh);
 	background-color: #107869;
+	z-index: 2000;
 	font-family: var(--lato);
 	transition: .3s ease;
-	overflow-x: hidden;
+	overflow: hidden;
+	scrollbar-width: none;
    
-}
-
-.side-bar .wrapper {
-   width: 200px;
-   height: 100%;
 }
 
 
@@ -185,7 +181,7 @@ label{
 }
 
 .side-bar .nav-links{
-    height: 100%;
+    height: calc(100vh);
 }
 
 .side-bar .nav-links li{
@@ -239,18 +235,18 @@ label{
 }
 
 .home-section{
-    position: initial;
-    background-color: #ffffff;
-    min-height: 100%;
+    position: relative;
+    background-color: #f5f5f5;
+    min-height: calc(100vh);
     width: calc(100% - 250px);
     left: 250px;
 }
 
 .home-section nav{
 
-   position: fixed;
+    position: fixed;
    top:0; left:20; right:20;
-   z-index: 1;
+   z-index: 1000;
    background-color: var(--white);
    display: flex;
    padding-top: 2rem;
@@ -304,7 +300,7 @@ nav .side-bar-button i{
 .table-container{
     position: relative;
     top: 80px;
-    padding: 60px;
+    padding: 40px;
 }
 
 .table{
@@ -508,7 +504,7 @@ a.status-available:hover, a.status-notavailable:hover{
     font-size: 12px;
 }
 #logout-link{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     margin-bottom: 10px;
 }
@@ -793,6 +789,7 @@ a.button{
     font-size: 6rem;
     text-transform: uppercase;
     color:var(--black);
+    padding-top: 10rem;
  }
  
  .header{
@@ -829,6 +826,9 @@ a.button{
     color:var(--black);
     display: none;
  }
+ .dataTables_filter{
+   display: none;
+   }
  
  .home{
     padding:0;
@@ -948,6 +948,7 @@ a.button{
     flex:1 1 41rem;
     padding:3rem;
     background: var(--light-bg);
+    padding-top: 10rem;
  }
  
  .home-about .content h3{

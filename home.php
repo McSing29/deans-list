@@ -6,12 +6,15 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="author" content="Emil John Q. Magcanta">
    <title>Home Page</title>
+   <link rel="icon" href="./img/ccslogo.png" type="image/icon type">
 
    <!-- swiper css link  -->
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="https://kit.fontawesome.com/529e4c40ff.css" crossorigin="anonymous">
+
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="./css/style.css">
@@ -55,8 +58,7 @@
             background-repeat: no-repeat;">
             <div class="content">
                 <h3>Announcement</h3>
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+                <span>The dean's list application is now open. Submit yours within this week only of the semester! November 12-19, 2023</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -109,33 +111,33 @@
    <div class="box-container">
 
       <div class="box">
-         <img src="images/icon-1.png" alt="">
-         <h3>Hassle Free</h3>
+         <img src="images/dash.jpg" alt="">
+         <h3>Dashboard</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-2.png" alt="">
-         <h3>Paperless</h3>
+      <img src="images/apply.png" alt="">
+         <h3>Application</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-3.png" alt="">
-         <h3>Smart Admissions</h3>
+         <img src="images/1.png" alt="">
+         <h3>Deans Lister</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-4.png" alt="">
-         <h3>Early Invention</h3>
+         <h3>Faculty</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-5.png" alt="">
-         <h3>Automation</h3>
+         <h3>Program</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-6.png" alt="">
-         <h3>Streamline process</h3>
+         <h3>Setting</h3>
       </div>
 
    </div>
@@ -152,7 +154,7 @@
       <p align="justify" style="font-size: 2.3rem; font-weight:200">Dean's list Application System is an online Web Application, where it brings the process of
          dean's list transaction into online form. Managing dean's list forms could be a challenge
          because of the paperworks and processes. As we propose a more convenient way of doing these tasks.</p>
-      <center><a href="about.php" class="btn">XD</a></center>
+      <center><a href="about.php" class="btn">See more</a></center>
    </div>
 
 </section>
@@ -208,7 +210,6 @@
          <div class="content">
             <h3>Joshua A. Yasil</h3>
             <p>Project Manager</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
 
@@ -219,7 +220,6 @@
          <div class="content">
             <h3>Bushra Adjaluddin</h3>
             <p>Quality Assurance</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       
@@ -230,7 +230,6 @@
          <div class="content">
             <h3>Emil John Magcanta</h3>
             <p>Lead Developer</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
@@ -240,7 +239,6 @@
          <div class="content">
             <h3>Abdulasis Hamja</h3>
             <p>Business Analyst</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
@@ -250,17 +248,15 @@
          <div class="content">
             <h3>Denise Vonn Gerzon</h3>
             <p>UX Designer</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
       <div class="box">
          <div class="image">
-            <br><center><img src="./img/male.png" alt="" height="10"></center>
+            <br><center><img src="./img/daph.png" alt="" height="10"></center>
          </div>
          <div class="content">
             <h3>Abdar Talib</h3>
             <p>UI Designer</p>
-            <a href="#home" class="btn">XD</a>
          </div>
       </div>
 
@@ -355,7 +351,7 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="faculty/scripts.js"></script>
+<script src="js/scripts.js"></script>
 
 </body>
 </html>
