@@ -25,59 +25,61 @@
 <body>
     <div class="side-bar">
         <br>
-        <div class="logo-details">
-            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
-            <span class="logo-name">Dean's List Application <br> System</span>
-		</div>
-        <br>
-        <ul class="nav-links">
-            <li>
-                <a href="../dashboard/dashboard.php" class ="active">
-                    <i class='bx bx-grid-alt' ></i>
-                    <span class="links-name">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="../application/application.php">
-                <i class='bx bxs-edit'></i>
-                    <span class="links-name">Application</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="../listers/listers.php">
-                <i class='bx bx-list-check'></i>
-                    <span class="links-name">Dean's Listers</span>
-                </a>
-            </li>
-            <li>
-                <a href="../faculty/faculty.php">
-                    <i class='bx bx-group' ></i>
-                    <span class="links-name">Faculty</span>
-                </a>
-            </li>
+        <div class="wrapper">
+            <div class="logo-details">
+                <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+                <span class="logo-name">Dean's List Application <br> System</span>
+            </div>
+            <br>
+            <ul class="nav-links">
+                <li>
+                    <a href="../dashboard/dashboard.php" class ="active">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links-name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../application/application.php">
+                    <i class='bx bxs-edit'></i>
+                        <span class="links-name">Application</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../listers/listers.php">
+                    <i class='bx bx-list-check'></i>
+                        <span class="links-name">Dean's Listers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../faculty/faculty.php">
+                        <i class='bx bx-group' ></i>
+                        <span class="links-name">Faculty</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="../programs/programs.php">
-                <i class='bx bx-book-reader'></i>
-                    <span class="links-name">Programs</span>
-                </a>
-            </li>
+                <li>
+                    <a href="../programs/programs.php">
+                    <i class='bx bx-book-reader'></i>
+                        <span class="links-name">Programs</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <span class="links-name">Settings</span>
-                </a>
-            </li>
-            <hr class="line">
-            <li id="logout-link">
-                <a class="logout-link" href="../login/logout.php" title="Logout">
-                    <i class='bx bx-log-out-circle'></i>
-                    <span class="links-name">Logout</span>
-                </a>
-            </li>
-        </ul>
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cog'></i>
+                        <span class="links-name">Settings</span>
+                    </a>
+                </li>
+                <hr class="line">
+                <li id="logout-link">
+                    <a class="logout-link" href="../login/logout.php" title="Logout">
+                        <i class='bx bx-log-out-circle'></i>
+                        <span class="links-name">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div id="logout-dialog" class="dialog" title="Logout">

@@ -259,11 +259,24 @@
                     <?php
                         }
                     ?>
-                    <label for="status">Is Status of Employee Active?</label><br>
-                    <label class="container" for="status">Yes
-                        <input type="checkbox" name="status" id="status" value="Active Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active Employee') echo ' checked'; } ?>>
-                        <span class="checkbox"></span>
-                    </label>
+                    <div>
+                        <label for="status">Faculty Status</label><br>
+                        <label class="container" for="Active">Active
+                            <input type="radio" name="status" id="Active" value="Active" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active') echo ' checked'; }  elseif ($faculty->status == 'Active') echo ' checked'; ?>>
+                            <span class="checkmark"></span>
+                        </label><br>
+                        <label class="container" for="Inactive">Inactive
+                            <input type="radio" name="status" id="Inactive" value="Inactive" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive') echo ' checked'; }  elseif ($faculty->status == 'Inactive') echo ' checked'; ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <?php
+                        if(isset($_POST['save']) && !validate_status($_POST)){
+                    ?>
+                                <p class="error">Please select Faculty status.</p>
+                    <?php
+                        }
+                    ?>
                     <input type="submit" class="button" value="Save Faculty" name="save" id="save">
                 </form>
             </div>
