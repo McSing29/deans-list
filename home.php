@@ -56,8 +56,7 @@
             background-repeat: no-repeat;">
             <div class="content">
                 <h3>Announcement</h3>
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+                <span>The dean's list application is now open. Submit yours within this week only of the semester! November 12-19, 2023</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -109,34 +108,34 @@
 
    <div class="box-container">
 
-      <div class="box">
-         <img src="images/icon-1.png" alt="">
-         <h3>Hassle Free</h3>
+   <div class="box">
+         <img src="images/dash.jpg" alt="">
+         <h3>Dashboard</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-2.png" alt="">
-         <h3>Paperless</h3>
+      <img src="images/apply.png" alt="">
+         <h3>Application</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-3.png" alt="">
-         <h3>Smart Admissions</h3>
+         <img src="images/1.png" alt="">
+         <h3>Deans Lister</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-4.png" alt="">
-         <h3>Early Invention</h3>
+         <h3>Faculty</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-5.png" alt="">
-         <h3>Automation</h3>
+         <h3>Programs</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-6.png" alt="">
-         <h3>Streamline process</h3>
+         <h3>Settings</h3>
       </div>
 
    </div>
