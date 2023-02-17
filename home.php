@@ -23,7 +23,7 @@
 <!-- header section starts  -->
 
 <section class="header">
-			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List!!!!</a>
+			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application System</a>
    <nav class="navbar">
       <a href="#home">Home</a>
       <a href="#features">Features</a>
@@ -152,7 +152,7 @@
       <p align="justify" style="font-size: 2.3rem; font-weight:200">Dean's list Application System is an online Web Application, where it brings the process of
          dean's list transaction into online form. Managing dean's list forms could be a challenge
          because of the paperworks and processes. As we propose a more convenient way of doing these tasks.</p>
-      <center><a href="about.php" class="btn">XD</a></center>
+      <center><a href="about.php" class="btn">See more</a></center>
    </div>
 
 </section>
@@ -208,7 +208,7 @@
          <div class="content">
             <h3>Joshua A. Yasil</h3>
             <p>Project Manager</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
 
@@ -219,7 +219,7 @@
          <div class="content">
             <h3>Bushra Adjaluddin</h3>
             <p>Quality Assurance</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       
@@ -230,7 +230,7 @@
          <div class="content">
             <h3>Emil John Magcanta</h3>
             <p>Lead Developer</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
@@ -240,7 +240,7 @@
          <div class="content">
             <h3>Abdulasis Hamja</h3>
             <p>Business Analyst</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
@@ -250,7 +250,7 @@
          <div class="content">
             <h3>Denise Vonn Gerzon</h3>
             <p>UX Designer</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
@@ -260,7 +260,7 @@
          <div class="content">
             <h3>Abdar Talib</h3>
             <p>UI Designer</p>
-            <a href="#home" class="btn">XD</a>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
 
