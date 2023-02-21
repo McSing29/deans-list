@@ -80,7 +80,7 @@ require_once '../class/database.php';
             </li>
             
             <li>
-                <a href="../listers/listers.php">
+                <a href="../deanslisters/deanslisters.php">
                 <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>

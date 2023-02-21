@@ -13,8 +13,6 @@
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link rel="stylesheet" href="https://kit.fontawesome.com/529e4c40ff.css" crossorigin="anonymous">
-
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="./css/style.css">
@@ -25,7 +23,7 @@
 <!-- header section starts  -->
 
 <section class="header">
-			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application</a>
+			<a href="home.php" class="logo" img src="ccslogo.png" width ="50" height = "50">Dean's List Application System</a>
    <nav class="navbar">
       <a href="#home">Home</a>
       <a href="#features">Features</a>
@@ -110,7 +108,7 @@
 
    <div class="box-container">
 
-      <div class="box">
+   <div class="box">
          <img src="images/dash.jpg" alt="">
          <h3>Dashboard</h3>
       </div>
@@ -132,12 +130,12 @@
 
       <div class="box">
          <img src="images/icon-5.png" alt="">
-         <h3>Program</h3>
+         <h3>Programs</h3>
       </div>
 
       <div class="box">
          <img src="images/icon-6.png" alt="">
-         <h3>Setting</h3>
+         <h3>Settings</h3>
       </div>
 
    </div>
@@ -210,6 +208,7 @@
          <div class="content">
             <h3>Joshua A. Yasil</h3>
             <p>Project Manager</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
 
@@ -220,6 +219,7 @@
          <div class="content">
             <h3>Bushra Adjaluddin</h3>
             <p>Quality Assurance</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       
@@ -230,6 +230,7 @@
          <div class="content">
             <h3>Emil John Magcanta</h3>
             <p>Lead Developer</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
@@ -239,6 +240,7 @@
          <div class="content">
             <h3>Abdulasis Hamja</h3>
             <p>Business Analyst</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
@@ -248,15 +250,17 @@
          <div class="content">
             <h3>Denise Vonn Gerzon</h3>
             <p>UX Designer</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
       <div class="box">
          <div class="image">
-            <br><center><img src="./img/daph.png" alt="" height="10"></center>
+            <br><center><img src="./img/daph.png" alt height="5"></center>
          </div>
          <div class="content">
             <h3>Abdar Talib</h3>
             <p>UI Designer</p>
+            <a href="#home" class="btn">Learn more</a>
          </div>
       </div>
 
