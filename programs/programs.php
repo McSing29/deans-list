@@ -33,7 +33,7 @@
     <div class="side-bar">
         <br>
         <div class="logo-details">
-            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="55" height = "60">
             <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
         <br>
@@ -52,7 +52,7 @@
             </li>
             
             <li>
-                <a href="../listers/listers.php">
+                <a href="../deanslisters/deanslisters.php">
                 <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
