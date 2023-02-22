@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li>
-                <a href="../application/application.php">
+                <a href="../apply/apply.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>

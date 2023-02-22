@@ -81,7 +81,7 @@ for ($i = 0; $i < $count; $i++) {
     echo "</table>";
 ?>
 <a href="admin.php" class="btn"> Save and Submit</a>
-<a class = "back" href="deanslisters.php" style ="text-decoration: none; justify-content:center"><i class='bx bxs-left-arrow-circle'></i>Back</a>
+<a class = "back" href="apply.php" style ="text-decoration: none; justify-content:center"><i class='bx bxs-left-arrow-circle'></i>Back</a>
 
 <br>
 <br>

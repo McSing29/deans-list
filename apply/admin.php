@@ -10,7 +10,7 @@
 <body>
 
 <center><br><br><h1>Student Applications for Dean's Listers</h1>
-<a class = "btn" href="deanslisters.php" style="margin-left:900px; border-radius:10px">Back</a>
+<a class = "btn" href="apply.php" style="margin-left:900px; border-radius:10px">Back</a>
 <?php
 // Connect to the database
 $conn = mysqli_connect('localhost', 'root', '', 'deanslist');
