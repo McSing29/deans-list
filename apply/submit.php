@@ -80,8 +80,8 @@ for ($i = 0; $i < $count; $i++) {
     echo "</tfoot>";
     echo "</table>";
 ?>
-<a href="admin.php" class="btn"> Save and Submit</a>
-<a class = "back" href="apply.php" style ="text-decoration: none; justify-content:center"><i class='bx bxs-left-arrow-circle'></i>Back</a>
+<a href="admin.php" class="btn" style="margin-left:600px;"> Save and Submit</a>
+<a class = "back" href="apply.php" style ="text-decoration: none; margin-left:240px;"><i class='bx bxs-left-arrow-circle'></i>Back</a>
 
 <br>
 <br>

@@ -58,8 +58,9 @@
 				<!-- Add more rows as needed -->
 			</tbody>
 		</table>
-		<input type="submit" style= "margin-right: 300px" name="submit" value="Calculate">
-    <a class = "back" href="../dashboard/dashboard.php" style ="text-decoration: none;"><i class='bx bxs-left-arrow-circle'></i>Back</a>
+        <a class = "back" href="../dashboard/dashboard.php" style ="text-decoration: none; color: #107869; margin-right: 300px"><i class='bx bxs-left-arrow-circle'></i>Back</a>
+	<input type="submit" style= "margin-left: 300px; margin-right: 100px;" name="submit" value="Calculate">
+    
     <br>
     </br>
 	</form>
