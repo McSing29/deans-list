@@ -777,11 +777,45 @@ a.button{
     font-size: 1.7rem;
     padding:1rem 3rem;
     cursor: pointer;
+    
  }
+ .btn-approved{
+   display: inline-block;
+   background: #107869;
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.7rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   
+}
+.btn-rejected{
+   display: inline-block;
+   background: rgb(228, 9, 9);
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.7rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   
+}
+ 
  
  .btn:hover{
     background: var(--main-color);
+
  }
+
+ .btn-approved:hover{
+   background: var(--black);
+   
+}
+.btn-rejected:hover{
+   background: var(--black);
+   
+}
+
+ 
  
  .heading-title{
     text-align: center;
