@@ -27,7 +27,8 @@ if (!$conn) {
 // Get the form data
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 $subjects = $_POST['subject'];
-$grades = $_POST['grade'];
+$units = $_POST['units'];
+$grades = $_POST['grade'];  
 
 
 // Calculate the average grade
@@ -42,13 +43,14 @@ $average = $total / $count;
 
 
 // Insert the data into the database
-$sql = "INSERT INTO grades (name, subject, grade, average) VALUES ";
+$sql = "INSERT INTO grades (name, subject, units, grade, average) VALUES ";
 
 for ($i = 0; $i < $count; $i++) {
 	$subject = mysqli_real_escape_string($conn,$subjects[$i]);
+    $unit = mysqli_real_escape_string($conn, $units[$i]);
     $grade = mysqli_real_escape_string($conn, $grades[$i]);
     $average = mysqli_real_escape_string($conn, $average);
-    $sql .= "('$name', '$subject', '$grade', '$average')";
+    $sql .= "('$name', '$subject', '$unit', '$grade', '$average')";
     if ($i != $count - 1) {
     $sql .= ",";
     }
@@ -68,15 +70,15 @@ for ($i = 0; $i < $count; $i++) {
     echo "<br><p>Name: " . htmlspecialchars($name) . "</p>";
     echo "<table>";
     echo "<thead>";
-    echo "<tr><th>Subject</th><th>Grade</th></tr>";
+    echo "<tr><th>Subjects</th><th>Units</th><th>Grades</th></tr>";
     echo "</thead>";
     echo "<tbody>";
     for ($i = 0; $i < $count; $i++) {
-    echo "<tr><td>" . htmlspecialchars($subjects[$i]) . "</td><td>" . htmlspecialchars($grades[$i]) . "</td></tr>";
+    echo "<tr><td>" . htmlspecialchars($subjects[$i]) . "</td><td>" . htmlspecialchars($units[$i]) . "</td><td>" . htmlspecialchars($grades[$i]) . "</td></tr>";
     }
     echo "</tbody>";
     echo "<tfoot>";
-    echo "<tr><td>Your GPA is:</td><td>" . number_format($average, 2) . "</td></tr>";
+    echo "<tr><td></td><td></td><td>General Point Average  =  " .  number_format($average, 2) . "</td></tr>";
     echo "</tfoot>";
     echo "</table>";
 ?>

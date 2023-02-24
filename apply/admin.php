@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $sql);
 
 echo '<table>';
 echo '<thead>';
-echo '<tr><th>ID</th><th>Name</th><th>Subjects</th><th>Grades</th><th>General Point Average</th><th>Action</th></tr>';
+echo '<tr><th>ID</th><th>Name</th><th>Subjects</th><th>Units</th><th>Grades</th><th>General Point Average</th><th>Action</th></tr>';
 echo '</thead>';
 echo '<tbody>';
 while ($row = mysqli_fetch_assoc($result)) {
@@ -48,10 +48,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '<td width="5%">' . htmlspecialchars($row['id']) . '</td>';
     echo '<td width="18%">' . htmlspecialchars($row['name']) . '</td>';
     echo '<td width="20%">' . htmlspecialchars($row['subject']) . '</td>';
-    echo '<td>' . htmlspecialchars($row['grade']) . '</td>';
-    echo '<td>' . htmlspecialchars($row['average']) .'</td>';
+    echo '<td width="5%">' . htmlspecialchars($row['units']) . '</td>';
+    echo '<td >' . htmlspecialchars($row['grade']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['average'  ]) .'</td>';
 
-    echo '<td>';
+    echo '<td width="30%">';
     echo '<form method="post">';
     echo '<input type="hidden" name="id" value="' . htmlspecialchars($row['id']) . '">';
     echo '<button type="submit" name="action" value="approve" class="btn-approved">Approve</button> - ';
@@ -65,7 +66,6 @@ echo '</table>';
 
 mysqli_close($conn);
 ?>
-<a class = "back" href="deanslisters.php" style ="text-decoration: none; justify-content:center"><i class='bx bxs-left-arrow-circle'></i>Back</a>
 <br>
 <br>
 </body>

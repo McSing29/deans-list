@@ -19,40 +19,50 @@
 			<thead>
 				<tr>
 					<th>Subjects</th>
+					<th>Units</th>
 					<th>Grade</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
+					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
+					
+				</tr>
+				<tr>
+					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
-					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01"  min="0" max="100" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" required placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01" min="0" max="100" required></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01"  min="0" max="100"></td>
 				</tr>
 				<tr>
 					<td><input type="text" name="subject[]" placeholder="Enter Subject"></td>
+					<td><input type="number" name="units[]"  min="0" max="5" required></td>
 					<td><input type="number" name="grade[]" step="0.01" min="0" max="100"></td>
 				</tr>
 				<!-- Add more rows as needed -->
