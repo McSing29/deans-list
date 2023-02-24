@@ -60,7 +60,7 @@
             background-repeat: no-repeat;">
             <div class="content">
                 <h3>Announcement</h3>
-                <span>The dean's list application is now open. Submit yours within this week only of the semester! November 12-19, 2023</span>
+                <span>A student with excellent grades in all academic subjects shall receive recognition through inclusion in the Dean’s List at the end of every semester of each school year.</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -73,8 +73,7 @@
             background-repeat: no-repeat;">
             <div class="content">
                 <h3>Announcement</h3>
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+                <span>Submission of form is available during November 9 to December 29 at 8:30am and closes at 4:30pm.</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -87,8 +86,7 @@
             background-repeat: no-repeat;">
             <div class="content">
                 <h3>Announcement</h3>
-                <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Iure tempora assumenda, debitis aliquid nesciunt maiores quas! Magni cumque quaerat saepe!</span>
+                <span>Submit yours now and be part of Deans List CCS!</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
