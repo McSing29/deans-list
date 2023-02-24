@@ -12,6 +12,8 @@
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
    <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel="stylesheet" href="https://kit.fontawesome.com/529e4c40ff.css" crossorigin="anonymous">
 
@@ -108,33 +110,33 @@
 
    <div class="box-container">
 
-      <div class="box">
-         <img src="images/dash.jpg" alt="">
+   <div class="box">
+      <i class="fas fa-box" style="font-size:60px;color: white;"></i>
          <h3>Dashboard</h3>
       </div>
 
       <div class="box">
-      <img src="images/apply.png" alt="">
+      <i class="fas fa-edit" style="font-size:60px;color: white;"></i>
          <h3>Application</h3>
       </div>
 
       <div class="box">
-         <img src="images/1.png" alt="">
+      <i class="fas fa-check" style="font-size:60px;color: white;"></i>   
          <h3>Deans Lister</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-4.png" alt="">
+      <i class="glyphicon glyphicon-user" style="font-size:60px;color: white;"></i>
          <h3>Faculty</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-5.png" alt="">
+      <i class="fas fa-book-reader" style="font-size:60px;color: white;"></i>
          <h3>Program</h3>
       </div>
 
       <div class="box">
-         <img src="images/icon-6.png" alt="">
+      <i class="fas fa-cog" style="font-size:60px;color: white;"></i>
          <h3>Setting</h3>
       </div>
 
