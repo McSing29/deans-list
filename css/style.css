@@ -819,12 +819,13 @@ a.button{
  
  .heading-title{
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 6rem;
     text-transform: uppercase;
     color:var(--black);
+    padding-top: 8rem;
  }
- 
+
  .header{
     position: sticky;
     top:0; left:0; right:0;
@@ -872,7 +873,7 @@ a.button{
     justify-content: center;
     background-size: cover !important;
     background-position: center !important;
-    min-height: 60rem;
+    min-height: 65rem;
  }
  
  .home .slide .content{
