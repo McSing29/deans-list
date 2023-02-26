@@ -53,8 +53,9 @@
         </div>
         <form class="login-form" action="login.php" method="post">
             <div class="box-image">
-                <center><img src="ccslogo.png" width ="100" height = "100"></center>
-                <div class="title">Dean's List Application System</div>
+                
+                <center><img src="ccslogo.png" width ="120" height = "120"></center><br>
+                <div class="title" style="font-weight: 410">Dean's List Application System</div>
             </div>
         
                 <br></br>
