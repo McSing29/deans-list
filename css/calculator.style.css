@@ -53,7 +53,7 @@ h1 {
 table {
     margin: 30px auto;
     width: 100%;
-    max-width:1000px;
+    max-width:1450px;
 	border-style: groove;
     border-radius: 10px;
 }
@@ -98,3 +98,4 @@ input[type=submit]:hover {
     color: red;
     font-weight: bold;
 }
+

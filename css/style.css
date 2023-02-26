@@ -784,9 +784,10 @@ a.button{
    background: #107869;
    margin-top: 1rem;
    color:var(--white);
-   font-size: 1.7rem;
+   font-size: 1.2rem;
    padding:1rem 3rem;
    cursor: pointer;
+   max-width: 100px;
    
 }
 .btn-rejected{
@@ -794,9 +795,10 @@ a.button{
    background: rgb(228, 9, 9);
    margin-top: 1rem;
    color:var(--white);
-   font-size: 1.7rem;
+   font-size: 1.2rem;
    padding:1rem 3rem;
    cursor: pointer;
+   max-width: 100px;
    
 }
  
