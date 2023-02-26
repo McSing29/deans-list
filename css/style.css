@@ -196,16 +196,16 @@ label#remember{
 
 
 
+
 .side-bar{
-    position: fixed;
+   position: fixed;
 	top: 0;
 	left: 0;
-	width: 200px;
+	width: 250px;
 	height: calc(100vh);
 	background-color: #107869;
 	z-index: 2000;
 	font-family: var(--lato);
-	transition: .3s ease;
 	overflow: hidden;
 	scrollbar-width: none;
    
@@ -833,21 +833,57 @@ a.button{
     font-size: 1.7rem;
     padding:1rem 3rem;
     cursor: pointer;
+    
  }
+ .btn-approved{
+   display: inline-block;
+   background: #107869;
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.2rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   max-width: 100px;
+   
+}
+.btn-rejected{
+   display: inline-block;
+   background: rgb(228, 9, 9);
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.2rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   max-width: 100px;
+   
+}
+ 
  
  .btn:hover{
     background: var(--main-color);
+
  }
+
+ .btn-approved:hover{
+   background: var(--black);
+   
+}
+.btn-rejected:hover{
+   background: var(--black);
+   
+}
+
+ 
  
  .heading-title{
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 6rem;
     text-transform: uppercase;
     color:var(--black);
-    padding-top: 10rem;
+    padding-top: 8rem;
  }
- 
+
  .header{
     position: sticky;
     top:0; left:0; right:0;
@@ -882,9 +918,6 @@ a.button{
     color:var(--black);
     display: none;
  }
- .dataTables_filter{
-   display: none;
-   }
  
  .home{
     padding:0;
@@ -898,7 +931,7 @@ a.button{
     justify-content: center;
     background-size: cover !important;
     background-position: center !important;
-    min-height: 80rem;
+    min-height: 65rem;
  }
  
  .home .slide .content{
@@ -1004,7 +1037,6 @@ a.button{
     flex:1 1 41rem;
     padding:3rem;
     background: var(--light-bg);
-    padding-top: 10rem;
  }
  
  .home-about .content h3{
@@ -1470,8 +1502,6 @@ a.button{
     }
  
  }
-
-
 
  /*log in media queries*/
 
