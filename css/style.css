@@ -237,7 +237,7 @@ label#remember{
 	transition: .3s ease;
 	overflow: hidden;
 	scrollbar-width: none;
-   
+
 }
 
 
@@ -257,7 +257,7 @@ label#remember{
 .side-bar .logo-details .logo-name{
     color: #fff;
     font-size: 19px;
-    font-weight: 470;
+    font-weight: 300;
     align-items: center;
     display: block;
     margin-left: 15px;
@@ -316,8 +316,9 @@ label#remember{
    height: 1px;
    border: 0;
    border-top: 1px solid white;
-    
 }
+
+/*----------------------------*/
 
 .home-section{
     position: relative;
@@ -440,32 +441,21 @@ td a{
     text-transform: uppercase;
     color: white;
 }
-  
+
+
 a.action-edit{
-    background-color: rgb(0, 255, 38);
+    background-color:  #107869;
 }
   
 a.action-delete{
-    background-color: red;
+    background-color: rgb(228, 9, 9);
 }
   
 a.action-edit:hover, a.action-delete:hover{
-    opacity: 0.6;
-    cursor: pointer;
+    
+    background: var(--black);
 }
 
-a.status-available{
-    background-color: rgb(53, 248, 5);
-}
-  
-a.status-notavaible{
-    background-color: rgb(239, 18, 18);
-}
-  
-a.status-available:hover, a.status-notavailable:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
 
 .table-container .button{
     display: inline;
