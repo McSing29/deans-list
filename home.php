@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel="stylesheet" href="https://kit.fontawesome.com/529e4c40ff.css" crossorigin="anonymous">
-
    <!-- custom css file link  -->
    <link rel="stylesheet" href="./css/style.css">
 
@@ -45,8 +45,8 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>Announcement</h3>
-                <span>A student with excellent grades in all academic subjects shall receive recognition through inclusion in the Dean’s List at the end of every semester of each school year.</span>
+                <h3 style="font-weight:500">Announcement </h3>
+                <span style="font-size: 2.5rem; font-weight:500">A student with excellent grades in all academic subjects shall receive recognition through inclusion in the Dean’s List at the end of every semester of each school year.</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -57,8 +57,8 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>Announcement</h3>
-                <span>Submission of form is available during November 9 to December 29 at 8:30am and closes at 4:30pm.</span>
+                <h3 style="font-weight:500">Announcement</h3>
+                <span style="font-size: 2.5rem; font-weight:500">Submission of form is available during November 9 to December 29 at 8:30am and closes at 4:30pm.</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -69,8 +69,8 @@
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
-                <h3>Announcement</h3>
-                <span>Submit yours now and be part of Deans List CCS!</span>
+                <h3 style="font-weight:500">Announcement</h3>
+                <span style="font-size: 2.5rem; font-weight:500">Submit yours now and be part of Deans List CCS!</span>
                <a href="./login/login.php" class="btn">Apply Now</a>
             </div>
          </div>
@@ -83,7 +83,7 @@
 <!-- home section ends -->
 <!-- services section starts  -->
 <section class="services" id="features">
-   <h1 class="heading-title"> Features</h1>
+   <h1 class="heading-title" style="font-weight:500"> Features</h1>
    <div class="box-container">
    <div class="box">
       <i class="fas fa-box" style="font-size:60px;color: white;"></i>
@@ -113,7 +113,7 @@
 </section>
 <!-- services section ends -->
 <!-- home about section starts  -->
-<h1 class="heading-title" id ="about">About the System</h1>
+<h1 class="heading-title" id ="about" style="font-weight:500">About the System</h1>
 <section class="home-about" id="about">
 
    <div class="content">
@@ -124,7 +124,7 @@
       <center><a href="about.php" class="btn">See more</a></center>
    </div>
 </section>
-   <h1 class="heading-title" id ="programs">Programs</h1>
+   <h1 class="heading-title" id ="programs" style="font-weight:500">Programs</h1>
 <section class="home-about" >
    <div class="image">
       <img src="images/cspic.jpg" alt="">
@@ -159,7 +159,7 @@
 <!-- home about section ends -->
 <!-- home packages section starts  -->
 <section class="home-packages" id="team">
-   <h1 class="heading-title"> Our Team </h1>
+   <h1 class="heading-title" style="font-weight:500"> Our Team </h1>
    <div class="box-container">
       <div class="box">
          <div class="image">
