@@ -19,14 +19,14 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <title>Dashboard</title>
+    <title>Dashboard | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">
         <br>
         <div class="logo-details">
-            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="55" height = "60">
             <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
         <br>
@@ -172,51 +172,51 @@
                 <div class="overview-boxes">
                         <div class="box">
                                 <div class="right-side">
-                                    <div class="box-topic">Products</div>
-                                    <div class="number">6969</div>
+                                    <div class="box-topic">Students</div>
+                                    <div class="number">9988</div>
                                     <div class="indicator">
                                         
                                         <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                                     </div>
                                 </div>
-                            <i class='bx bx-shopping-bag'></i>
+                            <i class='bx bx-user'></i>
                 
                         </div>
 
                         <div class="box">
                                     <div class="right-side">
-                                        <div class="box-topic">Orders</div>
-                                        <div class="number">9696</div>
+                                        <div class="box-topic">Faculty</div>
+                                        <div class="number">24</div>
                                         <div class="indicator">
                                             
                                             <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                                         </div>
                                     </div>
-                                <i class='bx bx-cart-download'></i>
+                                    <i class='bx bx-group' ></i>
                         </div>
 
                         <div class="box">
                                 <div class="right-side">
-                                    <div class="box-topic">Stocks</div>
-                                    <div class="number">8888</div>
+                                    <div class="box-topic">Programs</div>
+                                    <div class="number">5</div>
                                     <div class="indicator">
                                         
                                         <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                                     </div>
                                 </div>
-                            <i class='bx bx-coin-stack'></i>
+                                <i class='bx bx-book-reader'></i>
                         </div>
 
                         <div class="box">
                                 <div class="right-side">
-                                    <div class="box-topic">Revenue</div>
-                                    <div class="number">8080</div>
+                                    <div class="box-topic">Dean's Listers</div>
+                                    <div class="number">20</div>
                                     <div class="indicator">
                                         
                                     <span class="text">As of <?php echo ' ' . date("m-d-Y h:i:s A"); ?></span>
                                     </div>
                                 </div>
-                            <i class='bx bx-bar-chart'></i>
+                                <i class='bx bx-list-check'></i>
                         </div>
 
                 </div>

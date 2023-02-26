@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dean's List Application System</title>
+	<title>Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 	<link rel="stylesheet" type="text/css" href="../css/calculator.style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
