@@ -178,7 +178,7 @@
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
-                        <a href="addfaculty.php" class="button"><center>Add Faculty</center></a>
+                        <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
                     <?php
                         }
                     ?>

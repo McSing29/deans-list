@@ -62,14 +62,14 @@ if(isset($_POST['calculate'])) {
 			<form action="apply.php" method="post">
 				<div class="row">
 					<div class="col-12">
-						<h6 class="fs-5"  style="margin-right:710px; font-weight: 300">Name: <span class="ms-3 fw-light "><?php echo $_SESSION['logged_user']['user_firstname']." ".$_SESSION['logged_user']['user_lastname'] ?></span></h6>
+					<h6 class="fs-5" style="margin-right:700px; font-weight: 300">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
 					</div>
 				</div>
 				<br>
 				
 				<div class="row">
 					<div class="col-12">
-						<h6 class="fs-5" style="margin-right:585px; font-weight: 300">Email: <span class="ms-3 fw-light "><?php echo $_SESSION['logged_user']['user_email']?></span></h6>
+
 					</div>
 				</div>
 				<br>
@@ -158,9 +158,13 @@ if(isset($_POST['calculate'])) {
 								<input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 300px">
 							</div>
 						</div>
+						<br>
 						<div class="col">
 							<a class= "" href="../dashboard/dashboard.php" style ="text-decoration: none; color: #107869; margin-right: 800px"><i class='bx bxs-left-arrow-circle'></i>Back</a>
 						</div>
+						<br>
+						<br>
+						<br>
 					</div>
 					</div>
 				</div>
