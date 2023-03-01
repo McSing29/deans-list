@@ -42,7 +42,7 @@ $curriculum = mysqli_real_escape_string($conn, $_POST['curriculum']);
 $yearlevel = mysqli_real_escape_string($conn, $_POST['yearlevel']);
 $subjects = $_POST['subject'];
 $units = $_POST['units'];
-$grades = $_POST['grade'];  
+$grades = $_POST['grade'];
 
 
 // Calculate the average grade
