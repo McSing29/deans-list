@@ -53,7 +53,7 @@
          <div class="swiper-slide slide" style="background: linear-gradient(45deg,
             rgba(98, 156, 148, 0.75),
             rgba(19, 115, 104, 0.75)),
-            url('img/2.png'); background-position: center;
+            url('img/banner-2.jpg'); background-position: center;
             background-size: cover;
             background-repeat: no-repeat;">
             <div class="content">
