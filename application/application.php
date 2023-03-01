@@ -12,6 +12,9 @@
     }
     //if the above code is false then html below will be displayed
 
+   
+   
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="">
-    <title>Application</title>
+    <title>CCS Programs</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
     
     <!-- Bootstrap CSS -->
