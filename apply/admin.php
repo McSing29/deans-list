@@ -1,10 +1,5 @@
 <?php
-
-    session_start();
-
-    if (!isset($_SESSION['logged-in'])){
-        header('location: ../login/login.php');
-    }
+session_start();
 
 ?>
 
@@ -53,7 +48,7 @@ echo '<thead>';
 echo '<tr><th>ID</th><th>Name</th><th>Email</th><th>School Year</th><th>Semester</th><th>Curriculum</th><th>Year Level</th><th>Subjects</th><th>Units</th><th>Grades</th><th>General Point Average</th>
 
             <?php
-                if($_SESSION["user_type"] == "admin"){ 
+                if($_SESSION["user_type"] == "admin"){
             ?>
                 <th class="action">Action</th>
             <?php
@@ -65,8 +60,8 @@ echo '<tbody>';
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
     echo '<td>' . htmlspecialchars($row['id']) . '</td>';
-    echo '<td width="20%">' . htmlspecialchars($row['name']) . '</td>';
-    echo '<td>' . htmlspecialchars($row['email']) . '</td>';
+    echo '<td width="20%">' . $_SESSION['logged_user']['user_firstname']." ".$_SESSION['logged_user']['user_lastname'] . '</td>';
+    echo '<td>' . $_SESSION['logged_user']['user_email'] . '</td>';
     echo '<td width="15%">' . htmlspecialchars($row['schoolyear']) . '</td>';
     echo '<td>' . htmlspecialchars($row['semester']) . '</td>';
     echo '<td>' . htmlspecialchars($row['curriculum']) . '</td>';
