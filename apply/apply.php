@@ -88,7 +88,7 @@ if(isset($_POST['calculate'])) {
 			<form action="apply.php" method="post">
 				<div class="row">
 					<div class="col-12">
-					<h6 class="fs-5" style="margin-right:700px; font-weight: 300">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
+					<h6 class="fs-5" style="margin-right:600px; font-weight: 300">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
 					</div>
 				</div>
 				<br>
@@ -102,7 +102,7 @@ if(isset($_POST['calculate'])) {
 				<div class="row">
 					<div class="col-12 col-lg-3">
 						<label for="schoolyear">School Year:</label>
-						<select name="schoolyear" id="schoolyear" class="form-select">
+						<select name="schoolyear" id="schoolyear" class="form-select" style="width:250px">
 							<option value="none">--Select--</option>
 							<option value="School Year 2022-2023">School Year 2022 - 2023</option>
 							<option value="School Year 2023-2024">School Year 2023 - 2024</option>
@@ -126,10 +126,10 @@ if(isset($_POST['calculate'])) {
 							<option value="it">Information Technology</option>
 						</select>
 					</div>
-					<br>
+					
 					<div class="col-12 col-lg-3">
-						<label for="yearlevel" style="margin-right:790px">Year Level:</label>
-						<select name="yearlevel" id="yearlevel" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:760px">
+						<label for="yearlevel" style="margin-right:100px">Year Level:</label>
+						<select name="yearlevel" id="yearlevel" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:300px">
 							<option value="none">--Select--</option>
 							<option value="1">First Year</option>
 							<option value="2">Second Year</option>
