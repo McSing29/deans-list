@@ -60,8 +60,8 @@ echo '<tbody>';
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
     echo '<td>' . htmlspecialchars($row['id']) . '</td>';
-    echo '<td width="20%">' . $_SESSION['logged_user']['user_firstname']." ".$_SESSION['logged_user']['user_lastname'] . '</td>';
-    echo '<td>' . $_SESSION['logged_user']['user_email'] . '</td>';
+    echo '<td width="20%">' . htmlspecialchars($row['name']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['email']) . '</td>';
     echo '<td width="15%">' . htmlspecialchars($row['schoolyear']) . '</td>';
     echo '<td>' . htmlspecialchars($row['semester']) . '</td>';
     echo '<td>' . htmlspecialchars($row['curriculum']) . '</td>';

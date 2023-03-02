@@ -6,36 +6,62 @@ require_once $path."class/subject.class.php";
 
 session_start();
 
+$subject = new subject;
+
+// print_r($_SESSION);
+
 $listOfSubject = [];
 
-// button for form of selecting subjects 
+// button for form of selecting subjects
 if(isset($_POST['submit'])) {
-	// GET data from dtbase 
+	// GET data from dtbase
 
 	// print_r($_POST);
 
-	$subject = new subject;
+
 	$subject -> sem = $_POST['semester'];
 	$subject -> curriculum =$_POST['curriculum'];
 	$subject -> year_level = $_POST['yearlevel'];
 
 	$listOfSubject = $subject -> getSubjects();
-}  
+}
 
 
 if(isset($_POST['calculate'])) {
-	// print_r($_POST);
+
+
+	// 1. Insert data to tlb_applicant
+	// 1.1 CREATE A FUNCTION THAT WILL INSERT DATA TO tlb_applicant
+	$subject -> user_id = $_SESSION['user_id'];
+	$result = $subject -> addApplicant();
+	// 1.2 Get applicant_id WHERE userid corresponds sa sino nag login
+	// 1.3
+	// 2. Insert data to tbl_list_grades
+	// 2.1 CRREATE A FUMNCTION THAT WILL INSERT DATA TO tbl_list_grades
+	$applicantInfo = $subject -> getApplicatInfo();
+	$subject -> applicant_id = $applicantInfo['applicant_id'];
+	$subject -> subject_id = $_POST['subjectId'];
+	$subject -> grade = $_POST['grade'];
+	$result = $subject -> addGrades();
+	// 2.1.1 use for loop sa pag insert ng data
+
 
 	$initial = 0;
 	$count = 0;
-	foreach($_POST['sample'] as $grade) {
+	foreach($_POST['grade'] as $grade) {
 		$initial += floatval($grade);
 		$count += 1;
-
 	}
 
 	$average = $initial / $count;
+
+
+
+	// FETCH GRADES IN DATABASE
+	$finalSubjects = $subject -> getGrades();
 }
+
+
 
 ?>
 
@@ -46,7 +72,7 @@ if(isset($_POST['calculate'])) {
 	<title>Dean's List Application System</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/calculator.style.css">
 	<script src="apply.js" defer></script>
 </head>
@@ -55,7 +81,7 @@ if(isset($_POST['calculate'])) {
 		<div class="container">
 			<div class="container d-flex justify-content-center pt-3">
 				<br>
-				<h1 style="font-weight: 300">Dean's List Application System</h1>
+				<h1>Dean's List Application System</h1>
 			</div>
 			<br>
 			<br>
@@ -75,10 +101,10 @@ if(isset($_POST['calculate'])) {
 				<br>
 				<div class="row">
 					<div class="col-12 col-lg-3">
-						<label for="schoolyear" style="margin-right:780px">School Year:</label>
-						<select name="schoolyear" id="schoolyear" class="form-select"  style="border-style:groove; border-radius: 10px;margin-right:780px">
+						<label for="schoolyear">School Year:</label>
+						<select name="schoolyear" id="schoolyear" class="form-select">
 							<option value="none">--Select--</option>
-							<option value="School Year 2022-2023" selected>School Year 2022 - 2023</option>
+							<option value="School Year 2022-2023">School Year 2022 - 2023</option>
 							<option value="School Year 2023-2024">School Year 2023 - 2024</option>
 						</select>
 					</div>
@@ -107,22 +133,26 @@ if(isset($_POST['calculate'])) {
 							<option value="none">--Select--</option>
 							<option value="1">First Year</option>
 							<option value="2">Second Year</option>
-							<option value="3">Third Year</option>
-							<option value="4">Fourth Year</option>
+							<option value="3" >Third Year</option>
+							<option value="4" >Fourth Year</option>
 						</select>
 					</div>
 				</div>
 				<br>
 				<br>
 				<button type="submit" name="submit" value="submit" style="border-style:hidden; background: #107869; color:white; padding: 15px; border-radius: 4px; margin-right:460px ">Get Subjects</button>
+				<div class="row">
 
-		
-				
+						<div class="col">
+							<a class= "" href="../dashboard/dashboard.php" style ="text-decoration: none; color: #107869; margin-left: 800px"><i class='bx bxs-left-arrow-circle'></i>Back</a>
+						</div>
+						<br>
 
+				</div>
 			</form>
 
-
-			<form action="apply.php" method="post">
+			<?php if(!isset($finalSubjects)) {?>
+			<form action="apply.php" method="post" enctype="multipart/form-data">
 			<div class="pt-4 d-flex justify-content-center">
 					<table class="table table-responsive table-borderless table-striped w-100" style="border-style:groove">
 						<thead style="background-color:#107869;">
@@ -137,7 +167,8 @@ if(isset($_POST['calculate'])) {
 								<tr>
 								<td class="ps-5"><?php echo $subject['subject_name'] ?></td>
 								<td>3</td>
-								<td><input type="text" name="sample[]" class="grade form-control w-25"></td>
+								<td><input type="text" name="grade[]" class="grade form-control w-25" ></td>
+								<input type="hidden" name="subjectId[]" value="<?php echo $subject['subject_id'] ?>">
 							</tr>
 							<?php } ?>
 
@@ -155,13 +186,11 @@ if(isset($_POST['calculate'])) {
 						<div class="col">
 							<div class="d-flex justify-content-end">
 								<input type="text" value="" name="testInput">
+								<input type="file" name="upload_grade" id="upload_grade">
 								<input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 300px">
 							</div>
 						</div>
-						<br>
-						<div class="col">
-							<a class= "" href="../dashboard/dashboard.php" style ="text-decoration: none; color: #107869; margin-right: 800px"><i class='bx bxs-left-arrow-circle'></i>Back</a>
-						</div>
+						
 						<br>
 						<br>
 						<br>
@@ -169,6 +198,35 @@ if(isset($_POST['calculate'])) {
 					</div>
 				</div>
 			</form>
+			<?php } ?>
+
+
+			<?php if(isset($finalSubjects)) {?>
+				<table class="table table-responsive table-borderless table-striped w-100" style="border-style:groove">
+						<thead style="background-color:#107869;">
+							<tr>
+								<th class="ps-5 w-50 text-light">Subjects</th>
+								<th class="text-light w-25">Units</th>
+								<th class="text-light w-25">Grade</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach($finalSubjects as $subject) { ?>
+								<tr>
+								<td class="ps-5"><?php echo $subject['subject_name'] ?></td>
+								<td>3</td>
+								<td><p><?php echo $subject['grade'] ?></p></td>
+							</tr>
+							<?php } ?>
+
+
+							<!-- Add more rows as needed -->
+						</tbody>
+			</table>
+
+
+			<p><?php echo $average ?></p>
+			<?php } ?>
 
 			
 

@@ -11,6 +11,11 @@ Class subject{
     public $curriculum;
     public $year_level;
 
+    public $user_id;
+
+    public $applicant_id;
+    public $grade;
+
     protected $db;
 
     function __construct()
@@ -55,4 +60,68 @@ Class subject{
         }
         return $data;
     }
+
+    function addApplicant() {
+        $sql = "INSERT INTO `tlb_applicant` (`applicant_id`, `user_id`, `grade_file`)
+         VALUES (NULL, :user_id, NULL)";
+        $query=$this->db->connect()->prepare($sql);
+
+        $query->bindParam(':user_id', $this->user_id);
+
+        if($query->execute()){
+            return true;
+        }
+    }
+
+    function addGrades() {
+        $markUp = "INSERT INTO `tbl_list_grades` (`grades_id`, `subject_id`, `applicant_id`, `grade`) VALUES ";
+
+        $arrayMarkUp = [];
+
+        $index = 0;
+        foreach($this -> grade as $grade) {
+            $initial = "(NULL, ".$this -> subject_id[$index].", ".$this->applicant_id.", ".$this->grade[$index].")";
+            array_push($arrayMarkUp, $initial);
+            $index++;
+        }
+
+        $finalValues = join(",", $arrayMarkUp);
+        $finalSql = $markUp.$finalValues;
+
+        $query=$this->db->connect()->prepare($finalSql);
+        if($query->execute()){
+            return true;
+
+        }
+    }
+
+    function getApplicatInfo() {
+        $sql = "SELECT * FROM tlb_applicant WHERE user_id = :user_id;";
+        $query=$this->db->connect()->prepare($sql);
+
+
+        $query->bindParam(':user_id', $this->user_id);
+
+        if($query->execute()){
+            $data = $query->fetch();
+        }
+        return $data;
+
+    }
+
+    function getGrades() {
+        $sql = "SELECT * FROM tbl_list_grades INNER JOIN tbl_subject ON
+        tbl_list_grades.subject_id = tbl_subject.subject_id WHERE tbl_list_grades.applicant_id = :applicant_id;        ";
+        $query=$this->db->connect()->prepare($sql);
+
+        $query->bindParam(':applicant_id', $this->applicant_id);
+
+        if($query->execute()){
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+       
+
+
 }
