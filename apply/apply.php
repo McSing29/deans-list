@@ -102,7 +102,7 @@ if(isset($_POST['calculate'])) {
 				<div class="row">
 					<div class="col-12 col-lg-3">
 						<label for="schoolyear">School Year:</label>
-						<select name="schoolyear" id="schoolyear" class="form-select" style="width:250px">
+						<select name="schoolyear" id="schoolyear" class="form-select"style="border-style:groove; border-radius: 10px;margin-right:800px">
 							<option value="none">--Select--</option>
 							<option value="School Year 2022-2023">School Year 2022 - 2023</option>
 							<option value="School Year 2023-2024">School Year 2023 - 2024</option>
@@ -110,7 +110,7 @@ if(isset($_POST['calculate'])) {
 					</div>
 					<br>
 					<div class="col-12 col-lg-3">
-						<label for="semester" style="margin-right:800px">Semester:</label>
+						<label for="semester">Semester:</label>
 						<select name="semester" id="semester" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:800px">
 							<option value="none">--Select--</option>
 							<option value="1" selected>First Semester</option>
@@ -119,17 +119,17 @@ if(isset($_POST['calculate'])) {
 					</div>
 					<br>
 					<div class="col-12 col-lg-3">
-						<label for="curriculum" style="margin-right:790px">Curriculum:</label>
+						<label for="curriculum">Curriculum:</label>
 						<select name="curriculum" id="curriculum" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:800px"> 
 							<option value="none">--Select--</option>
 							<option value="cs" selected>Computer Science</option>
 							<option value="it">Information Technology</option>
 						</select>
 					</div>
-					
+					<br>
 					<div class="col-12 col-lg-3">
-						<label for="yearlevel" style="margin-right:100px">Year Level:</label>
-						<select name="yearlevel" id="yearlevel" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:300px">
+						<label for="yearlevel">Year Level:</label>
+						<select name="yearlevel" id="yearlevel" class="form-select" style="border-style:groove; border-radius: 10px;margin-right:760px">
 							<option value="none">--Select--</option>
 							<option value="1">First Year</option>
 							<option value="2">Second Year</option>
