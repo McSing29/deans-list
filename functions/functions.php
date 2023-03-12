@@ -194,5 +194,29 @@ function validate_add_program($POST){
     return true;
 }
 
+function validate_add_listers($POST){
+    if(!validate_first_name($POST) || !validate_last_name($POST)  || !validate_GPA($POST) || !validate_department($POST) || !validate_year_level($POST)){
+        return false;
+     }
+    return true;
+}
+
+function validate_GPA($POST){
+    if(!isset($POST['GPA'])){
+        return false;
+    }else if(strcmp($POST['GPA'], 'None') == 0){
+        return false;
+    }
+    return true;
+}
+
+function validate_year_level($POST){
+    if(!isset($POST['year_level'])){
+        return false;
+    }else if(strcmp($POST['year_level'], 'None') == 0){
+        return false;
+    }
+    return true;
+}
 
 ?>

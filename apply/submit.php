@@ -1,7 +1,17 @@
+<?php 
+session_start();
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dean's List Application System</title>
+	<title>Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 	<link rel="stylesheet" type="text/css" href="../css/calculator.style.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -25,15 +35,14 @@ if (!$conn) {
 }
 
 // Get the form data
-$name = mysqli_real_escape_string($conn, $_POST['name']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
+
 $schoolyear = mysqli_real_escape_string($conn, $_POST['schoolyear']);
 $semester = mysqli_real_escape_string($conn, $_POST['semester']);
 $curriculum = mysqli_real_escape_string($conn, $_POST['curriculum']);
 $yearlevel = mysqli_real_escape_string($conn, $_POST['yearlevel']);
 $subjects = $_POST['subject'];
 $units = $_POST['units'];
-$grades = $_POST['grade'];  
+$grades = $_POST['grade'];
 
 
 // Calculate the average grade
@@ -48,14 +57,14 @@ $average = $total / $count;
 
 
 // Insert the data into the database
-$sql = "INSERT INTO grades (name, email, schoolyear, semester, curriculum, yearlevel, subject, units, grade, average) VALUES ";
+$sql = "INSERT INTO grades (schoolyear, semester, curriculum, yearlevel, subject, units, grade, average) VALUES ";
 
 for ($i = 0; $i < $count; $i++) {
 	$subject = mysqli_real_escape_string($conn,$subjects[$i]);
     $unit = mysqli_real_escape_string($conn, $units[$i]);
     $grade = mysqli_real_escape_string($conn, $grades[$i]);
     $average = mysqli_real_escape_string($conn, $average);
-    $sql .= "('$name', '$email', '$schoolyear', '$semester', '$curriculum', '$yearlevel', '$subject', '$unit', '$grade', '$average')";
+    $sql .= "('$schoolyear', '$semester', '$curriculum', '$yearlevel', '$subject', '$unit', '$grade', '$average')";
     if ($i != $count - 1) {
     $sql .= ",";
     }
@@ -72,8 +81,8 @@ for ($i = 0; $i < $count; $i++) {
     
     // Display the results
     
-    echo "<br><p>Name: " . htmlspecialchars($name) . "</p>";
-    echo "<br><p>Email: " . htmlspecialchars($email) . "</p>";
+    echo "<br><p>Name: " . $_SESSION['logged_user']['user_firstname']." ".$_SESSION['logged_user']['user_lastname'] . "</p>";
+    echo "<br><p>Email: " . $_SESSION['logged_user']['user_email'] . "</p>";
     echo "<br><p>Schoolyear: " . htmlspecialchars($schoolyear) . "</p>";
     echo "<br><p>Semester: " . htmlspecialchars($semester) . "</p>";
     echo "<br><p>Curriculum: " . htmlspecialchars($curriculum) . "</p>";

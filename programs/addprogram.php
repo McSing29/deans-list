@@ -54,14 +54,14 @@ require_once '../class/database.php';
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>CCS Programs</title>
+    <title>Add Programs | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">
         <br>
         <div class="logo-details">
-            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="55" height = "60">
             <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
         <br>

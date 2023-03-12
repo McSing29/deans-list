@@ -1,17 +1,12 @@
 <?php
-
-    session_start();
-
-    if (!isset($_SESSION['logged-in'])){
-        header('location: ../login/login.php');
-    }
+session_start();
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dean's List Application System</title>
+	<title>Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 	<link rel="stylesheet" type="text/css" href="../css/calculator.style.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -53,7 +48,7 @@ echo '<thead>';
 echo '<tr><th>ID</th><th>Name</th><th>Email</th><th>School Year</th><th>Semester</th><th>Curriculum</th><th>Year Level</th><th>Subjects</th><th>Units</th><th>Grades</th><th>General Point Average</th>
 
             <?php
-                if($_SESSION["user_type"] == "admin"){ 
+                if($_SESSION["user_type"] == "admin"){
             ?>
                 <th class="action">Action</th>
             <?php

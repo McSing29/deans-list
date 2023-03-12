@@ -6,13 +6,24 @@
         header('location: ../login/login.php');
     }
 
-    require_once '../tools/variables.php';
-    $page_title = 'Faculty and Staff';
-    $faculty = 'active';
-
-    require_once '../includes/header.php';
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+    <title>Faculty and Staff | Dean's List Application System - CCS</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">
@@ -167,7 +178,7 @@
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
-                        <a href="addfaculty.php" class="button"><center>Add Faculty</center></a>
+                        <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
                     <?php
                         }
                     ?>

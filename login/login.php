@@ -24,12 +24,13 @@
             $_SESSION['user_firstname'] = $result['user_firstname'];
             $_SESSION['user_lastname'] = $result['user_lastname'];
             $_SESSION['user_type'] = $result['user_type'];
+            $_SESSION['user_id'] = $result['user_id'];
             header('location: ../dashboard/dashboard.php');
         }
         else{
             $error = 'Invalid email/password.<br> Please try again.';
         }
-        
+
     }
 ?>
 
@@ -42,7 +43,7 @@
     <meta name="viewport" content="width=p, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <title>Login</title>
+    <title>Login | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -53,8 +54,9 @@
         </div>
         <form class="login-form" action="login.php" method="post">
             <div class="box-image">
-                <center><img src="ccslogo.png" width ="100" height = "100"></center>
-                <div class="title">Dean's List Application</div>
+
+                <center><img src="ccslogo.png" width ="120" height = "120"></center><br>
+                <div class="title" style="font-weight: 410">Dean's List Application System</div>
             </div>
         
                 <br></br>
