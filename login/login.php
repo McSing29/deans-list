@@ -21,6 +21,7 @@
         if($result){
             $error = '';
             $_SESSION['logged-in'] = $result['user_email'];
+            $_SESSION['user_email'] = $result['user_email'];
             $_SESSION['user_firstname'] = $result['user_firstname'];
             $_SESSION['user_lastname'] = $result['user_lastname'];
             $_SESSION['user_type'] = $result['user_type'];
@@ -30,7 +31,7 @@
         else{
             $error = 'Invalid email/password.<br> Please try again.';
         }
-        
+
     }
 ?>
 
@@ -54,7 +55,7 @@
         </div>
         <form class="login-form" action="login.php" method="post">
             <div class="box-image">
-                
+
                 <center><img src="ccslogo.png" width ="120" height = "120"></center><br>
                 <div class="title" style="font-weight: 410">Dean's List Application System</div>
             </div>

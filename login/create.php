@@ -33,9 +33,11 @@
             // set session
             $error = '';
             $_SESSION['logged-in'] = $_POST['user_email'];
+            $_SESSION['user_email'] = $_POST['user_email'];
             $_SESSION['user_firstname'] = $_POST['user_firstname'];
             $_SESSION['user_lastname'] = $_POST['user_lastname'];
-            $_SESSION['user_type'] = 'staff';
+            $_SESSION['user_type'] = 'student';
+            $_SESSION['user_id'] = $result['user_id'];
 
             header('location: ../dashboard/dashboard.php');
         }

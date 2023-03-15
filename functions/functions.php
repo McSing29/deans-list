@@ -33,8 +33,6 @@ function validate_add_users($POST){
 }
 
 //Faculty
-
-
 function validate_first_name($POST){
     if(!isset($POST['firstname'])){
         return false;
@@ -116,6 +114,9 @@ function validate_add_faculty($POST){
     return true;
 }
 
+//Faculty
+
+
 //Programs
 function validate_program_code($POST){
     if(!isset($POST['code'])){
@@ -191,6 +192,36 @@ function validate_add_program($POST){
      !validate_level($POST) || !validate_status($POST) || !validate_program_code_duplicate($POST)){
         return false;
      }
+    return true;
+}
+//Programs
+
+
+
+//listers
+
+function validate_add_listers($POST){
+    if(!validate_first_name($POST) || !validate_last_name($POST)  || !validate_GPA($POST) || !validate_department($POST) || !validate_year_level($POST)){
+        return false;
+     }
+    return true;
+}
+
+function validate_GPA($POST){
+    if(!isset($POST['GPA'])){
+        return false;
+    }else if(strcmp($POST['GPA'], 'None') == 0){
+        return false;
+    }
+    return true;
+}
+
+function validate_year_level($POST){
+    if(!isset($POST['year_level'])){
+        return false;
+    }else if(strcmp($POST['year_level'], 'None') == 0){
+        return false;
+    }
     return true;
 }
 

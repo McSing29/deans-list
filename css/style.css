@@ -375,11 +375,11 @@ nav .side-bar-button i{
 }
 
 .table-title{
-    font-weight: 450;
+    font-weight: 300;
     font-size: 30px;
     text-align: left;
     color: #333;
-    margin: 20px 0;
+    margin-left:20px 0;
     display: inline;
 }
 
