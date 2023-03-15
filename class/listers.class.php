@@ -39,7 +39,7 @@ class Listers{
     }
 
     function show(){
-        $sql = "SELECT * FROM listers ORDER BY CONCAT('firstname',', ','lastname') ASC;";
+        $sql = "SELECT * FROM listers ORDER BY GPA ASC;";
         $query=$this->db->connect()->prepare($sql);
         if($query->execute()){
             $data = $query->fetchAll();
@@ -79,7 +79,7 @@ class Listers{
     }
 
     function fetch($record_id){
-        $sql = "SELECT * FROM listers WHERE id = :id;";
+        $sql = "SELECT * FROM listers WHERE id = :id; ";
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':id', $record_id);
         if($query->execute()){

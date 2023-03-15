@@ -14,10 +14,15 @@
     <?php if (!isset($_POST['secondStepSubmit'])) { ?>
         <link rel="stylesheet" type="text/css" href="../css/calculator.style.css?v=<?php echo time(); ?>"> <?php } ?>
     <link rel="stylesheet" type="text/css" href="../css/apply.css?v=<?php echo time(); ?>">
+    <script src="apply.js" defer></script>
 </head>
 
 <body>
+    <br>
+    <br>
     <div class="root d-flex flex-column align-items-center justify-content-center">
+   
+    
         <div class="card">
             <div class="card-body">
                 <!-- Progress Bar -->
@@ -52,6 +57,13 @@
                     <div class="text-header w-100 text-center" style="margin-top: 2%">
                         <h6 style="font-weight: bold">APPLICATION FOR DEAN LIST</h6>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                        <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
+                        
+                        </div>
+                    </div>
+                    
 
 
                     <form action="application-new.php" method="post" enctype="multipart/form-data" class="firstStepForm d-flex flex-column align-items-center">
@@ -75,24 +87,27 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="table-name">Name</th>
+                                            <th scope="col" class="table-name">#</th>
                                             <th scope="col">Email</th>
                                             <th scope="col" class="academic-rank">Academic Rank</th>
                                             <th scope="col">Department</th>
+                                            <th scope="col">GPA</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <!--  -->
                                     <tbody>
                                         <tr>
-                                            <td>John Doe</td>
-                                            <td>johndoe@gmail.com</td>
-                                            <td>Student</td>
+                                            <td><?php echo '<span class="admin-name">'.$_SESSION['user_id'].'</span>'; ?></td>
+                                            <td><?php echo '<span class="admin-name">'.$_SESSION['user_email'].'</span>'; ?></td>
+                                            <td><?php echo '<span class="admin-name">'.$_SESSION['user_type'].'</span>'; ?></td>
                                             <td>BSCS</td>
-                                            <td><mark>Pending</mark></td> 
+                                            <td><p><?php echo isset($gradeInAverage) ? $gradeInAverage : "" ?></p></td>
+                                            <td><mark>Pending</mark></td>
                                         </tr>
                                     </tbody>
                                 </table>
+                                
                             </div>
                         <?php
                         } else {
@@ -176,7 +191,7 @@
                                                     </div>
                                                     <div class="grade-input-div d-flex flex-row">
                                                         <h6>Grade: </h6>
-                                                        <input type="number" min="1" max="3.0" step=".25" name="grade" class="grade form-control" required>
+                                                        <input type="number" min="1" max="3.0" step=".25" name="grade[]" class="grade form-control" required>
                                                         <input type="hidden" name="subjectId[]" value="<?php echo $subject['subject_id'] ?>">
                                                     </div>
                                                 </div>
@@ -186,17 +201,33 @@
 
                                             <!-- Add more rows as needed -->
                                         </div>
+                                        
+                                        
+                                    
+                                        <p style="margin-left: 525px"class="totalGrade"><?php echo isset($average) ? $average: "GPA:" ?></p>
+                                        <div class="row">
+                                
+                                            <div class="col">
+                                                <div class="d-flex justify-content-end">
+                                                    <input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 500px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
 
                                     </div>
-                                    <div class="file-input mb-3 d-flex flex-row justify-content-center">
+                                    
+                                    <div class="file-input mb-3 d-flex flex-row justify-content-left">
                                         <label for="formFile" class="form-label">Portal Screenshot: </label>
                                         <input class="form-control" type="file" id="formFile" required>
                                     </div>
                                 </div>
+                                
                         <?php
                             }
                         }
                         ?>
+                        
                         <?php
                         if (!isset($_POST['secondStepSubmit'])) {
                         ?>
@@ -213,6 +244,10 @@
 
 
                             </div>
+                            <br>
+                            <br>
+                            
+                            
                         <?php
                         } else {
                         ?>

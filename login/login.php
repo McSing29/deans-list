@@ -21,6 +21,7 @@
         if($result){
             $error = '';
             $_SESSION['logged-in'] = $result['user_email'];
+            $_SESSION['user_email'] = $result['user_email'];
             $_SESSION['user_firstname'] = $result['user_firstname'];
             $_SESSION['user_lastname'] = $result['user_lastname'];
             $_SESSION['user_type'] = $result['user_type'];

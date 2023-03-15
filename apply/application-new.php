@@ -7,8 +7,7 @@ require_once $path . "class/subject.class.php";
 session_start();
 
 $subject = new subject;
-
-// print_r($_SESSION);
+$subject -> applicant_id = $_SESSION['user_id'];
 
 $listOfSubject = [];
 
@@ -27,10 +26,67 @@ if (isset($_POST['firstStepSubmit'])) {
 }
 
 // Add functionality below if user has clicked "Submit" button
-if (isset($_POST['secondStepSubmit'])) {
+if (isset($_POST['secondStepSubmits'])) {
     // Store to Database submitted grades
 }
+
+
+
+if(isset($_POST['secondStepSubmit'])) {
+
+    // print_r("test");
+
+
+	// 1. Insert data to tlb_applicant
+	// 1.1 CREATE A FUNCTION THAT WILL INSERT DATA TO tlb_applicant
+	$subject -> user_id = $_SESSION['user_id'];
+	$result = $subject -> addApplicant();
+	// 1.2 Get applicant_id WHERE userid corresponds sa sino nag login
+	// 1.3
+	// 2. Insert data to tbl_list_grades
+	// 2.1 CRREATE A FUMNCTION THAT WILL INSERT DATA TO tbl_list_grades
+	$applicantInfo = $subject -> getApplicatInfo();
+	$subject -> applicant_id = $applicantInfo['applicant_id'];
+	$subject -> subject_id = $_POST['subjectId'];
+	$subject -> grade = $_POST['grade'];
+
+    // print_r($subject);
+
+	$result = $subject -> addGrades();
+	// 2.1.1 use for loop sa pag insert ng data
+
+
+	$initial = 0;
+	$count = 0;
+	foreach($_POST['grade'] as $grade) {
+		$initial += floatval($grade);
+		$count += 1;
+	}
+
+	$average = $initial / $count;
+
+	// FETCH GRADES IN DATABASE
+	$finalSubjects = $subject -> getGrades();
+
+    $initial = 0;
+
+foreach($subject -> grade as $grade) {
+    $initial += $grade;
+}
+
+$gradeInAverage = $initial / sizeof($subject -> grade);
+
+$string = floatval($gradeInAverage);
+// Use the number_format function to format the string
+$gradeInAverage = number_format($string, 2, '.', '');
+}
+
+
+
+
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -158,7 +214,7 @@ if (isset($_POST['secondStepSubmit'])) {
             </div>
             <div class="profile-details">
                 <i class='bx bx-user'></i>
-                <?php echo '<span class="admin-name">' . $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] . '</span>'; ?>
+                <?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?>
             </div>
         </nav>
 
@@ -207,7 +263,6 @@ if (isset($_POST['secondStepSubmit'])) {
         <!-- NAVBAR -->
 
         <div class="home-content">
-
             <?php 
                 include '../apply/apply-new.php';
             ?>

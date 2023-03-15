@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li>
-                <a href="../apply/apply.php">
+                <a href="../apply/application-new.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
@@ -174,7 +174,7 @@
         <div class="home-content">
             <div class="table-container">
                 <div class="table-heading">
-                    <h3 class="table-title">Dean's List</h3>
+                    <h3 class="table-title">Dean's Listers</h3>
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
@@ -228,7 +228,7 @@
                                 ?>
                                     <td>
                                         <div class="action">
-                                            <a class="action-edit" href="editlisters.php?id=<?php echo $value['listers-id'] ?>">Edit</a>
+                                            <a class="action-edit" href="editlisters.php?id=<?php echo $value['id'] ?>">Edit</a>
                                             <br></br><a class="action-delete" href="deletelisters.php?id=<?php echo $value['id'] ?>">Delete</a>
                                         </div>
                                     </td>

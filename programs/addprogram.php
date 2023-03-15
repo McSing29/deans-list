@@ -73,7 +73,7 @@ require_once '../class/database.php';
                 </a>
             </li>
             <li>
-                <a href="../apply/apply.php">
+            <a href="../apply/application-new.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
