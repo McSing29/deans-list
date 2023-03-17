@@ -5,6 +5,11 @@
     if (!isset($_SESSION['logged-in'])){
         header('location: ../login/login.php');
     }
+
+    print_r($_SESSION);
+
+    require_once '../tools/variables.php';
+    $dashboard = 'active';
     
 ?>
 
@@ -19,9 +24,14 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<<<<<<< Updated upstream
     <title>Dashboard</title>
+=======
+    
+    <title>Dashboard | Dean's List Application System - CCS</title>
+>>>>>>> Stashed changes
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
-</head>
+    
 <body>
     <div class="side-bar">
         <br>
@@ -37,13 +47,25 @@
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
+
+            <?php if($_SESSION['user_type'] == 'student') { ?>
             <li>
                 <a href="../application/application.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
             </li>
-            
+            <?php } ?> 
+
+            <?php if($_SESSION['user_type'] == 'admin') { ?>
+            <li>
+                <a href="../apply/admin-application.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">Admin application</span>
+                </a>
+            </li>
+            <?php } ?>   
+
             <li>
                 <a href="../listers/listers.php">
                 <i class='bx bx-list-check'></i>
