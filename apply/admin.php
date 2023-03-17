@@ -1,17 +1,12 @@
 <?php
-
-    session_start();
-
-    if (!isset($_SESSION['logged-in'])){
-        header('location: ../login/login.php');
-    }
+session_start();
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dean's List Application System</title>
+	<title>Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 	<link rel="stylesheet" type="text/css" href="../css/calculator.style.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -20,7 +15,7 @@
 <body>
 
 <center><br><br><h1>Student Applications for Dean's Listers</h1>
-<a class = "btn" href="apply.php" style="margin-left:900px; border-radius:10px">Back</a>
+<a class = "btn" href="apply.php" style="margin-left:1320px; border-radius:10px">Back</a>
 <?php
 // Connect to the database
 $conn = mysqli_connect('localhost', 'root', '', 'deanslist');
@@ -50,10 +45,10 @@ $result = mysqli_query($conn, $sql);
 
 echo '<table>';
 echo '<thead>';
-echo '<tr><th>ID</th><th>Name</th><th>Subjects</th><th>Units</th><th>Grades</th><th>General Point Average</th>
+echo '<tr><th>ID</th><th>Name</th><th>Email</th><th>School Year</th><th>Semester</th><th>Curriculum</th><th>Year Level</th><th>Subjects</th><th>Units</th><th>Grades</th><th>General Point Average</th>
 
             <?php
-                if($_SESSION["user_type"] == "admin"){ 
+                if($_SESSION["user_type"] == "admin"){
             ?>
                 <th class="action">Action</th>
             <?php
@@ -64,17 +59,22 @@ echo '</thead>';
 echo '<tbody>';
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<tr>';
-    echo '<td width="5%">' . htmlspecialchars($row['id']) . '</td>';
-    echo '<td width="18%">' . htmlspecialchars($row['name']) . '</td>';
-    echo '<td width="20%">' . htmlspecialchars($row['subject']) . '</td>';
-    echo '<td width="5%">' . htmlspecialchars($row['units']) . '</td>';
-    echo '<td >' . htmlspecialchars($row['grade']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['id']) . '</td>';
+    echo '<td width="20%">' . htmlspecialchars($row['name']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['email']) . '</td>';
+    echo '<td width="15%">' . htmlspecialchars($row['schoolyear']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['semester']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['curriculum']) . '</td>';
+    echo '<td width="10%">' . htmlspecialchars($row['yearlevel']) . '</td>';
+    echo '<td width="20%" >' . htmlspecialchars($row['subject']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['units']) . '</td>';
+    echo '<td>' . htmlspecialchars($row['grade']) . '</td>';
     echo '<td>' . htmlspecialchars($row['average'  ]) .'</td>';
     
     echo '<td width="30%">';
     echo '<form method="post">';
     echo '<input type="hidden" name="id" value="' . htmlspecialchars($row['id']) . '">';
-    echo '<button type="submit" name="action" value="approve" class="btn-approved">Approve</button> - ';
+    echo '<button type="submit" name="action" value="approve" class="btn-approved">Approve</button><br>';
     echo '<button type="submit" name="action" value="reject" class="btn-rejected">Reject</button>';
     echo '</form>';
     echo '</td>';

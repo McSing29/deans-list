@@ -52,13 +52,14 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>Add Faculty</title>
+    <title>Add Faculty | Dean's List Application System - CCS</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="side-bar">
         <br>
         <div class="logo-details">
-            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="130" height = "95">
+            <img class="logo" style="margin-left:2px"src="ccslogo.png" width ="55" height = "60">
             <span class="logo-name">Dean's List Application <br> System</span>
 		</div>
         <br>
@@ -70,7 +71,7 @@
                 </a>
             </li>
             <li>
-                <a href="../application/application.php">
+                <a href="../apply/application-new.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
@@ -256,11 +257,24 @@
                     <?php
                         }
                     ?>
-                    <label for="status">Is Status of Employee Active?</label><br>
-                    <label class="container" for="status">Yes
-                        <input type="checkbox" name="status" id="status" value="Active Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active Employee') echo ' checked'; } ?>>
-                        <span class="checkbox"></span>
-                    </label>
+                   <div>
+                        <label for="status">Faculty Status</label><br>
+                        <label class="container" for="Active">Active
+                            <input type="checkbox" name="status" id="Active" value="Active" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active') echo ' checked'; } ?>>
+                            <span class="checkmark"></span>
+                        </label><br>
+                        <label class="container" for="Inactive">Inactive
+                            <input type="checkbox" name="status" id="Inactive" value="inactive" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive') echo ' checked'; } ?>>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <?php
+                        if(isset($_POST['save']) && !validate_status($_POST)){
+                    ?>
+                                <p class="error">Please select Faculty status.</p>
+                    <?php
+                        }
+                    ?>
                     <input type="submit" class="button" value="Save Faculty" name="save" id="save">
                 </form>
             </div>

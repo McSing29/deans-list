@@ -22,7 +22,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>Faculty and Staff | Dean's List Application System - CCS</title>
+    <title>Dean's List | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -41,29 +41,20 @@
                 </a>
             </li>
             <li>
-            <a href="../apply/application-new.php">
+                <a href="../apply/application-new.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
             </li>
-            <?php if($_SESSION['user_type'] == 'admin') { ?>
+
             <li>
-                <a href="../apply/admin-application.php">
-                <i class='bx bxs-edit'></i>
-                    <span class="links-name">Admin application</span>
-                </a>
-            </li>
-            <?php } ?>  
-            
-            <li>
-                <a href="../listers/listers.php">
+                <a href="../listers/listers.php" class ="active">
                 <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
             </li>
-            
             <li>
-                <a href="../faculty/faculty.php" class ="active">
+                <a href="../faculty/faculty.php">
                     <i class='bx bx-group' ></i>
                     <span class="links-name">Faculty</span>
                 </a>
@@ -183,11 +174,11 @@
         <div class="home-content">
             <div class="table-container">
                 <div class="table-heading">
-                    <h3 class="table-title">Faculty and Staff</h3>
+                    <h3 class="table-title">Dean's Listers</h3>
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
-                        <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
+                        <a href="addlisters.php" class="button" style="color:white"><center>Add New Dean's List</center></a>
                     <?php
                         }
                     ?>
@@ -200,14 +191,13 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Image</th>
+                            <th>Rank</th>
                             <th>Name</th>
-                            <th>Academic Rank</th>
-                            <th>Email</th>
-                            <th>Status</th>
+                            <th>GPA</th>
+                            <th>Department</th>
+                            <th>Year Level</th>
                             <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
+                                if($_SESSION['user_type'] == 'admin'){
                             ?>
                                 <th class="action">Action</th>
                             <?php
@@ -217,30 +207,29 @@
                     </thead>
                     <tbody>
                         <?php
-                            require_once '../class/faculty.class.php';
+                            require_once '../class/listers.class.php';
 
-                            $faculty = new Faculty();
+                            $listers = new Listers();
                             //We will now fetch all the records in the array using loop
                             //use as a counter, not required but suggested for the table
                             $i = 1;
                             //loop for each record found in the array
-                            foreach ($faculty->show() as $value){ //start of loop
+                            foreach ($listers->show() as $value){ //start of loop
                         ?>
                             <tr>
                                 <!-- always use echo to output PHP values -->
                                 <td><?php echo $i ?></td>
-                                <td> <img src="img/<?php echo $value["img"]; ?>" width = 100 title="<?php echo $value['img']; ?>"> </td>
                                 <td><?php echo $value['firstname'] . ' ' . $value['lastname'] ?>
-                                <td><?php echo $value['rank'] ?></td>
-                                <td><?php echo $value['email'] ?></td>
-                                <td><?php echo $value['status'] ?></td>
+                                <td><?php echo $value['GPA'] ?></td>
+                                <td><?php echo $value['department'] ?></td>
+                                <td><?php echo $value['year_level'] ?></td>
                                 <?php
                                     if($_SESSION['user_type'] == 'admin'){
                                 ?>
                                     <td>
                                         <div class="action">
-                                            <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                            <br></br><a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                            <a class="action-edit" href="editlisters.php?id=<?php echo $value['id'] ?>">Edit</a>
+                                            <br></br><a class="action-delete" href="deletelisters.php?id=<?php echo $value['id'] ?>">Delete</a>
                                         </div>
                                     </td>
                                 <?php

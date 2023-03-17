@@ -33,9 +33,11 @@
             // set session
             $error = '';
             $_SESSION['logged-in'] = $_POST['user_email'];
+            $_SESSION['user_email'] = $_POST['user_email'];
             $_SESSION['user_firstname'] = $_POST['user_firstname'];
             $_SESSION['user_lastname'] = $_POST['user_lastname'];
-            $_SESSION['user_type'] = 'staff';
+            $_SESSION['user_type'] = 'student';
+            $_SESSION['user_id'] = $result['user_id'];
 
             header('location: ../dashboard/dashboard.php');
         }
@@ -55,7 +57,8 @@
     <meta name="viewport" content="width=p, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <title>Create an Account</title>
+    <title>Create an Account | Dean's List Application System - CCS</title>
+    <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
     <div class="login-container">

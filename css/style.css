@@ -68,76 +68,161 @@
     
 }
 
+/* LOG IN */
+
 .login-container{
-    width: 100%;
-    height: calc(100vh);
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    overflow: hidden;
-    background-image: url("../img/ccs6.png");
-    background-size:cover;
+   width: 100%;
+   height: calc(100vh);
+   display: flex;
+   align-items: center;
+   justify-items: center;
+   overflow: hidden;
+   background: rgb(255, 255, 255);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
 }
 
-.login-form .divider{
-    margin-top: 30px;
+.imgBx{
+  position: relative;
+  width: 50%;
+  height: 100%;
 }
+
+.imgBx:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(225deg,
+  rgba(98, 156, 148, 0.75),
+  rgba(19, 115, 104, 0.75));
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.imgBx img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 
 .login-form .button{
-    margin-top: 10px;
-    line-height: 27px;
+   margin-top: 10px;
+   line-height: 18px;
 }
 
 .login-form{
-    max-width: 370px;
-    max-height:min-content;
-    margin: 0 auto;
-    background-color: rgb(224, 222, 222);
-    border-radius: 5%;
-    padding: 35px;
-    opacity: .8;
+   max-width: 400px;
+   max-height:min-content;
+   margin: 0 auto;
+   background-color: rgb(255, 255, 255);
+   border-radius: 1%;
+   padding: 35px;
 
-   
+  
 }
 
 .login-form .logo-details{
-    height: 40px;
-    display: flex;
-    align-items:flex-end;
-    justify-content: center;
+   height: 40px;
+   display: flex;
+   align-items:flex-end;
+   justify-content: center;
 }
 
 .login-form .logo-details i{
-    font-size: 30px;
-    font-weight: 900;
-    color: rgb(13, 160, 240);
-    text-align: center;
-    padding-right: 5px;
+   font-size: 100px;
+   font-weight: 900;
+   text-align: center;
+   padding-right: 5px;
+}
+.login-form .title{
+  color: rgb(11, 57, 11);
+  font-size: 1.2em;
+  /* color: #062321; */
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
 }
 
+
 .login-form .logo-details .logo-name{
-    color: rgb(28, 33, 33);
-    font-size: 40px;
-    font-weight: 300;
+   color: rgb(11, 57, 11);
+   font-size: 40px;
+   font-weight: 300;
 }
 
 input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 6px;
-    box-sizing: border-box;
-    border: 1px solid black;
+   width: 100%;
+   padding: 12px;
+   margin: 8px 0;
+   border-radius: 2px;
+   box-sizing: border-box;
+   border: 1px solid rgb(190, 190, 190);
+}
+input#remember {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 3px;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  background: #107869;
 }
 
+
 input[type=radio]{
-    width: auto;
+   width: auto;
 }
 
 label{
-    margin-right: 20px;
+   margin-right: 20px;
 }
 
+label#remember{
+  font-size: 13px;
+}
+
+/*----------------------------*/
+
+/*log in media queries*/
+
+@media (max-width: 768px)
+{
+  .imgBx 
+  {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+ }
+ .login-container
+ {
+   width: 100%;
+   height: calc(100vh);
+   display: flex;
+   align-items: center;
+   justify-items: center;
+   overflow: hidden;
+   background: rgb(255, 255, 255, 0.1);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+ }
+}
+/*----------------------------*/
+
+/* Side Bar */
 
 
 .side-bar{
@@ -152,7 +237,7 @@ label{
 	transition: .3s ease;
 	overflow: hidden;
 	scrollbar-width: none;
-   
+
 }
 
 
@@ -172,7 +257,7 @@ label{
 .side-bar .logo-details .logo-name{
     color: #fff;
     font-size: 19px;
-    font-weight: 470;
+    font-weight: 300;
     align-items: center;
     display: block;
     margin-left: 15px;
@@ -181,6 +266,7 @@ label{
 }
 
 .side-bar .nav-links{
+   padding: 0 !important;
     height: calc(100vh);
 }
 
@@ -231,8 +317,9 @@ label{
    height: 1px;
    border: 0;
    border-top: 1px solid white;
-    
 }
+
+/*----------------------------*/
 
 .home-section{
     position: relative;
@@ -289,11 +376,11 @@ nav .side-bar-button i{
 }
 
 .table-title{
-    font-weight: 450;
+    font-weight: 300;
     font-size: 30px;
     text-align: left;
     color: #333;
-    margin: 20px 0;
+    margin-left:20px 0;
     display: inline;
 }
 
@@ -355,32 +442,21 @@ td a{
     text-transform: uppercase;
     color: white;
 }
-  
+
+
 a.action-edit{
-    background-color: rgb(0, 255, 38);
+    background-color:  #107869;
 }
   
 a.action-delete{
-    background-color: red;
+    background-color: rgb(228, 9, 9);
 }
   
 a.action-edit:hover, a.action-delete:hover{
-    opacity: 0.6;
-    cursor: pointer;
+    
+    background: var(--black);
 }
 
-a.status-available{
-    background-color: rgb(53, 248, 5);
-}
-  
-a.status-notavaible{
-    background-color: rgb(239, 18, 18);
-}
-  
-a.status-available:hover, a.status-notavailable:hover{
-    opacity: 0.6;
-    cursor: pointer;
-}
 
 .table-container .button{
     display: inline;
@@ -777,21 +853,57 @@ a.button{
     font-size: 1.7rem;
     padding:1rem 3rem;
     cursor: pointer;
+    border-radius: 5px;
  }
+ .btn-approved{
+   display: inline-block;
+   background: #107869;
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.2rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   max-width: 100px;
+   
+}
+.btn-rejected{
+   display: inline-block;
+   background: rgb(228, 9, 9);
+   margin-top: 1rem;
+   color:var(--white);
+   font-size: 1.2rem;
+   padding:1rem 3rem;
+   cursor: pointer;
+   max-width: 100px;
+   
+}
+ 
  
  .btn:hover{
     background: var(--main-color);
+
  }
+
+ .btn-approved:hover{
+   background: var(--black);
+   
+}
+.btn-rejected:hover{
+   background: var(--black);
+   
+}
+
+ 
  
  .heading-title{
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 6rem;
     text-transform: uppercase;
     color:var(--black);
-    padding-top: 10rem;
+    padding-top: 8rem;
  }
- 
+
  .header{
     position: sticky;
     top:0; left:0; right:0;
@@ -839,7 +951,7 @@ a.button{
     justify-content: center;
     background-size: cover !important;
     background-position: center !important;
-    min-height: 60rem;
+    min-height: 65rem;
  }
  
  .home .slide .content{
@@ -1407,7 +1519,6 @@ a.button{
  
     .heading-title{
        font-size: 3.5rem;
-       padding-top:10rem;
     }
  
  }
