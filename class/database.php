@@ -1,10 +1,10 @@
 <?php
 
 class Database{
-    private $host = 'localhost'; 
-    private $database = 'u237957316_deanlist';
-    private $username = 'u237957316_deanlist';
-    private $password = 'U=lGFvA2ii3';
+    private $host = 'localhost';
+    private $database = 'deanslist';
+    private $username = 'root';
+    private $password = '';
     protected $connection;
 
     function connect(){

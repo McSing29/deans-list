@@ -6,7 +6,7 @@
         header('location: ../login/login.php');
     }
 
-    print_r($_SESSION);
+    
 
     require_once '../tools/variables.php';
     $dashboard = 'active';
@@ -53,7 +53,7 @@
             </li>
             <?php } ?> 
 
-            <?php if($_SESSION['user_type'] == 'admin') { ?>
+            <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
                 <a href="../apply/admin-application.php">
                 <i class='bx bxs-edit'></i>

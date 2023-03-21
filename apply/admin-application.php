@@ -52,7 +52,7 @@ $conn = mysqli_connect('localhost', 'root', '', 'deanslist');
                 </a>
             </li>
             
-            <?php if($_SESSION['user_type'] == 'admin') { ?>
+            <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
                 <a href="../apply/admin-application.php">
                 <i class='bx bxs-edit'></i>

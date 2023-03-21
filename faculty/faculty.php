@@ -185,7 +185,7 @@
                 <div class="table-heading">
                     <h3 class="table-title">Faculty and Staff</h3>
                     <?php
-                        if($_SESSION['user_type'] == 'admin'){ 
+                        if($_SESSION['user_type'] == 'adviser'){ 
                     ?>
                         <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
                     <?php

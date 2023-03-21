@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 01:00 PM
+-- Generation Time: Mar 21, 2023 at 04:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,45 @@ SET time_zone = "+00:00";
 --
 -- Database: `deanslist`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dean_applicants`
+--
+
+CREATE TABLE `dean_applicants` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `school_year` varchar(255) NOT NULL,
+  `curriculum` varchar(255) NOT NULL,
+  `year_level` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `total_gpa` float NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dean_applicants`
+--
+
+INSERT INTO `dean_applicants` (`id`, `name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `total_gpa`, `status`, `user_id`) VALUES
+(26, 'Josh Yasil', 'joshuayasil@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1.11111, 'pending', 23),
+(27, 'Ejay Pogi', 'ejaypogi@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'A', 1.25, 'pending', 16),
+(29, 'Ejay McSing', 'xt202001281@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'A', 1.5, 'pending', 2),
+(30, 'Ejay McSing', 'emiljohn1129@gmail.com', 'School Year 2022-2023', 'cs', '4', 'A', 1.5, 'Accepted', 1),
+(31, 'Ejay McSing', 'ejaymcsing@gmail.com', 'School Year 2022-2023', 'cs', '4', 'A', 1.5, 'pending', 3),
+(32, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '3', 'C', 1, 'Declined', 15),
+(33, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '3', 'A', 1, 'Declined', 15),
+(34, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1, 'Declined', 15),
+(35, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '2', 'A', 1, 'Declined', 15),
+(36, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '3', 'A', 1, 'Declined', 15),
+(37, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2023-2024', 'it', '3', 'A', 0, 'Declined', 15),
+(38, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1.5, 'Accepted', 38),
+(39, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '4', 'A', 1.5, 'Accepted', 38),
+(40, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'C', 1.5, 'Accepted', 38);
 
 -- --------------------------------------------------------
 
@@ -67,8 +106,7 @@ INSERT INTO `faculty` (`id`, `img`, `firstname`, `lastname`, `rank`, `email`, `s
 (24, 'tahil.png', 'Mr. Salimar B.  ', 'Tahil, MEnggEd-ICT', 'Asst. Director, MISTO', 'salimartahil@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:25:31', '2023-01-25 14:25:31'),
 (25, 'timpangco.png', 'Mr. Whesley', 'G. Timpangco ', 'LMS Network Engineer', 'whesleytimpangco@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:26:12', '2023-01-25 14:26:12'),
 (26, 'jackaria.png', 'Ms. Alhadzra  ', 'M. Jackaria', 'Laboratory Technician', 'alhadzrajackaria@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:26:58', '2023-01-25 14:26:58'),
-(27, 'male.png', 'Mr. John Roy  ', 'S. Velario', 'Administrative Assistant', 'johnroyvelario@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:27:34', '2023-01-25 14:27:34'),
-(32, 'male.png', 'Emil John', 'Magcanta', 'Tampa LeadDev', 'ejpogi@wmsu.edu.ph', 'Active Employee', '2023-01-26 12:11:00', '2023-01-26 12:11:00');
+(27, 'male.png', 'Mr. John Roy  ', 'S. Velario', 'Administrative Assistant', 'johnroyvelario@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:27:34', '2023-01-25 14:27:34');
 
 -- --------------------------------------------------------
 
@@ -95,7 +133,8 @@ INSERT INTO `listers` (`firstname`, `lastname`, `GPA`, `department`, `year_level
 ('Nash', 'Sari', 1.5, 'BSCS', 3),
 ('Andrei', 'Cafino', 1.75, 'BSIT', 3),
 ('Denise', 'Vonn', 1.75, 'BSCS', 3),
-('Jsohua', 'Yasil', 1, 'BSCS', 3);
+('Jsohua', 'Yasil', 1, 'BSCS', 3),
+('Jenny', 'Vladimir', 1.5, 'BSCS', 3);
 
 -- --------------------------------------------------------
 
@@ -756,7 +795,212 @@ INSERT INTO `tbl_list_grades` (`grades_id`, `subject_id`, `applicant_id`, `grade
 (704, 11, 67, 2),
 (705, 12, 67, 1),
 (706, 13, 67, 2),
-(707, 14, 67, 1);
+(707, 14, 67, 1),
+(708, 15, 67, 2),
+(709, 16, 67, 1),
+(710, 17, 67, 1),
+(711, 18, 67, 2),
+(712, 19, 67, 2),
+(713, 20, 67, 2),
+(714, 21, 67, 1),
+(715, 22, 67, 1),
+(716, 23, 67, 1),
+(717, 6, 67, 1),
+(718, 7, 67, 1),
+(719, 8, 67, 1),
+(720, 9, 67, 1),
+(721, 10, 67, 1),
+(722, 11, 67, 1),
+(723, 12, 67, 1),
+(724, 13, 67, 1),
+(725, 14, 67, 1),
+(726, 6, 147, 2),
+(727, 7, 147, 2),
+(728, 8, 147, 2),
+(729, 9, 147, 1),
+(730, 10, 147, 1),
+(731, 11, 147, 1),
+(732, 12, 147, 1),
+(733, 13, 147, 1),
+(734, 14, 147, 1),
+(735, 6, 67, 1),
+(736, 7, 67, 1),
+(737, 8, 67, 2),
+(738, 9, 67, 2),
+(739, 10, 67, 1),
+(740, 11, 67, 1),
+(741, 12, 67, 1),
+(742, 13, 67, 1),
+(743, 14, 67, 1),
+(744, 6, 67, 2),
+(745, 7, 67, 2),
+(746, 8, 67, 1),
+(747, 9, 67, 1),
+(748, 10, 67, 1),
+(749, 11, 67, 1),
+(750, 12, 67, 1),
+(751, 13, 67, 1),
+(752, 14, 67, 1),
+(753, 6, 67, 1),
+(754, 7, 67, 1),
+(755, 8, 67, 1),
+(756, 9, 67, 1),
+(757, 10, 67, 2),
+(758, 11, 67, 3),
+(759, 12, 67, 1),
+(760, 13, 67, 1),
+(761, 14, 67, 1),
+(762, 95, 123, 1),
+(763, 96, 123, 1),
+(764, 97, 123, 2),
+(765, 98, 123, 2),
+(766, 99, 123, 2),
+(767, 6, 147, 1),
+(768, 7, 147, 1),
+(769, 8, 147, 1),
+(770, 9, 147, 1),
+(771, 10, 147, 2),
+(772, 11, 147, 1),
+(773, 12, 147, 1),
+(774, 13, 147, 1),
+(775, 14, 147, 1),
+(776, 6, 147, 1),
+(777, 7, 147, 1),
+(778, 8, 147, 1),
+(779, 9, 147, 1),
+(780, 10, 147, 2),
+(781, 11, 147, 1),
+(782, 12, 147, 2),
+(783, 13, 147, 1),
+(784, 14, 147, 1),
+(785, 50, 67, 1),
+(786, 51, 67, 2),
+(787, 44, 135, 3),
+(788, 45, 135, 3),
+(789, 46, 135, 3),
+(790, 47, 135, 3),
+(791, 48, 135, 3),
+(792, 49, 135, 3),
+(793, 44, 124, 2),
+(794, 45, 124, 1),
+(795, 46, 124, 1),
+(796, 47, 124, 2),
+(797, 48, 124, 2),
+(798, 49, 124, 1),
+(799, 44, 130, 1),
+(800, 45, 130, 1),
+(801, 46, 130, 1),
+(802, 47, 130, 1),
+(803, 48, 130, 2),
+(804, 49, 130, 1),
+(805, 6, 131, 1),
+(806, 7, 131, 1),
+(807, 8, 131, 1),
+(808, 9, 131, 1),
+(809, 10, 131, 1),
+(810, 11, 131, 1),
+(811, 12, 131, 1),
+(812, 13, 131, 1),
+(813, 14, 131, 1),
+(814, 6, 67, 1),
+(815, 7, 67, 1),
+(816, 8, 67, 2),
+(817, 9, 67, 1),
+(818, 10, 67, 1),
+(819, 11, 67, 1),
+(820, 12, 67, 1),
+(821, 13, 67, 1),
+(822, 14, 67, 1),
+(823, 6, 135, 1),
+(824, 7, 135, 1),
+(825, 8, 135, 1),
+(826, 9, 135, 1),
+(827, 10, 135, 1),
+(828, 11, 135, 1),
+(829, 12, 135, 2),
+(830, 13, 135, 1),
+(831, 14, 135, 1),
+(832, 6, 135, 1),
+(833, 7, 135, 1),
+(834, 8, 135, 1),
+(835, 9, 135, 1),
+(836, 10, 135, 1),
+(837, 11, 135, 1),
+(838, 12, 135, 2),
+(839, 13, 135, 1),
+(840, 14, 135, 1),
+(841, 6, 130, 1),
+(842, 7, 130, 1),
+(843, 8, 130, 1),
+(844, 9, 130, 1),
+(845, 10, 130, 1),
+(846, 11, 130, 1),
+(847, 12, 130, 1),
+(848, 13, 130, 1),
+(849, 14, 130, 1),
+(850, 6, 163, 1),
+(851, 7, 163, 1),
+(852, 8, 163, 1),
+(853, 9, 163, 1),
+(854, 10, 163, 1),
+(855, 11, 163, 1),
+(856, 12, 163, 1),
+(857, 13, 163, 1),
+(858, 14, 163, 1),
+(859, 6, 163, 1),
+(860, 7, 163, 1),
+(861, 8, 163, 1),
+(862, 9, 163, 1),
+(863, 10, 163, 1),
+(864, 11, 163, 1),
+(865, 12, 163, 1),
+(866, 13, 163, 1),
+(867, 14, 163, 1),
+(868, 6, 124, 1),
+(869, 7, 124, 1),
+(870, 8, 124, 1),
+(871, 9, 124, 1),
+(872, 10, 124, 1),
+(873, 11, 124, 1),
+(874, 12, 124, 1),
+(875, 13, 124, 2),
+(876, 14, 124, 2),
+(877, 50, 166, 1),
+(878, 51, 166, 2),
+(879, 52, 163, 2),
+(880, 53, 163, 2),
+(881, 54, 163, 2),
+(882, 50, 168, 2),
+(883, 51, 168, 1),
+(884, 50, 169, 2),
+(885, 51, 169, 2),
+(886, 50, 170, 2),
+(887, 51, 170, 2),
+(888, 24, 123, 1),
+(889, 25, 123, 2),
+(890, 26, 123, 1),
+(891, 27, 123, 2),
+(892, 28, 123, 2),
+(893, 29, 123, 2),
+(894, 30, 123, 1),
+(895, 31, 123, 3),
+(896, 1, 123, 1),
+(897, 2, 123, 1),
+(898, 39, 123, 1),
+(899, 40, 123, 1),
+(900, 41, 123, 1),
+(901, 42, 123, 1),
+(902, 43, 123, 1),
+(903, 50, 135, 2),
+(904, 51, 135, 1),
+(905, 50, 135, 2),
+(906, 51, 135, 1),
+(907, 52, 135, 2),
+(908, 53, 135, 2),
+(909, 54, 135, 1),
+(910, 52, 135, 2),
+(911, 53, 135, 2),
+(912, 54, 135, 1);
 
 -- --------------------------------------------------------
 
@@ -973,7 +1217,39 @@ INSERT INTO `tlb_applicant` (`applicant_id`, `user_id`, `grade_file`) VALUES
 (141, 24, NULL),
 (142, 24, NULL),
 (143, 24, NULL),
-(144, 24, NULL);
+(144, 24, NULL),
+(145, 24, NULL),
+(146, 24, NULL),
+(147, 17, NULL),
+(148, 24, NULL),
+(149, 24, NULL),
+(150, 24, NULL),
+(151, 15, NULL),
+(152, 17, NULL),
+(153, 17, NULL),
+(154, 24, NULL),
+(155, 38, NULL),
+(156, 23, NULL),
+(157, 36, NULL),
+(158, 37, NULL),
+(159, 24, NULL),
+(160, 38, NULL),
+(161, 38, NULL),
+(162, 36, NULL),
+(163, 25, NULL),
+(164, 25, NULL),
+(165, 23, NULL),
+(166, 16, NULL),
+(167, 25, NULL),
+(168, 2, NULL),
+(169, 1, NULL),
+(170, 3, NULL),
+(171, 15, NULL),
+(172, 15, NULL),
+(173, 38, NULL),
+(174, 38, NULL),
+(175, 38, NULL),
+(176, 38, NULL);
 
 -- --------------------------------------------------------
 
@@ -995,10 +1271,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_type`) VALUES
-(1, 'emiljohn1129@gmail.com', 'password', 'Ejay', 'McSing', '0'),
-(2, 'xt202001281@wmsu.edu.ph', 'password', 'Ejay', 'McSing', '0'),
-(3, 'ejaymcsing@gmail.com', 'password', 'Ejay', 'McSing', '0'),
-(15, 'ejaymcsing@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'admin'),
+(1, 'emiljohn1129@gmail.com', 'password', 'Ejay', 'McSing', 'student'),
+(2, 'xt202001281@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'student'),
+(3, 'ejaymcsing@gmail.com', 'password', 'Ejay', 'McSing', 'student'),
+(15, 'emiljohn@wmsu.edu.ph', 'password', 'Emil', 'John', 'student'),
 (16, 'ejaypogi@wmsu.edu.ph', 'password', 'Ejay', 'Pogi', 'student'),
 (17, 'gadmarbelamide@wmsu.edu.ph', 'password', 'Gadmar', 'Belamide', 'admin'),
 (18, 'ejmagcanta@gmail.com', 'password', 'Ejay', 'Magcanta', 'student'),
@@ -1007,12 +1283,21 @@ INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`,
 (25, 'denisegerzon@wmsu.edu.ph', 'password', 'Denise', 'Gerzon', 'student'),
 (26, 'markvlad@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student'),
 (36, 'abdulasishamja@wmsu.edu.ph', 'password', 'Abdul-asis', 'Hamja', 'student'),
-(37, 'jaydeeballaho@wmsu.edu.ph', 'password', 'Mr. Jaydee', 'C. Ballaho', 'student'),
-(38, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student');
+(38, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student'),
+(39, 'test@wmsu.edu.php', 'password', 'test', 'test', 'staff'),
+(40, 'jaydeeballaho@wmsu.edu.ph', 'password', 'Jaydee', 'Ballaho', 'adviser'),
+(41, 'salimartahil@wmsu.edu.ph', 'password', 'Salimar', 'Tahil', 'adviser'),
+(42, 'lucyfelix@wmsu.edu.ph', 'password', 'Lucy', 'Felix', 'adviser');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dean_applicants`
+--
+ALTER TABLE `dean_applicants`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faculty`
@@ -1051,6 +1336,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `dean_applicants`
+--
+ALTER TABLE `dean_applicants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
@@ -1066,19 +1357,19 @@ ALTER TABLE `programs`
 -- AUTO_INCREMENT for table `tbl_list_grades`
 --
 ALTER TABLE `tbl_list_grades`
-  MODIFY `grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=708;
+  MODIFY `grades_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=913;
 
 --
 -- AUTO_INCREMENT for table `tlb_applicant`
 --
 ALTER TABLE `tlb_applicant`
-  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `applicant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
