@@ -70,12 +70,23 @@
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
+            <?php if($_SESSION['user_type'] == 'student') { ?>
             <li>
                 <a href="../apply/application-new.php">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
             </li>
+            <?php } ?> 
+
+            <?php if($_SESSION['user_type'] == 'adviser') { ?>
+            <li>
+                <a href="../apply/admin-application.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">Admin application</span>
+                </a>
+            </li>
+            <?php } ?>   
             
             <li>
                 <a href="../listers/listers.php">
