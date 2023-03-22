@@ -6,7 +6,7 @@
         header('location: ../login/login.php');
     }
 
-    
+    print_r($_SESSION);
 
     require_once '../tools/variables.php';
     $dashboard = 'active';

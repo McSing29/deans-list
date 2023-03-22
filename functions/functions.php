@@ -1,8 +1,8 @@
 <?php
 
-function validate_user_email($POST){
+function validate_user_email($email){
     // Remove all illegal characters from email
-    $user_email = filter_var($POST['user_email'], FILTER_SANITIZE_EMAIL);
+    $user_email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
     // Validate e-mail
     if (filter_var($user_email, FILTER_VALIDATE_EMAIL)) {

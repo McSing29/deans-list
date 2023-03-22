@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-12">
                         <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
-                        
+                        <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Curriculum: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['curriculum'].'</span>'; ?></h6>
                         </div>
                     </div>
                     
@@ -96,7 +96,8 @@
                                             <th scope="col" class="table-name">#</th>
                                             <th scope="col">Email</th>
                                             <th scope="col" class="academic-rank">Academic Rank</th>
-                                            <th scope="col">Department</th>
+                                            
+                                            <th scope="col">Year</th>
                                             <th scope="col">GPA</th>
                                             <th scope="col">Status</th>
                                         </tr>
@@ -107,7 +108,7 @@
                                             <td><?php echo '<span class="admin-name">'.$row["user_id"].'</span>'; ?></td>
                                             <td><?php echo '<span class="admin-name">'.$row["email"].'</span>'; ?></td>
                                             <td><?php echo '<span class="admin-name">student</span>'; ?></td>
-                                            <td>BS<?php echo strtoupper($row["curriculum"])  ?></td>
+                                            <td><?php echo strtoupper($row["year_level"])  ?></td>
                                             <td><p><?php echo $row["total_gpa"] ?></p></td>
                                             <td><mark><?php echo ucfirst($row["status"]) ?></mark></td>
                                         </tr>
@@ -146,14 +147,18 @@
                                             <label for="floatingSelect">Semester</label>
                                         </div>
 
-                                        <div class="form-floating dropdown-select">
-                                            <select class="form-select" name="curriculum" id="curriculum" required>
-                                                <option value="">-- Select --</option>
-                                                <option value="cs">Computer Science</option>
-                                                <option value="it">Information Technology</option>
-                                            </select>
-                                            <label for="floatingSelect">Curriculum</label>
-                                        </div>
+                                        <?php 
+                                        $curriculumskie = " ";
+                                            if($_SESSION['curriculum'] == "BSCS") {
+                                                $curriculumskie = "cs";
+                                            } else {
+                                                $curriculumskie = "it";
+                                            }
+                                        
+
+                                        ?>
+
+                                        <input type="hidden" name="curriculum" value="<?php echo $curriculumskie?>">
 
                                         <div class="form-floating dropdown-select">
                                             <select class="form-select" name="yearlevel" id="yearlevel" required>
@@ -188,6 +193,11 @@
                                         <div class="table-header d-flex flex-row">
                                             <h6>Subjects</h6>
                                         </div>
+
+                                        <input type="hidden" name="schoolyear" value="<?php echo $curriculumskie?>">
+                                        <input type="hidden" name="yearlevel" value="<?php echo $curriculumskie?>">
+                                        <input type="hidden" name="section" value="<?php echo $curriculumskie?>">
+
                                         <div class="table-body">
                                             <?php foreach ($listOfSubject as $subject) { ?>
                                                 <div class="table-row d-flex flex-row">

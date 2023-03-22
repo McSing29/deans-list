@@ -26,6 +26,8 @@
             $_SESSION['user_lastname'] = $result['user_lastname'];
             $_SESSION['user_type'] = $result['user_type'];
             $_SESSION['user_id'] = $result['user_id'];
+            $_SESSION['curriculum'] = $result['curriculum'];
+            
             header('location: ../dashboard/dashboard.php');
         }
         else{

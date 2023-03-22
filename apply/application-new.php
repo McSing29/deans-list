@@ -14,9 +14,6 @@ $listOfSubject = [];
 // button for form of selecting subjects
 if (isset($_POST['firstStepSubmit'])) {
     // GET data from dtbase
-
-    // print_r($_POST);
-
     $subject->schoolyear = $_POST['schoolyear'];
     $subject->sem = $_POST['semester'];
     $subject->curriculum = $_POST['curriculum'];
@@ -36,27 +33,19 @@ if (isset($_POST['firstStepSubmit'])) {
     $email = $_SESSION['logged-in'];
     $user_id = $_SESSION['user_id'];
 
-    $addAplicant = "INSERT INTO `dean_applicants`(`name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `status`, `user_id`) VALUES ('$name','$email','$schoolyear','$curriculum','$year_level','$section', 'pending', '$user_id')";
+    print_r($subject);
+    print_r($listOfSubject);
+
+    $addAplicant = "INSERT INTO `dean_applicants`(`id`, `name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `status`, `user_id`) 
+    VALUES (NULL, '$name','$email','$schoolyear','$curriculum','$year_level','$section', 'pending', '$user_id')";
     mysqli_query($conn, $addAplicant);
-
 }
-
-// Add functionality below if user has clicked "Submit" button
-if (isset($_POST['secondStepSubmits'])) {
-    // Store to Database submitted grades
-    
-}
-
-
 
 if(isset($_POST['secondStepSubmit'])) {
-
-    // print_r("test");
-
-
 	// 1. Insert data to tlb_applicant
 	// 1.1 CREATE A FUNCTION THAT WILL INSERT DATA TO tlb_applicant
 	$subject -> user_id = $_SESSION['user_id'];
+    
 	$result = $subject -> addApplicant();
 	// 1.2 Get applicant_id WHERE userid corresponds sa sino nag login
 	// 1.3
@@ -88,21 +77,33 @@ if(isset($_POST['secondStepSubmit'])) {
 
     $initial = 0;
 
-foreach($subject -> grade as $grade) {
-    $initial += $grade;
+    foreach($subject -> grade as $grade) {
+        $initial += $grade;
+    }
+    
+    $gradeInAverage = $initial / sizeof($subject -> grade);
+    
+    $string = floatval($gradeInAverage);
+    // Use the number_format function to format the string
+    $gradeInAverage = number_format($string, 2, '.', '');
+    
+    $name = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
+    $email = $_SESSION['logged-in'];
+    $user_id = $_SESSION['user_id'];
+    $curriculum = $_SESSION['curriculum'];
+    $schoolyear = $_POST['schoolyear'];
+    $year_level = $_POST['yearlevel'];
+    $section = $_POST['section'];
+    
+    
+    $addAplicant = "INSERT INTO `dean_applicants`(`id`, `name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `status`, `user_id`) 
+    VALUES (NULL, '$name','$email','$schoolyear','$curriculum','$year_level','$section', 'pending', '$user_id')";
+    mysqli_query($conn, $addAplicant);
+    
+    $updateGPA = "UPDATE dean_applicants SET total_gpa='$average' AND user_id = '1' WHERE name='$name'w ";
+    mysqli_query($conn, $updateGPA);
 }
 
-$gradeInAverage = $initial / sizeof($subject -> grade);
-
-$string = floatval($gradeInAverage);
-// Use the number_format function to format the string
-$gradeInAverage = number_format($string, 2, '.', '');
-
-$name = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
-$updateGPA = "UPDATE dean_applicants SET total_gpa='$average' WHERE name='$name'";
-mysqli_query($conn, $updateGPA);
-
-}
 
 
 ?>
