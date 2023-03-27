@@ -223,6 +223,7 @@
                         <tr>
                             <th>Rank</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>GPA</th>
                             <th>Department</th>
                             <th>Year Level</th>
@@ -250,6 +251,7 @@
                                 <!-- always use echo to output PHP values -->
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $value['fullname'] ?>
+                                <td><?php echo $value['email'] ?>
                                 <td><?php echo $value['gpa'] ?></td>
                                 <td><?php echo $value['department'] ?></td>
                                 <td><?php echo $value['yearlevel'] ?></td>
