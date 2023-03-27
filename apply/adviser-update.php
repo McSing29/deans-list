@@ -1,7 +1,6 @@
 <?php 
 
-$conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
-
+require_once '../class/database.php';
 if (isset($_POST["accept"])) {
     
     $sql = "UPDATE deanslist_applicants SET adviser_status = 'Accepted' WHERE id =".$_POST['app_id']."";

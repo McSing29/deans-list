@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+require_once '../class/database.php';
 $path = "../";
 
 require_once $path . "class/subject.class.php";
