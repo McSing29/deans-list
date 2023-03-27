@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged-in'])) {
     header('location: ../login/login.php');
 }
 
-require_once '../class/database.php';
+$conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 
 include_once '../class/listers.class.php';
 include_once '../class/faculty.class.php';
