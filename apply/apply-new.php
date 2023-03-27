@@ -26,7 +26,8 @@
             $existing = false;
             $user_id = $_SESSION['user_id'];
 
-            require_once '../class/database.php';
+            $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+
             $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$user_id' AND (app_status = 'Pending' OR app_status = 'Accepted' OR app_status = 'Declined')";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
