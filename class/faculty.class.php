@@ -91,6 +91,16 @@ class Faculty{
         return $data;
     }
 
+    function get_loggedin_adviser_id($email){
+        $sql = "SELECT id FROM faculty INNER JOIN users ON faculty.email=users.user_email WHERE users.user_email=:email";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $email);
+        if($query->execute()){
+            $data = $query->fetch();
+        }
+        return $data;
+    }
+
 }
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 04:45 PM
+-- Generation Time: Mar 27, 2023 at 06:50 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,148 @@ SET time_zone = "+00:00";
 --
 -- Database: `deanslist`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicants_grades`
+--
+
+CREATE TABLE `applicants_grades` (
+  `id` int(11) NOT NULL,
+  `applicant_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `grade` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `applicants_grades`
+--
+
+INSERT INTO `applicants_grades` (`id`, `applicant_id`, `subject_id`, `grade`) VALUES
+(54, 29, 50, 1.5),
+(55, 29, 51, 1.25),
+(56, 30, 52, 1.5),
+(57, 30, 53, 1.25),
+(58, 30, 54, 1.75),
+(59, 32, 50, 1.75),
+(60, 32, 51, 1.25),
+(61, 32, 50, 1.75),
+(62, 32, 51, 1.25),
+(63, 33, 52, 1.5),
+(64, 33, 53, 1),
+(65, 33, 54, 1.25),
+(66, 34, 103, 1.25),
+(67, 34, 104, 1),
+(68, 36, 52, 1.5),
+(69, 36, 53, 1.75),
+(70, 36, 54, 1.25),
+(73, 38, 52, 1),
+(74, 38, 53, 1),
+(75, 38, 54, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `course_name` varchar(255) NOT NULL,
+  `course_fullname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `course_name`, `course_fullname`) VALUES
+(1, 'BSCS', 'Bachelor of Science in Computer Science'),
+(2, 'BSIT', 'Bacher of Science in Information Technology');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_schoolyear`
+--
+
+CREATE TABLE `course_schoolyear` (
+  `id` int(11) NOT NULL,
+  `school_year` varchar(255) NOT NULL,
+  `course_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course_schoolyear`
+--
+
+INSERT INTO `course_schoolyear` (`id`, `school_year`, `course_id`) VALUES
+(1, '2022-2023', 1),
+(2, '2022-2023', 2),
+(3, '2021-2022', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deanslist_applicants`
+--
+
+CREATE TABLE `deanslist_applicants` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `curriculum` varchar(255) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `year_level` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `school_year` varchar(255) NOT NULL,
+  `gpa` float NOT NULL,
+  `app_status` varchar(255) NOT NULL,
+  `app_file` varchar(255) NOT NULL,
+  `adviser_id` int(11) NOT NULL,
+  `adviser_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deanslist_applicants`
+--
+
+INSERT INTO `deanslist_applicants` (`id`, `user_id`, `user_name`, `email`, `curriculum`, `semester`, `year_level`, `section`, `school_year`, `gpa`, `app_status`, `app_file`, `adviser_id`, `adviser_status`) VALUES
+(29, 55, 'Koya Will', 'koyawil@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 'School Year 2022-2023', 1.375, 'Accepted', 'score.png', 7, 'Accepted'),
+(30, 51, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 'School Year 2022-2023', 1.5, 'Declined', 'ccs-logo.png', 7, 'Declined'),
+(32, 54, 'Josh Yasil', 'joshuayasil@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 'School Year 2023-2024', 1.5, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(33, 52, 'Denise Gerzon', 'denisegerzon@wmsu.edu.ph', 'BSCS', '2', '4', 'C', 'School Year 2022-2023', 1.25, 'Accepted', 'score.png', 7, 'Accepted'),
+(34, 56, 'Andrei Cafino', 'andreicafino@wmsu.edu.ph', 'BSIT', '2', '4', 'C', 'School Year 2023-2024', 1.125, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(36, 57, 'Ejay McSing', 'ejaymcsing@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 'School Year 2023-2024', 1.5, 'Declined', 'ccs-logo.png', 7, 'Declined'),
+(38, 58, 'Bushra Adjaluddin', 'bushra@wmsu.edu.ph', 'BSCS', '2', '4', 'C', 'School Year 2022-2023', 1, 'Accepted', 'ccs-logo.png', 7, 'Accepted');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deans_listers`
+--
+
+CREATE TABLE `deans_listers` (
+  `id` int(11) NOT NULL,
+  `app_id` int(11) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `gpa` float NOT NULL,
+  `department` varchar(255) NOT NULL,
+  `yearlevel` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deans_listers`
+--
+
+INSERT INTO `deans_listers` (`id`, `app_id`, `fullname`, `gpa`, `department`, `yearlevel`) VALUES
+(2, 29, 'Koya Will', 1.375, 'BSCS', '4'),
+(3, 32, 'Josh Yasil', 1.5, 'BSCS', '4'),
+(4, 33, 'Denise Gerzon', 1.25, 'BSCS', '4'),
+(5, 34, 'Andrei Cafino', 1.125, 'BSIT', '4'),
+(6, 38, 'Bushra Adjaluddin', 1, 'BSCS', '4');
 
 -- --------------------------------------------------------
 
@@ -45,7 +187,7 @@ CREATE TABLE `dean_applicants` (
 --
 
 INSERT INTO `dean_applicants` (`id`, `name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `total_gpa`, `status`, `user_id`) VALUES
-(26, 'Josh Yasil', 'joshuayasil@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1.11111, 'pending', 23),
+(26, 'Josh Yasil', 'joshuayasil@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1.11111, 'Declined', 23),
 (27, 'Ejay Pogi', 'ejaypogi@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'A', 1.25, 'pending', 16),
 (29, 'Ejay McSing', 'xt202001281@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'A', 1.5, 'pending', 2),
 (30, 'Ejay McSing', 'emiljohn1129@gmail.com', 'School Year 2022-2023', 'cs', '4', 'A', 1.5, 'Accepted', 1),
@@ -58,7 +200,12 @@ INSERT INTO `dean_applicants` (`id`, `name`, `email`, `school_year`, `curriculum
 (37, 'Emil John', 'emiljohn@wmsu.edu.ph', 'School Year 2023-2024', 'it', '3', 'A', 0, 'Declined', 15),
 (38, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '1', 'A', 1.5, 'Accepted', 38),
 (39, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2022-2023', 'cs', '4', 'A', 1.5, 'Accepted', 38),
-(40, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'C', 1.5, 'Accepted', 38);
+(40, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'School Year 2023-2024', 'cs', '4', 'C', 1.5, 'Accepted', 38),
+(41, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'School Year 2022-2023', 'it', '1', 'A', 0, 'Declined', 24),
+(42, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'School Year 2022-2023', 'it', '1', 'A', 0, 'Declined', 24),
+(43, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'School Year 2022-2023', 'it', '1', 'A', 0, 'Declined', 24),
+(44, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'School Year 2022-2023', 'it', '2', 'A', 0, 'Declined', 24),
+(45, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'School Year 2022-2023', 'it', '4', 'C', 0, 'Declined', 24);
 
 -- --------------------------------------------------------
 
@@ -107,6 +254,18 @@ INSERT INTO `faculty` (`id`, `img`, `firstname`, `lastname`, `rank`, `email`, `s
 (25, 'timpangco.png', 'Mr. Whesley', 'G. Timpangco ', 'LMS Network Engineer', 'whesleytimpangco@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:26:12', '2023-01-25 14:26:12'),
 (26, 'jackaria.png', 'Ms. Alhadzra  ', 'M. Jackaria', 'Laboratory Technician', 'alhadzrajackaria@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:26:58', '2023-01-25 14:26:58'),
 (27, 'male.png', 'Mr. John Roy  ', 'S. Velario', 'Administrative Assistant', 'johnroyvelario@wmsu.edu.ph', 'Active Employee', '2023-01-25 14:27:34', '2023-01-25 14:27:34');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `grades_list`
+-- (See below for the actual view)
+--
+CREATE TABLE `grades_list` (
+`applicant_id` int(11)
+,`subject_name` varchar(255)
+,`grade` float
+);
 
 -- --------------------------------------------------------
 
@@ -164,6 +323,33 @@ INSERT INTO `programs` (`id`, `code`, `description`, `years`, `level`, `cet`, `s
 (3, 'BSCS-ST', 'BS Computer Science major in Software Technology', 4, 'Bachelor', 90, 'Phase-Out', '2022-11-03 07:17:36', '2022-11-13 15:07:49'),
 (4, 'ACT', 'Associate in Computer Technology', 2, 'Associate', 55, 'Offering', '2022-11-13 05:26:06', '2022-11-13 15:06:10'),
 (5, 'ACS', 'Associate in Computer Science', 2, 'Associate', 55, 'Phase-Out', '2022-11-13 06:20:18', '2022-11-13 15:06:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sy_subjects`
+--
+
+CREATE TABLE `sy_subjects` (
+  `id` int(11) NOT NULL,
+  `subject_code` varchar(255) NOT NULL,
+  `subject_name` varchar(255) NOT NULL,
+  `lec_units` int(11) NOT NULL,
+  `lab_units` int(11) NOT NULL,
+  `pre_req` varchar(255) NOT NULL,
+  `sem` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `year_level` int(11) NOT NULL,
+  `sy_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sy_subjects`
+--
+
+INSERT INTO `sy_subjects` (`id`, `subject_code`, `subject_name`, `lec_units`, `lab_units`, `pre_req`, `sem`, `course_id`, `year_level`, `sy_id`) VALUES
+(1, 'CC101', 'Computer Programming I', 3, 1, 'None', 1, 1, 1, 1),
+(3, 'CC101', 'Computer Programming II', 3, 1, 'None', 2, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1263,35 +1449,77 @@ CREATE TABLE `users` (
   `user_password` varchar(255) NOT NULL,
   `user_firstname` varchar(255) NOT NULL,
   `user_lastname` varchar(255) NOT NULL,
-  `user_type` varchar(255) NOT NULL
+  `user_type` varchar(255) NOT NULL,
+  `curriculum` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_type`) VALUES
-(1, 'emiljohn1129@gmail.com', 'password', 'Ejay', 'McSing', 'student'),
-(2, 'xt202001281@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'student'),
-(3, 'ejaymcsing@gmail.com', 'password', 'Ejay', 'McSing', 'student'),
-(15, 'emiljohn@wmsu.edu.ph', 'password', 'Emil', 'John', 'student'),
-(16, 'ejaypogi@wmsu.edu.ph', 'password', 'Ejay', 'Pogi', 'student'),
-(17, 'gadmarbelamide@wmsu.edu.ph', 'password', 'Gadmar', 'Belamide', 'admin'),
-(18, 'ejmagcanta@gmail.com', 'password', 'Ejay', 'Magcanta', 'student'),
-(23, 'joshuayasil@wmsu.edu.ph', 'password', 'Josh', 'Yasil', 'student'),
-(24, 'daphnagata@wmsu.edu.ph', 'password', 'Daph', 'Nagata', 'student'),
-(25, 'denisegerzon@wmsu.edu.ph', 'password', 'Denise', 'Gerzon', 'student'),
-(26, 'markvlad@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student'),
-(36, 'abdulasishamja@wmsu.edu.ph', 'password', 'Abdul-asis', 'Hamja', 'student'),
-(38, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student'),
-(39, 'test@wmsu.edu.php', 'password', 'test', 'test', 'staff'),
-(40, 'jaydeeballaho@wmsu.edu.ph', 'password', 'Jaydee', 'Ballaho', 'adviser'),
-(41, 'salimartahil@wmsu.edu.ph', 'password', 'Salimar', 'Tahil', 'adviser'),
-(42, 'lucyfelix@wmsu.edu.ph', 'password', 'Lucy', 'Felix', 'adviser');
+INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`, `user_lastname`, `user_type`, `curriculum`) VALUES
+(44, 'johndoe@wmsu.edu.ph', 'password', 'John', 'Doe', 'student', 'BSCS'),
+(45, 'lucyfelix@wmsu.edu.ph', 'password', 'Lucy Felix', 'Sadiwa', 'adviser', 'BSCS'),
+(46, 'janedoe@wmsu.edu.ph', 'password', 'Jane', 'Doe', 'student', 'BSCS'),
+(47, 'gadmarbelamide@wmsu.edu.ph', 'password', 'Gadmar', 'Belamide', 'admin', 'BSCS'),
+(48, 'daphnagata@wmsu.edu.ph', 'password', 'Daph', 'Nagata', 'student', 'BSCS'),
+(50, 'abdulasishamja@wmsu.edu.ph', 'password', 'Abdulasis', 'Hamja', 'student', 'BSCS'),
+(51, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student', 'BSCS'),
+(52, 'denisegerzon@wmsu.edu.ph', 'password', 'Denise', 'Gerzon', 'student', 'BSCS'),
+(54, 'joshuayasil@wmsu.edu.ph', 'password', 'Josh', 'Yasil', 'student', 'BSCS'),
+(55, 'koyawil@wmsu.edu.ph', 'password', 'Koya', 'Will', 'student', 'BSCS'),
+(56, 'andreicafino@wmsu.edu.ph', 'password', 'Andrei', 'Cafino', 'student', 'BSIT'),
+(57, 'ejaymcsing@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'student', 'BSCS'),
+(58, 'bushra@wmsu.edu.ph', 'password', 'Bushra', 'Adjaluddin', 'student', 'BSCS');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `grades_list`
+--
+DROP TABLE IF EXISTS `grades_list`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `grades_list`  AS SELECT `applicants_grades`.`applicant_id` AS `applicant_id`, `tbl_subject`.`subject_name` AS `subject_name`, `applicants_grades`.`grade` AS `grade` FROM (`tbl_subject` join `applicants_grades` on(`tbl_subject`.`subject_id` = `applicants_grades`.`subject_id`)) ;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `applicants_grades`
+--
+ALTER TABLE `applicants_grades`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `applicant_id` (`applicant_id`),
+  ADD KEY `subject_id` (`subject_id`);
+
+--
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `course_schoolyear`
+--
+ALTER TABLE `course_schoolyear`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course` (`course_id`);
+
+--
+-- Indexes for table `deanslist_applicants`
+--
+ALTER TABLE `deanslist_applicants`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `adviser_id` (`adviser_id`);
+
+--
+-- Indexes for table `deans_listers`
+--
+ALTER TABLE `deans_listers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `app_id` (`app_id`);
 
 --
 -- Indexes for table `dean_applicants`
@@ -1313,10 +1541,24 @@ ALTER TABLE `programs`
   ADD UNIQUE KEY `code` (`code`);
 
 --
+-- Indexes for table `sy_subjects`
+--
+ALTER TABLE `sy_subjects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sy_id` (`sy_id`),
+  ADD KEY `course_id` (`course_id`);
+
+--
 -- Indexes for table `tbl_list_grades`
 --
 ALTER TABLE `tbl_list_grades`
   ADD PRIMARY KEY (`grades_id`);
+
+--
+-- Indexes for table `tbl_subject`
+--
+ALTER TABLE `tbl_subject`
+  ADD PRIMARY KEY (`subject_id`);
 
 --
 -- Indexes for table `tlb_applicant`
@@ -1336,10 +1578,40 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `applicants_grades`
+--
+ALTER TABLE `applicants_grades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
+--
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `course_schoolyear`
+--
+ALTER TABLE `course_schoolyear`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `deanslist_applicants`
+--
+ALTER TABLE `deanslist_applicants`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `deans_listers`
+--
+ALTER TABLE `deans_listers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `dean_applicants`
 --
 ALTER TABLE `dean_applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `faculty`
@@ -1352,6 +1624,12 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `programs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `sy_subjects`
+--
+ALTER TABLE `sy_subjects`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_list_grades`
@@ -1369,7 +1647,44 @@ ALTER TABLE `tlb_applicant`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `applicants_grades`
+--
+ALTER TABLE `applicants_grades`
+  ADD CONSTRAINT `applicant_id` FOREIGN KEY (`applicant_id`) REFERENCES `deanslist_applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subject` (`subject_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `course_schoolyear`
+--
+ALTER TABLE `course_schoolyear`
+  ADD CONSTRAINT `course` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `deanslist_applicants`
+--
+ALTER TABLE `deanslist_applicants`
+  ADD CONSTRAINT `adviser_id` FOREIGN KEY (`adviser_id`) REFERENCES `faculty` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `deans_listers`
+--
+ALTER TABLE `deans_listers`
+  ADD CONSTRAINT `app_id` FOREIGN KEY (`app_id`) REFERENCES `deanslist_applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sy_subjects`
+--
+ALTER TABLE `sy_subjects`
+  ADD CONSTRAINT `course_id` FOREIGN KEY (`course_id`) REFERENCES `course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sy_id` FOREIGN KEY (`sy_id`) REFERENCES `course_schoolyear` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

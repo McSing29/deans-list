@@ -21,13 +21,24 @@
     <br>
     <br>
     <div class="root d-flex flex-column align-items-center justify-content-center">
-   
-    
+
+        <?php
+            $existing = false;
+            $user_id = $_SESSION['user_id'];
+
+            
+            $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$user_id' AND (app_status = 'Pending' OR app_status = 'Accepted' OR app_status = 'Declined')";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $existing = true;
+            }
+        ?>
         <div class="card">
             <div class="card-body">
                 <!-- Progress Bar -->
                 <div class="stepper-wrapper">
-                    <div class="stepper-item <?php if (isset($_POST['secondStepSubmit']))
+                    <div class="stepper-item <?php if (isset($_POST['secondStepSubmit']) || $existing)
                                                     echo "completed";
                                                 else
                                                         if (!isset($_POST['firstStepSubmit']))
@@ -37,7 +48,7 @@
                         <div class="step-counter">1</div>
                         <div class="step-name">Student Info</div>
                     </div>
-                    <div class="stepper-item <?php if (isset($_POST['secondStepSubmit']))
+                    <div class="stepper-item <?php if (isset($_POST['secondStepSubmit']) || $existing)
                                                     echo "completed";
                                                 else
                                                         if (isset($_POST['firstStepSubmit']))
@@ -47,7 +58,7 @@
                         <div class="step-counter">2</div>
                         <div class="step-name">Application</div>
                     </div>
-                    <div class="stepper-item <?php echo isset($_POST['secondStepSubmit']) ? "active" : "" ?>">
+                    <div class="stepper-item <?php echo isset($_POST['secondStepSubmit']) || $existing ? "active" : "" ?>">
                         <div class="step-counter">3</div>
                         <div class="step-name">Assessment</div>
                     </div>
@@ -59,11 +70,11 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                        <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['user_firstname'].' '.$_SESSION['user_lastname'].'</span>'; ?></h6>
-                        <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Curriculum: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">'.$_SESSION['curriculum'].'</span>'; ?></h6>
+                            <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">' . $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] . '</span>'; ?></h6>
+                            <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Curriculum: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">' . $_SESSION['curriculum'] . '</span>'; ?></h6>
                         </div>
                     </div>
-                    
+
 
 
                     <form action="application-new.php" method="post" enctype="multipart/form-data" class="firstStepForm d-flex flex-column align-items-center">
@@ -79,48 +90,51 @@
                         -->
 
                         <?php
-                        /* Check if user has already clicked "Submit" button */
-                        if (isset($_POST['secondStepSubmit'])) {
-                            $conn = mysqli_connect('localhost', 'root', '', 'deanslist');
-                            $user_id = $_SESSION['user_id'];
-                            $sql = "SELECT * FROM dean_applicants WHERE user_id = '$user_id'";
+                        /* Check if user has already clicked "Submit" button or has existing application */
+
+                        if (isset($_POST['secondStepSubmit']) || $existing) {
+
+
+                            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$user_id'";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                         ?>
-                            <!-- Assessment UI -->
-                            <div class="third_step">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" class="table-name">#</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col" class="academic-rank">Academic Rank</th>
-                                            
-                                            <th scope="col">Year</th>
-                                            <th scope="col">GPA</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <!--  -->
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo '<span class="admin-name">'.$row["user_id"].'</span>'; ?></td>
-                                            <td><?php echo '<span class="admin-name">'.$row["email"].'</span>'; ?></td>
-                                            <td><?php echo '<span class="admin-name">student</span>'; ?></td>
-                                            <td><?php echo strtoupper($row["year_level"])  ?></td>
-                                            <td><p><?php echo $row["total_gpa"] ?></p></td>
-                                            <td><mark><?php echo ucfirst($row["status"]) ?></mark></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        <?php
+                                    <!-- Assessment UI -->
+                                    <div class="third_step">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="table-name">#</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col" class="academic-rank">Academic Rank</th>
+
+                                                    <th scope="col">Year</th>
+                                                    <th scope="col">GPA</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <!--  -->
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php echo '<span class="admin-name">' . $row["user_id"] . '</span>'; ?></td>
+                                                    <td><?php echo '<span class="admin-name">' . $row["email"] . '</span>'; ?></td>
+                                                    <td><?php echo '<span class="admin-name">student</span>'; ?></td>
+                                                    <td><?php echo strtoupper($row["year_level"])  ?></td>
+                                                    <td>
+                                                        <p><?php echo $row["gpa"] ?></p>
+                                                    </td>
+                                                    <td><mark style="<?php if($row["app_status"] == 'Accepted') echo "background-color: rgb(181, 247, 57)"; elseif($row["app_status"] == 'Declined') echo "background-color: rgb(238, 115, 32)" ?>"><?php echo ucfirst($row["app_status"]) ?></mark></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                            <?php
                                 }
                             }
                         } else {
-                        ?>
+                            ?>
 
                             <?php
                             /* Check if user have NOT clicked the "Next" button */
@@ -147,18 +161,18 @@
                                             <label for="floatingSelect">Semester</label>
                                         </div>
 
-                                        <?php 
+                                        <?php
                                         $curriculumskie = " ";
-                                            if($_SESSION['curriculum'] == "BSCS") {
-                                                $curriculumskie = "cs";
-                                            } else {
-                                                $curriculumskie = "it";
-                                            }
-                                        
+                                        if ($_SESSION['curriculum'] == "BSCS") {
+                                            $curriculumskie = "cs";
+                                        } else {
+                                            $curriculumskie = "it";
+                                        }
+
 
                                         ?>
 
-                                        <input type="hidden" name="curriculum" value="<?php echo $curriculumskie?>">
+                                        <input type="hidden" name="curriculum" value="<?php echo $curriculumskie ?>">
 
                                         <div class="form-floating dropdown-select">
                                             <select class="form-select" name="yearlevel" id="yearlevel" required>
@@ -180,6 +194,24 @@
                                             </select>
                                             <label for="floatingSelect">Section</label>
                                         </div>
+
+                                        <div class="form-floating dropdown-select">
+                                            <select class="form-select" name="adviser" id="adviser" required>
+                                                <option value="">-- Select --</option>
+                                                <?php
+                                                include_once '../class/program.class.php';
+                                                $faculty = new Program;
+
+                                                foreach($faculty->showAdvisers() as $advisers){
+                                                ?>
+                                                    <option value="<?php echo $advisers['id'] ?>"><?php echo $advisers['firstname'] . " " . $advisers['lastname'] ?></option> 
+                                                <?php
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <label for="floatingSelect">Adviser</label>
+                                        </div>
                                     </div>
                                 </div>
                             <?php
@@ -194,9 +226,9 @@
                                             <h6>Subjects</h6>
                                         </div>
 
-                                        <input type="hidden" name="schoolyear" value="<?php echo $curriculumskie?>">
-                                        <input type="hidden" name="yearlevel" value="<?php echo $curriculumskie?>">
-                                        <input type="hidden" name="section" value="<?php echo $curriculumskie?>">
+                                        <input type="hidden" name="schoolyear" value="<?php echo $curriculumskie ?>">
+                                        <input type="hidden" name="yearlevel" value="<?php echo $curriculumskie ?>">
+                                        <input type="hidden" name="section" value="<?php echo $curriculumskie ?>">
 
                                         <div class="table-body">
                                             <?php foreach ($listOfSubject as $subject) { ?>
@@ -219,60 +251,69 @@
 
                                             <!-- Add more rows as needed -->
                                         </div>
-                                        
-                                        
-                                    
-                                        <p style="margin-left: 525px"class="totalGrade"><?php echo isset($average) ? $average: "GPA:" ?></p>
+
+
+
+                                        <p style="margin-left: 525px" class="totalGrade"><?php echo isset($average) ? $average : "GPA:" ?></p>
                                         <div class="row">
-                                
+
                                             <div class="col">
                                                 <div class="d-flex justify-content-end">
                                                     <input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 500px">
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                     </div>
-                                    
                                     <div class="file-input mb-3 d-flex flex-row justify-content-left">
                                         <label for="formFile" class="form-label">Portal Screenshot: </label>
-                                        <input class="form-control" type="file" id="formFile" required>
+                                        <input class="form-control" type="file" id="formFile" name="formFile" required>
                                     </div>
                                 </div>
-                                
+
                         <?php
                             }
                         }
                         ?>
-                        
-                        <?php
-                        if (!isset($_POST['secondStepSubmit'])) {
-                        ?>
-                            <div class="submit-container d-flex flex-row justify-content-between">
-                                <a href="./application-new.php"><button type="button" name="backBtn" class="btn btn-success backBtn">Back</button></a>
-                                <button <?php
-                                        /* If on User Info UI, change buttton name to "firstStepSubmit" */
-                                        if (!isset($_POST['firstStepSubmit'])) {
-                                        ?> type="submit" name="firstStepSubmit" <?php
-                                                                            } else {
-                                                                                ?> type="button" data-bs-toggle="modal" data-bs-target="#successModal" <?php
-                                                                                                            }
-                                                                                                                ?> class="btn btn-success nxtBtn"><?php echo isset($_POST['firstStepSubmit']) ? "Submit" : "Next" ?></button>
 
-
-                            </div>
-                            <br>
-                            <br>
-                            
-                            
                         <?php
-                        } else {
+                        if ($existing) {
+
                         ?>
                             <div class="submit-container d-flex flex-row justify-content-between">
                                 <a href="../dashboard/dashboard.php"><button type="button" name="homeBtn" class="btn btn-success homeBtn">Back to Homepage</button></a>
                             </div>
+                            <?php
+
+                        } else {
+                            if (!isset($_POST['secondStepSubmit'])) {
+                            ?>
+                                <div class="submit-container d-flex flex-row justify-content-between">
+                                    <a href="./application-new.php"><button type="button" name="backBtn" class="btn btn-success backBtn">Back</button></a>
+                                    <button <?php
+                                            /* If on User Info UI, change buttton name to "firstStepSubmit" */
+                                            if (!isset($_POST['firstStepSubmit'])) {
+                                            ?> type="submit" name="firstStepSubmit" <?php
+                                                                            } else {
+                                                                                ?> type="button" data-bs-toggle="modal" data-bs-target="#successModal" <?php
+                                                                                                                                                    }
+                                                                                                                                                        ?> class="btn btn-success nxtBtn"><?php echo isset($_POST['firstStepSubmit']) ? "Submit" : "Next" ?></button>
+
+
+                                </div>
+                                <br>
+                                <br>
+
+
+                            <?php
+                            } else {
+                            ?>
+                                <div class="submit-container d-flex flex-row justify-content-between">
+                                    <a href="../dashboard/dashboard.php"><button type="button" name="homeBtn" class="btn btn-success homeBtn">Back to Homepage</button></a>
+                                </div>
                         <?php
+                            }
                         }
                         ?>
 

@@ -1,12 +1,15 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'deanslist');
+
+$conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 $path = "../";
 
 require_once $path . "class/subject.class.php";
+require_once $path . "class/listers.class.php";
 
 session_start();
 
 $subject = new subject;
+$applicant = new Listers;
 $subject -> applicant_id = $_SESSION['user_id'];
 
 $listOfSubject = [];
@@ -20,29 +23,83 @@ if (isset($_POST['firstStepSubmit'])) {
     $subject->year_level = $_POST['yearlevel'];
     $subject->section = $_POST['section'];
 
-
-    $schoolyear = $_POST['schoolyear'];
+    $sy = $_POST['schoolyear'];
     $sem = $_POST['semester'];
-    $curriculum = $_POST['curriculum'];
-    $year_level = $_POST['yearlevel'];
+    $yearlevel = $_POST['yearlevel'];
     $section = $_POST['section'];
 
     $listOfSubject = $subject->getSubjects();
-
-    $name = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
-    $email = $_SESSION['logged-in'];
-    $user_id = $_SESSION['user_id'];
-
-    print_r($subject);
-    print_r($listOfSubject);
-
-    $addAplicant = "INSERT INTO `dean_applicants`(`id`, `name`, `email`, `school_year`, `curriculum`, `year_level`, `section`, `status`, `user_id`) 
-    VALUES (NULL, '$name','$email','$schoolyear','$curriculum','$year_level','$section', 'pending', '$user_id')";
-    mysqli_query($conn, $addAplicant);
+    
+    // ADD A NEW APPLICANT WHEN FIRST STEP DONE
+    $fullname = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
+    echo $_SESSION['user_id'];
+    if($applicant->addApplicant($_SESSION['user_id'], $fullname, $_SESSION['user_email'], $_SESSION['curriculum'], $sem, $yearlevel, $section, $sy, 0, "Incomplete", '', $_POST['adviser'], "Pending")){
+        echo "Success!";
+    }
+    else {
+        echo "Something Went Wrong!";
+    }
 }
-
+ 
 if(isset($_POST['secondStepSubmit'])) {
-	// 1. Insert data to tlb_applicant
+    // 1. CALCULATE FOR GPA
+    // Code to calculate for GPA
+    // Formula I used: (SUM OF GRADES) / (NUMBER OF GRADES)
+    // If wrong, adjust accordingly
+    $initialGrade = 0;
+    $count = 0;
+
+    foreach($_POST['grade'] as $grade){
+        $initialGrade += floatval($grade);
+        $count++;
+    }
+
+    $average = $initialGrade / $count;
+    // End of Code
+
+    // 2. UPDATE CURRENT APPLICANT
+    // File Handling
+    $doc_type = "Document";
+    $fileName = $_FILES['formFile']['name'];
+    $fileTmpName = $_FILES['formFile']['tmp_name'];
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed = array('pdf', 'jpeg', 'jpg', 'png'); // Allowed File Types. 
+
+    if(in_array($fileActualExt, $allowed)){
+
+        $fileNameNew = $fileName;
+        $filesDestination = 'documents/'.$fileNameNew;
+
+        if($applicant->updateApplicant($_SESSION['tableid'], $average, "Pending", $fileNameNew)){
+            move_uploaded_file($fileTmpName, $filesDestination);
+            echo "Success!";
+        }
+    }
+    else {
+        ?>
+            <script>
+                alert("File Format is Not Acceptable!");
+                window.location.href="application-new.php";
+            </script>
+        <?php
+    }
+
+    // 3. ADD TO DATABASE THE GRADES PER SUBJECT
+    $grades = $_POST['grade'];
+    $subjectIDs = $_POST['subjectId'];
+
+    foreach($subjectIDs as $key => $n ) {
+        $applicant->recordGradesPerSubject($_SESSION['tableid'], $n, $grades[$key]);
+    }
+
+    // FINISH APPLICATION!!!
+
+
+
+    
+	/*
+    // 1. Insert data to tlb_applicant
 	// 1.1 CREATE A FUNCTION THAT WILL INSERT DATA TO tlb_applicant
 	$subject -> user_id = $_SESSION['user_id'];
     
@@ -101,7 +158,7 @@ if(isset($_POST['secondStepSubmit'])) {
     mysqli_query($conn, $addAplicant);
     
     $updateGPA = "UPDATE dean_applicants SET total_gpa='$average' AND user_id = '1' WHERE name='$name'w ";
-    mysqli_query($conn, $updateGPA);
+    mysqli_query($conn, $updateGPA);*/
 }
 
 
@@ -191,6 +248,15 @@ if(isset($_POST['secondStepSubmit'])) {
                     <span class="links-name">Programs</span>
                 </a>
             </li>
+
+            <?php if($_SESSION['user_type'] == 'admin') { ?>
+            <li>
+                <a href="../curriculum/curriculum.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">CCS Curriculum</span>
+                </a>
+            </li>
+            <?php } ?>
 
             <li>
                 <a href="#">

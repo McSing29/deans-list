@@ -51,12 +51,21 @@
 
             <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
-                <a href="../apply/admin-application.php">
+                <a href="../apply/adviser-application.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">Admin application</span>
+                    <span class="links-name">Application | Adviser</span>
                 </a>
             </li>
             <?php } ?>   
+            
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
+                <li>
+                    <a href="../apply/admin-application.php">
+                        <i class='bx bxs-edit'></i>
+                        <span class="links-name">Application | Admin</span>
+                    </a>
+                </li>
+            <?php } ?>
             
             <li>
                 <a href="../listers/listers.php">
@@ -78,6 +87,15 @@
                     <span class="links-name">Programs</span>
                 </a>
             </li>
+
+            <?php if($_SESSION['user_type'] == 'admin') { ?>
+            <li>
+                <a href="../curriculum/curriculum.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">CCS Curriculum</span>
+                </a>
+            </li>
+            <?php } ?>
 
             <li>
                 <a href="#">

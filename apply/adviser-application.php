@@ -9,8 +9,10 @@ if (!isset($_SESSION['logged-in'])) {
 $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 
 include_once '../class/listers.class.php';
+include_once '../class/faculty.class.php';
 
 $lister = new Listers;
+$faculty = new Faculty;
 
 if (isset($_GET["file"])) {
     $file_name = basename($_GET['file']);
@@ -48,6 +50,9 @@ if (isset($_GET["file"])) {
         echo "Not Found";
     }
 }
+
+
+$adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
 
 ?>
 
@@ -104,7 +109,7 @@ if (isset($_GET["file"])) {
 
             <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
-                <a href="../apply/adviser-application.php">
+                <a href="../apply/adviser-application.php" class ="active">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application | Adviser</span>
                 </a>
@@ -113,7 +118,7 @@ if (isset($_GET["file"])) {
             
             <?php if ($_SESSION['user_type'] == 'admin') { ?>
                 <li>
-                    <a href="../apply/admin-application.php" class ="active">
+                    <a href="../apply/admin-application.php" >
                         <i class='bx bxs-edit'></i>
                         <span class="links-name">Application | Admin</span>
                     </a>
@@ -260,17 +265,17 @@ if (isset($_GET["file"])) {
                 <div class="content-table-container">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="pending nav-link d-flex flex-row active" aria-current="page" href="#pending" data-bs-toggle="tab">Pending <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Pending'";
+                            <a class="pending nav-link d-flex flex-row active" aria-current="page" href="#pending" data-bs-toggle="tab">Pending <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE adviser_status = 'Pending'";
                                                                                                                                                                                                                                                                                                                                                                                                 $result = mysqli_query($conn, $sql);
                                                                                                                                                                                                                                                                                                                                                                                                 echo mysqli_num_rows($result) ?></div> </a>
                         </li>
                         <li class="nav-item">
-                            <a class="accepted nav-link d-flex flex-row" href="#accepted" data-bs-toggle="tab">Approved <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Accepted'";
+                            <a class="accepted nav-link d-flex flex-row" href="#accepted" data-bs-toggle="tab">Accepted <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE adviser_status = 'Accepted'";
                                                                                                                                                                                                                                                                                                                                                                         $result = mysqli_query($conn, $sql);
                                                                                                                                                                                                                                                                                                                                                                         echo mysqli_num_rows($result) ?></div> </a>
                         </li>
                         <li class="nav-item">
-                            <a class="declined nav-link d-flex flex-row" href="#declined" data-bs-toggle="tab">Declined <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Declined'";
+                            <a class="declined nav-link d-flex flex-row" href="#declined" data-bs-toggle="tab">Declined <div class="number-pending d-flex flex-row justify-content-center align-items-center" style="background-color: red; padding: 2px; border-radius: 5px; font-size: 12px; width: 15px ;height: 20px; padding: 3px; color: white; margin-left: 4px"><?php $sql = "SELECT * FROM deanslist_applicants WHERE adviser_status = 'Declined'";
                                                                                                                                                                                                                                                                                                                                                                         $result = mysqli_query($conn, $sql);
                                                                                                                                                                                                                                                                                                                                                                         echo mysqli_num_rows($result) ?></div> </a>
                         </li>
@@ -293,7 +298,7 @@ if (isset($_GET["file"])) {
                             </div>
                             <!-- Table for Pending Applicants -->
                             <?php
-                            $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'pending'";
+                            $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Pending' AND adviser_status='Pending' AND adviser_id=" . $adviser_id['id'];
                             $result = mysqli_query($conn, $sql);
                             ?>
                             <div class="applicant-table-div">
@@ -305,8 +310,7 @@ if (isset($_GET["file"])) {
                                             <th scope="col" style="width: 11%">Curriculum</th>
                                             <th scope="col" style="width: 9%">Section</th>
                                             <th scope="col" style="width: 11%">Total GPA</th>
-                                            <th scope="col" style="width: 11%">Email Address</th>
-                                            <th scope="col" style="width: 14%">Adviser Status</th>
+                                            <th scope="col" style="width: 25%">Email Address</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -324,10 +328,10 @@ if (isset($_GET["file"])) {
                                                     $suffix = "th";
                                                 }
                                                 $user_id = $row["id"];
-                                                echo "<tr><td>" . $row["user_name"] . "</td><td>" . $row["year_level"] . $suffix . " Year</td><td>" . strtoupper($row["curriculum"]) . "</td><td>Section " . $row["section"] . "</td><td>" . $row["gpa"] . "</td><td>" . $row["email"] . "</td>" . "<td>" . $row["adviser_status"] . "</td>" . '<td>
+                                                echo "<tr><td>" . $row["user_name"] . "</td><td>" . $row["year_level"] . $suffix . " Year</td><td>" . strtoupper($row["curriculum"]) . "</td><td>Section " . $row["section"] . "</td><td>" . $row["gpa"] . "</td><td>" . $row["email"] . "</td>" . '<td>
                                                 <form action="update.php" method="post">
                                                     <button type="button" name="view" class="btn btn-warning view" data-bs-toggle="modal" data-bs-target="#viewModal' . $row["id"] . '" style="color: white">View</button>
-                                                    <button type="button" name="accept" class="btn btn-success accept" data-bs-toggle="modal" data-bs-target="#confirmModal">Approve</button> 
+                                                    <button type="button" name="accept" class="btn btn-success accept" data-bs-toggle="modal" data-bs-target="#confirmModal">Accept</button> 
                                                     <button type="button submit" name="decline" class="btn btn-danger decline">Decline</button>
                                                     <input type="hidden" name="app_id" value="' . $user_id . '">
                                                 </form></td>' . "</tr>";
@@ -385,19 +389,16 @@ if (isset($_GET["file"])) {
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header d-flex justify-content-center">
-                                                                <h5 class="modal-title">Approve Selected Student?</h5>
+                                                                <h5 class="modal-title">Accept Student's Application?</h5>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <h1>By clicking "APPROVE", you are now permitting the student to be in the Dean's List.</h1>
+                                                                <h1>By clicking "ACCEPT", you are permitting the student to further proceed with the Application.</h1>
                                                                 <div class="modal-btn-div">
-                                                                    <form action="update.php" method="post">
+                                                                    <form action="adviser-update.php" method="post">
                                                                         <button type="submit" name="accept" class="btn btn-success confirmBtn">Confirm</button>    
                                                                         <input hidden name="app_id" value="<?php echo $row['id'] ?>">  
-                                                                        <input hidden name="fullname" value="<?php echo $row['user_name'] ?>">  
-                                                                        <input hidden name="gpa" value="<?php echo $row['gpa'] ?>">  
-                                                                        <input hidden name="department" value="<?php echo $row['curriculum'] ?>">  
-                                                                        <input hidden name="year_level" value="<?php echo $row['year_level'] ?>">  
                                                                     </form>
+                                                                    
                                                                     <button type="button" class="btn btn-danger cancelBtn" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
 
@@ -429,7 +430,7 @@ if (isset($_GET["file"])) {
                                 <input class="form-control search-bar" type="text" placeholder="Enter Student Name Here">
                             </div>
                             <?php
-                            $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Accepted'";
+                            $sql = "SELECT * FROM deanslist_applicants WHERE adviser_status='Accepted' AND adviser_id=" . $adviser_id['id'];;
                             $result = mysqli_query($conn, $sql);
                             ?>
                             <!-- Table for Accepted Applicants -->
@@ -496,7 +497,7 @@ if (isset($_GET["file"])) {
                                 <input class="form-control search-bar" type="text" placeholder="Enter Student Name Here">
                             </div>
                             <?php
-                            $sql = "SELECT * FROM deanslist_applicants WHERE app_status = 'Declined'";
+                            $sql = "SELECT * FROM deanslist_applicants WHERE adviser_status='Declined' AND adviser_id=" . $adviser_id['id'];;
                             $result = mysqli_query($conn, $sql);
                             ?>
                             <!-- Table for Declined Applicants -->
@@ -526,7 +527,7 @@ if (isset($_GET["file"])) {
                                                     $suffix = "th";
                                                 }
                                                 $user_id = $row["user_id"];
-                                                echo "<tr><td>" . $row["user_name"] . "</td><td>" . $row["year_level"] . $suffix . " Year</td><td>BS" . strtoupper($row["curriculum"]) . "</td><td>Section " . $row["section"] . "</td><td>" . $row["gpa"] . "</td><td>" . $row["email"] . "</td></tr>";
+                                                echo "<tr><td>" . $row["user_name"] . "</td><td>" . $row["year_level"] . $suffix . " Year</td><td>" . strtoupper($row["curriculum"]) . "</td><td>Section " . $row["section"] . "</td><td>" . $row["gpa"] . "</td><td>" . $row["email"] . "</td></tr>";
                                             }
                                         }
                                         ?>
@@ -564,10 +565,7 @@ if (isset($_GET["file"])) {
                 "width": "11%"
             },
             {
-                "width": "15%"
-            },
-            {
-                "width": "12%"
+                "width": "25%"
             },
             {
                 "width": "18%"

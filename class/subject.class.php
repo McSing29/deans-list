@@ -10,6 +10,8 @@ Class subject{
     public $sem;
     public $curriculum;
     public $year_level;
+    public $schoolyear;
+    public $section;
 
     public $user_id;
 
