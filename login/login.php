@@ -73,9 +73,6 @@
                 <label for="remember" id="remember"><input type="checkbox" id="remember" name="remember">Remember me</label>
                 </div>
 
-                <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6LfePKEkAAAAAI9yPb50QaZGShtE759QsEPAwKRa"></div>
-                </div>
                        
                 <input class="button" type="submit" value="Login" name="login" tabindex="3">
                 
