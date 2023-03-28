@@ -129,7 +129,7 @@ if(isset($_POST['secondStepSubmit'])) {
 
         if($applicant->updateApplicant($_SESSION['tableid'], $average, "Pending", $fileNameNew)){
             move_uploaded_file($fileTmpName, $filesDestination);
-            echo "Success!";
+            echo "";
         }
     }
     else {
