@@ -312,14 +312,14 @@ if (isset($_GET["file"])) {
                                 <table class="table" id="pendingTable">
                                     <thead>
                                         <tr>
-                                            <th >Name</th>
-                                            <th>Year Level</th>
-                                            <th>Curriculum</th>
-                                            <th>Section</th>
+                                            <th scope="col" style="width: 15%">Name</th>
+                                            <th scope="col" style="width: 11%">Year Level</th>
+                                            <th scope="col" style="width: 11%">Curriculum</th>
+                                            <th scope="col" style="width: 9%">Section</th>
                                             <th scope="col" style="width: 11%">Total GPA</th>
                                             <th scope="col" style="width: 11%">Email Address</th>
                                             <th scope="col" style="width: 14%">Adviser Status</th>
-                                            <th scope="col" style="width: 40%">Action</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
