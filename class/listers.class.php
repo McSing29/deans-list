@@ -90,8 +90,8 @@ class Listers{
 
     function addApplicant($userid, $fullname, $email, $curriculum, $sem, $yearlevel, $section, $schoolyear, $gpa, $status, $filename, $adviserid, $adviserstatus){
 
-        $conn = mysqli_connect("localhost","root","","deanslist");
-        $sql = "INSERT INTO deanslist_applicants (user_id, user_name, email, curriculum, semester, year_level, section, school_year, gpa, app_status, app_file, adviser_id, adviser_status)
+        $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+        $sql = "INSERT INTO deanslist_applicants (user_id, user_name, email, curriculum, semester, year_level, section, school_year_id, gpa, app_status, app_file, adviser_id, adviser_status)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -139,7 +139,7 @@ class Listers{
     }
 
     function get_submitted_grades($app_id){
-        $conn = mysqli_connect("localhost","root","","deanslist");
+        $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
         $sql = "SELECT * FROM grades_list WHERE applicant_id = ?";
         
         $stmt = mysqli_stmt_init($conn);

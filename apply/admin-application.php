@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION['logged-in'])) {
     header('location: ../login/login.php');
 }
-
 $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 
 include_once '../class/listers.class.php';
@@ -73,7 +72,7 @@ if (isset($_GET["file"])) {
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
-    <title>Dean's List Application | Dean's List Application System - CCS</title>
+    <title>Application | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 
@@ -86,21 +85,24 @@ if (isset($_GET["file"])) {
         </div>
         <br>
         <ul class="nav-links">
+
+
+
             <li>
                 <a href="../dashboard/dashboard.php">
-                    <i class='bx bx-grid-alt'></i>
+                    <i class='bx bx-grid-alt' ></i>
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
 
-            <?php if ($_SESSION['user_type'] == 'student') { ?>
-                <li>
-                    <a href="../apply/application-new.php">
-                        <i class='bx bxs-edit'></i>
-                        <span class="links-name">Application</span>
-                    </a>
-                </li>
-            <?php } ?>
+            <?php if($_SESSION['user_type'] == 'student') { ?>
+            <li>
+                <a href="../apply/application-new.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">Application</span>
+                </a>
+            </li>
+            <?php } ?> 
 
             <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
@@ -113,7 +115,7 @@ if (isset($_GET["file"])) {
             
             <?php if ($_SESSION['user_type'] == 'admin') { ?>
                 <li>
-                    <a href="../apply/admin-application.php" class ="active">
+                    <a href="../apply/admin-application.php" class="active">
                         <i class='bx bxs-edit'></i>
                         <span class="links-name">Application | Admin</span>
                     </a>
@@ -122,21 +124,21 @@ if (isset($_GET["file"])) {
 
             <li>
                 <a href="../listers/listers.php">
-                    <i class='bx bx-list-check'></i>
+                <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
             </li>
             <li>
                 <a href="../faculty/faculty.php">
-                    <i class='bx bx-group'></i>
-                    <span class="links-name">Faculty</span>
+                    <i class='bx bx-group' ></i>
+                    <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
                 <a href="../programs/programs.php">
                     <i class='bx bx-book-reader'></i>
-                    <span class="links-name">Programs</span>
+                    <span class="links-name">CCS Courses</span>
                 </a>
             </li>
 
@@ -144,24 +146,34 @@ if (isset($_GET["file"])) {
             <li>
                 <a href="../curriculum/curriculum.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">CCS Curriculum</span>
+                    <span class="links-name">Curriculum</span>
                 </a>
             </li>
             <?php } ?>
 
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
             <li>
-                <a href="#">
+                <a href="../settings/settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="links-name">Settings</span>
                 </a>
             </li>
+            <?php } ?>
+
+
             <hr class="line">
+
+
             <li id="logout-link">
                 <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
+
+
+
+            
         </ul>
     </div>
     <div id="logout-dialog" class="dialog" title="Logout">
@@ -300,14 +312,14 @@ if (isset($_GET["file"])) {
                                 <table class="table" id="pendingTable">
                                     <thead>
                                         <tr>
-                                            <th scope="col" style="width: 15%">Name</th>
-                                            <th scope="col" style="width: 11%">Year Level</th>
-                                            <th scope="col" style="width: 11%">Curriculum</th>
-                                            <th scope="col" style="width: 9%">Section</th>
+                                            <th >Name</th>
+                                            <th>Year Level</th>
+                                            <th>Curriculum</th>
+                                            <th>Section</th>
                                             <th scope="col" style="width: 11%">Total GPA</th>
                                             <th scope="col" style="width: 11%">Email Address</th>
                                             <th scope="col" style="width: 14%">Adviser Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" style="width: 40%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -326,8 +338,8 @@ if (isset($_GET["file"])) {
                                                 $user_id = $row["id"];
                                                 echo "<tr><td>" . $row["user_name"] . "</td><td>" . $row["year_level"] . $suffix . " Year</td><td>" . strtoupper($row["curriculum"]) . "</td><td>Section " . $row["section"] . "</td><td>" . $row["gpa"] . "</td><td>" . $row["email"] . "</td>" . "<td>" . $row["adviser_status"] . "</td>" . '<td>
                                                 <form action="update.php" method="post">
-                                                    <button type="button" name="view" class="btn btn-warning view" data-bs-toggle="modal" data-bs-target="#viewModal' . $row["id"] . '" style="color: white">View</button>
-                                                    <button type="button" name="accept" class="btn btn-success accept" data-bs-toggle="modal" data-bs-target="#confirmModal">Approve</button> 
+                                                    <button type="button" name="view" class="btn btn-warning view" data-bs-toggle="modal" data-bs-target="#viewModal' . $row["id"] . '" style="color: white">View</button><br>
+                                                    <button type="button" name="accept" class="btn btn-success accept" data-bs-toggle="modal" data-bs-target="#confirmModal">Approve</button><br>
                                                     <button type="button submit" name="decline" class="btn btn-danger decline">Decline</button>
                                                     <input type="hidden" name="app_id" value="' . $user_id . '">
                                                 </form></td>' . "</tr>";
@@ -337,7 +349,7 @@ if (isset($_GET["file"])) {
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header d-flex justify-content-center">
-                                                                <h5 class="modal-title">Student's Records</h5>
+                                                                <h5 class="modal-title">Applicant's Info</h5>
                                                             </div>
                                                             <div class="modal-body d-flex flex-column justify-content-center align-items-center">
                                                                 <div class="grades-table" style="width: 80%; margin-top: 10px">
@@ -388,7 +400,7 @@ if (isset($_GET["file"])) {
                                                                 <h5 class="modal-title">Approve Selected Student?</h5>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <h1>By clicking "APPROVE", you are now permitting the student to be in the Dean's List.</h1>
+                                                                <h1>By clicking "Approve", you are now permitting the student to be in the Dean's List.</h1>
                                                                 <div class="modal-btn-div">
                                                                     <form action="update.php" method="post">
                                                                         <button type="submit" name="accept" class="btn btn-success confirmBtn">Confirm</button>    

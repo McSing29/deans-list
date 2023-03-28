@@ -16,7 +16,7 @@ html, body {
     box-shadow: 0 5px 5px #a7a7a7;
     width: 70%;
     height: 80%;
-    overflow: scroll;
+    overflow-y: scroll !important;
 }
 
 .stepper-wrapper {

@@ -1,10 +1,13 @@
 <?php
-
 $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 $path = "../";
 
 require_once $path . "class/subject.class.php";
 require_once $path . "class/listers.class.php";
+
+include_once '../class/program.class.php';
+
+
 
 session_start();
 
@@ -13,6 +16,8 @@ $applicant = new Listers;
 $subject -> applicant_id = $_SESSION['user_id'];
 
 $listOfSubject = [];
+
+$programs = new Program();
 
 // button for form of selecting subjects
 if (isset($_POST['firstStepSubmit'])) {
@@ -30,14 +35,62 @@ if (isset($_POST['firstStepSubmit'])) {
 
     $listOfSubject = $subject->getSubjects();
     
+    $semtocheck = false;
     // ADD A NEW APPLICANT WHEN FIRST STEP DONE
     $fullname = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
     echo $_SESSION['user_id'];
-    if($applicant->addApplicant($_SESSION['user_id'], $fullname, $_SESSION['user_email'], $_SESSION['curriculum'], $sem, $yearlevel, $section, $sy, 0, "Incomplete", '', $_POST['adviser'], "Pending")){
-        echo "Success!";
-    }
-    else {
-        echo "Something Went Wrong!";
+
+    $currentDate = date("Y-m-d");
+
+    foreach ($programs->year_application($_POST['schoolyear']) as $yearapp) {
+        if($sem == 1){
+            $semstart = date("Y-m-d", $yearapp['1st_sem_start']);
+            $semend = date("Y-m-d", $yearapp['1st_sem_end']);
+            if($yearapp['1st_sem_start'] != null){
+
+                if(strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)){
+                    $semtocheck = false;
+                }
+                else {
+                    $semtocheck = true;
+                }
+            }
+            else {
+                $semtocheck = ($yearapp['1st_sem'] == 0) ? true : false;
+            }
+            
+        } elseif($sem == 2) {
+            $semstart = date("Y-m-d", $yearapp['2nd_sem_start']);
+            $semend = date("Y-m-d", $yearapp['2nd_sem_end']);
+            if($yearapp['2nd_sem_start'] != null){
+                if(strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)){
+                    $semtocheck = false;
+                }
+                else {
+                    $semtocheck = true;
+                }
+            }
+            else {
+                $semtocheck = ($yearapp['2nd_sem'] == 0) ? true : false;
+            }
+        }
+
+
+        if($semtocheck){
+            ?>
+            <script>
+                window.alert('Application is closed for this semester!');
+                window.location.href='application-new.php';
+            </script>
+            <?php
+        } else {
+            if($applicant->addApplicant($_SESSION['user_id'], $fullname, $_SESSION['user_email'], $_SESSION['curriculum'], $sem, $yearlevel, $section, $sy, 0, "Incomplete", '', $_POST['adviser'], "Pending")){
+                echo "Success!";
+            }
+            else {
+                echo "Something Went Wrong!";
+            }
+        }
     }
 }
  
@@ -46,6 +99,9 @@ if(isset($_POST['secondStepSubmit'])) {
     // Code to calculate for GPA
     // Formula I used: (SUM OF GRADES) / (NUMBER OF GRADES)
     // If wrong, adjust accordingly
+    $_sem = $_POST['_sem'];
+    $_sy = $_POST['_sy'];
+    
     $initialGrade = 0;
     $count = 0;
 
@@ -191,11 +247,11 @@ if(isset($_POST['secondStepSubmit'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>CCS Programs | Dean's List Application System - CCS</title>
+    <title>Application | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 
-<body>
+<body style="overflow-x: hidden">
     <div class="side-bar">
         <br>
         <div class="logo-details">
@@ -204,16 +260,19 @@ if(isset($_POST['secondStepSubmit'])) {
         </div>
         <br>
         <ul class="nav-links">
-            <li>
+
+
+
+        <li>
                 <a href="../dashboard/dashboard.php">
-                    <i class='bx bx-grid-alt'></i>
+                    <i class='bx bx-grid-alt' ></i>
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
 
             <?php if($_SESSION['user_type'] == 'student') { ?>
             <li>
-                <a href="../apply/application-new.php">
+                <a href="../apply/application-new.php" class="active">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application</span>
                 </a>
@@ -222,30 +281,39 @@ if(isset($_POST['secondStepSubmit'])) {
 
             <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
-                <a href="../apply/admin-application.php">
+                <a href="../apply/adviser-application.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">Admin application</span>
+                    <span class="links-name">Application | Adviser</span>
                 </a>
             </li>
+            <?php } ?>   
+            
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
+                <li>
+                    <a href="../apply/admin-application.php">
+                        <i class='bx bxs-edit'></i>
+                        <span class="links-name">Application | Admin</span>
+                    </a>
+                </li>
             <?php } ?>
 
             <li>
                 <a href="../listers/listers.php">
-                    <i class='bx bx-list-check'></i>
+                <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
             </li>
             <li>
                 <a href="../faculty/faculty.php">
-                    <i class='bx bx-group'></i>
-                    <span class="links-name">Faculty</span>
+                    <i class='bx bx-group' ></i>
+                    <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
                 <a href="../programs/programs.php">
                     <i class='bx bx-book-reader'></i>
-                    <span class="links-name">Programs</span>
+                    <span class="links-name">CCS Courses</span>
                 </a>
             </li>
 
@@ -253,24 +321,34 @@ if(isset($_POST['secondStepSubmit'])) {
             <li>
                 <a href="../curriculum/curriculum.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">CCS Curriculum</span>
+                    <span class="links-name">Curriculum</span>
                 </a>
             </li>
             <?php } ?>
 
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
             <li>
-                <a href="#">
+                <a href="../settings/settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="links-name">Settings</span>
                 </a>
             </li>
+            <?php } ?>
+
+
             <hr class="line">
+
+
             <li id="logout-link">
                 <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
+
+
+
+            
         </ul>
     </div>
     <div id="logout-dialog" class="dialog" title="Logout">

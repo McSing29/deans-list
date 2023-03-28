@@ -47,15 +47,16 @@ Class subject{
 
 
     function getSubjects() {
-        $sql = "SELECT * FROM tbl_subject WHERE sem = :sem AND curriculum =
-         :curriculum AND year_level = :year_level";
+        $sql = "SELECT * FROM sy_subjects WHERE sem = :sem AND course_id =
+         :courseid AND year_level = :year_level AND sy_id = :syid";
         $query=$this->db->connect()->prepare($sql);
 
 
         //  bind parameters
         $query->bindParam(':sem', $this-> sem);
-        $query->bindParam(':curriculum', $this->curriculum);
+        $query->bindParam(':courseid', $this->curriculum);
         $query->bindParam(':year_level', $this->year_level);
+        $query->bindParam(':syid', $this->schoolyear);
 
         if($query->execute()){
             $data = $query->fetchAll();

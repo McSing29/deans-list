@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION['logged-in'])) {
     header('location: ../login/login.php');
 }
-
 $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
 
 include_once '../class/listers.class.php';
@@ -78,7 +77,7 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
-    <title>Dean's List Application | Dean's List Application System - CCS</title>
+    <title>Application | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 
@@ -91,25 +90,28 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
         </div>
         <br>
         <ul class="nav-links">
-            <li>
+
+
+
+        <li>
                 <a href="../dashboard/dashboard.php">
-                    <i class='bx bx-grid-alt'></i>
+                    <i class='bx bx-grid-alt' ></i>
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
 
-            <?php if ($_SESSION['user_type'] == 'student') { ?>
-                <li>
-                    <a href="../apply/application-new.php">
-                        <i class='bx bxs-edit'></i>
-                        <span class="links-name">Application</span>
-                    </a>
-                </li>
-            <?php } ?>
+            <?php if($_SESSION['user_type'] == 'student') { ?>
+            <li>
+                <a href="../apply/application-new.php">
+                <i class='bx bxs-edit'></i>
+                    <span class="links-name">Application</span>
+                </a>
+            </li>
+            <?php } ?> 
 
             <?php if($_SESSION['user_type'] == 'adviser') { ?>
             <li>
-                <a href="../apply/adviser-application.php" class ="active">
+                <a href="../apply/adviser-application.php" class="active">
                 <i class='bx bxs-edit'></i>
                     <span class="links-name">Application | Adviser</span>
                 </a>
@@ -118,7 +120,7 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
             
             <?php if ($_SESSION['user_type'] == 'admin') { ?>
                 <li>
-                    <a href="../apply/admin-application.php" >
+                    <a href="../apply/admin-application.php">
                         <i class='bx bxs-edit'></i>
                         <span class="links-name">Application | Admin</span>
                     </a>
@@ -127,21 +129,21 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
 
             <li>
                 <a href="../listers/listers.php">
-                    <i class='bx bx-list-check'></i>
+                <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
             </li>
             <li>
                 <a href="../faculty/faculty.php">
-                    <i class='bx bx-group'></i>
-                    <span class="links-name">Faculty</span>
+                    <i class='bx bx-group' ></i>
+                    <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
                 <a href="../programs/programs.php">
                     <i class='bx bx-book-reader'></i>
-                    <span class="links-name">Programs</span>
+                    <span class="links-name">CCS Courses</span>
                 </a>
             </li>
 
@@ -149,24 +151,34 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
             <li>
                 <a href="../curriculum/curriculum.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">CCS Curriculum</span>
+                    <span class="links-name">Curriculum</span>
                 </a>
             </li>
             <?php } ?>
 
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
             <li>
-                <a href="#">
+                <a href="../settings/settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="links-name">Settings</span>
                 </a>
             </li>
+            <?php } ?>
+
+
             <hr class="line">
+
+
             <li id="logout-link">
                 <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
+
+
+
+            
         </ul>
     </div>
     <div id="logout-dialog" class="dialog" title="Logout">
@@ -341,7 +353,7 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header d-flex justify-content-center">
-                                                                <h5 class="modal-title">Student's Records</h5>
+                                                                <h5 class="modal-title">Applicant's Info</h5>
                                                             </div>
                                                             <div class="modal-body d-flex flex-column justify-content-center align-items-center">
                                                                 <div class="grades-table" style="width: 80%; margin-top: 10px">
@@ -392,7 +404,7 @@ $adviser_id = $faculty->get_loggedin_adviser_id($_SESSION['user_email']);
                                                                 <h5 class="modal-title">Accept Student's Application?</h5>
                                                             </div>
                                                             <div class="modal-body text-center">
-                                                                <h1>By clicking "ACCEPT", you are permitting the student to further proceed with the Application.</h1>
+                                                                <h1>By clicking "Accept", you are permitting the student to further proceed with the Application.</h1>
                                                                 <div class="modal-btn-div">
                                                                     <form action="adviser-update.php" method="post">
                                                                         <button type="submit" name="accept" class="btn btn-success confirmBtn">Confirm</button>    

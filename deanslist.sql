@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 06:50 PM
+-- Generation Time: Mar 28, 2023 at 06:21 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -39,26 +39,54 @@ CREATE TABLE `applicants_grades` (
 --
 
 INSERT INTO `applicants_grades` (`id`, `applicant_id`, `subject_id`, `grade`) VALUES
-(54, 29, 50, 1.5),
-(55, 29, 51, 1.25),
-(56, 30, 52, 1.5),
-(57, 30, 53, 1.25),
-(58, 30, 54, 1.75),
-(59, 32, 50, 1.75),
-(60, 32, 51, 1.25),
-(61, 32, 50, 1.75),
-(62, 32, 51, 1.25),
-(63, 33, 52, 1.5),
-(64, 33, 53, 1),
-(65, 33, 54, 1.25),
-(66, 34, 103, 1.25),
-(67, 34, 104, 1),
-(68, 36, 52, 1.5),
-(69, 36, 53, 1.75),
-(70, 36, 54, 1.25),
-(73, 38, 52, 1),
-(74, 38, 53, 1),
-(75, 38, 54, 1);
+(60, 46, 27, 1.5),
+(61, 46, 28, 1.25),
+(62, 46, 27, 1.5),
+(63, 46, 28, 1.25),
+(64, 47, 27, 1.5),
+(65, 47, 28, 1.25),
+(66, 54, 32, 2),
+(67, 54, 33, 2),
+(68, 54, 34, 2),
+(69, 54, 35, 2),
+(70, 54, 36, 2),
+(71, 54, 37, 2),
+(72, 54, 38, 2),
+(73, 54, 32, 2),
+(74, 54, 33, 2),
+(75, 54, 34, 2),
+(76, 54, 35, 2),
+(77, 54, 36, 2),
+(78, 54, 37, 2),
+(79, 54, 38, 2),
+(80, 55, 39, 1.5),
+(81, 55, 40, 1.25),
+(82, 55, 41, 1.75),
+(83, 55, 42, 1),
+(84, 55, 43, 1.25),
+(85, 56, 27, 1.5),
+(86, 56, 28, 1.25),
+(87, 57, 29, 2.5),
+(88, 57, 30, 1.5),
+(89, 57, 31, 1.5),
+(90, 57, 29, 2.5),
+(91, 57, 30, 1.5),
+(92, 57, 31, 1.5),
+(93, 60, 29, 1.5),
+(94, 60, 30, 1),
+(95, 60, 31, 1.25),
+(96, 60, 29, 1.5),
+(97, 60, 30, 1),
+(98, 60, 31, 1.25),
+(99, 61, 27, 1.5),
+(100, 61, 28, 1.5),
+(101, 62, 80, 1.25),
+(102, 62, 81, 1),
+(103, 63, 39, 1.5),
+(104, 63, 40, 1.25),
+(105, 63, 41, 1.75),
+(106, 63, 42, 1.5),
+(107, 63, 43, 2);
 
 -- --------------------------------------------------------
 
@@ -98,8 +126,9 @@ CREATE TABLE `course_schoolyear` (
 
 INSERT INTO `course_schoolyear` (`id`, `school_year`, `course_id`) VALUES
 (1, '2022-2023', 1),
-(2, '2022-2023', 2),
-(3, '2021-2022', 1);
+(3, '2021-2022', 1),
+(15, '2022-2023', 2),
+(16, '2023-2024', 2);
 
 -- --------------------------------------------------------
 
@@ -116,7 +145,7 @@ CREATE TABLE `deanslist_applicants` (
   `semester` varchar(255) NOT NULL,
   `year_level` varchar(255) NOT NULL,
   `section` varchar(255) NOT NULL,
-  `school_year` varchar(255) NOT NULL,
+  `school_year_id` int(11) NOT NULL,
   `gpa` float NOT NULL,
   `app_status` varchar(255) NOT NULL,
   `app_file` varchar(255) NOT NULL,
@@ -128,14 +157,17 @@ CREATE TABLE `deanslist_applicants` (
 -- Dumping data for table `deanslist_applicants`
 --
 
-INSERT INTO `deanslist_applicants` (`id`, `user_id`, `user_name`, `email`, `curriculum`, `semester`, `year_level`, `section`, `school_year`, `gpa`, `app_status`, `app_file`, `adviser_id`, `adviser_status`) VALUES
-(29, 55, 'Koya Will', 'koyawil@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 'School Year 2022-2023', 1.375, 'Accepted', 'score.png', 7, 'Accepted'),
-(30, 51, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 'School Year 2022-2023', 1.5, 'Declined', 'ccs-logo.png', 7, 'Declined'),
-(32, 54, 'Josh Yasil', 'joshuayasil@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 'School Year 2023-2024', 1.5, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
-(33, 52, 'Denise Gerzon', 'denisegerzon@wmsu.edu.ph', 'BSCS', '2', '4', 'C', 'School Year 2022-2023', 1.25, 'Accepted', 'score.png', 7, 'Accepted'),
-(34, 56, 'Andrei Cafino', 'andreicafino@wmsu.edu.ph', 'BSIT', '2', '4', 'C', 'School Year 2023-2024', 1.125, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
-(36, 57, 'Ejay McSing', 'ejaymcsing@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 'School Year 2023-2024', 1.5, 'Declined', 'ccs-logo.png', 7, 'Declined'),
-(38, 58, 'Bushra Adjaluddin', 'bushra@wmsu.edu.ph', 'BSCS', '2', '4', 'C', 'School Year 2022-2023', 1, 'Accepted', 'ccs-logo.png', 7, 'Accepted');
+INSERT INTO `deanslist_applicants` (`id`, `user_id`, `user_name`, `email`, `curriculum`, `semester`, `year_level`, `section`, `school_year_id`, `gpa`, `app_status`, `app_file`, `adviser_id`, `adviser_status`) VALUES
+(46, 48, 'test test', 'test123@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 1, 1.375, 'Declined', 'score.png', 7, 'Declined'),
+(47, 50, 'Daph Nagata', 'daphnagata@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 1, 1.375, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(54, 51, 'Denise Gerzon', 'denisegerzon@wmsu.edu.ph', 'BSCS', '1', '3', 'A', 1, 2, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(55, 52, 'Abdulasis Hamja', 'abdulasis@wmsu.edu.ph', 'BSCS', '2', '3', 'C', 1, 1.35, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(56, 53, 'Josh Yasil', 'joshyasil@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 1, 1.375, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(57, 54, 'Mark Vladimir', 'markvladimir@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 1, 1.83333, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(60, 55, 'Bushra Adjaluddin', 'bushra@wmsu.edu.ph', 'BSCS', '2', '4', 'A', 1, 1.25, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(61, 56, 'Juan Dela Cruz', 'juandelacruz@wmsu.edu.ph', 'BSCS', '1', '4', 'A', 1, 1.5, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(62, 59, 'Andrei Cafino', 'andreicafino@wmsu.edu.ph', 'BSIT', '2', '4', 'A', 15, 1.125, 'Accepted', 'ccs-logo.png', 7, 'Accepted'),
+(63, 60, 'Peejay Vidad', 'peejayvidad@wmsu.edu.ph', 'BSCS', '2', '3', 'A', 1, 1.6, 'Pending', 'ccs-logo.png', 7, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -157,11 +189,14 @@ CREATE TABLE `deans_listers` (
 --
 
 INSERT INTO `deans_listers` (`id`, `app_id`, `fullname`, `gpa`, `department`, `yearlevel`) VALUES
-(2, 29, 'Koya Will', 1.375, 'BSCS', '4'),
-(3, 32, 'Josh Yasil', 1.5, 'BSCS', '4'),
-(4, 33, 'Denise Gerzon', 1.25, 'BSCS', '4'),
-(5, 34, 'Andrei Cafino', 1.125, 'BSIT', '4'),
-(6, 38, 'Bushra Adjaluddin', 1, 'BSCS', '4');
+(2, 47, 'Daph Nagata', 1.375, 'BSCS', '4'),
+(3, 54, 'Denise Gerzon', 2, 'BSCS', '3'),
+(4, 55, 'Abdulasis Hamja', 1.35, 'BSCS', '3'),
+(5, 56, 'Josh Yasil', 1.375, 'BSCS', '4'),
+(6, 57, 'Mark Vladimir', 1.83333, 'BSCS', '4'),
+(7, 60, 'Bushra Adjaluddin', 1.25, 'BSCS', '4'),
+(8, 61, 'Juan Dela Cruz', 1.5, 'BSCS', '4'),
+(9, 62, 'Andrei Cafino', 1.125, 'BSIT', '4');
 
 -- --------------------------------------------------------
 
@@ -327,6 +362,33 @@ INSERT INTO `programs` (`id`, `code`, `description`, `years`, `level`, `cet`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sy_application_time`
+--
+
+CREATE TABLE `sy_application_time` (
+  `id` int(11) NOT NULL,
+  `sy_id` int(11) NOT NULL,
+  `1st_sem` tinyint(1) NOT NULL DEFAULT 0,
+  `2nd_sem` tinyint(1) NOT NULL DEFAULT 0,
+  `1st_sem_start` date DEFAULT NULL,
+  `1st_sem_end` date DEFAULT NULL,
+  `2nd_sem_start` date DEFAULT NULL,
+  `2nd_sem_end` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sy_application_time`
+--
+
+INSERT INTO `sy_application_time` (`id`, `sy_id`, `1st_sem`, `2nd_sem`, `1st_sem_start`, `1st_sem_end`, `2nd_sem_start`, `2nd_sem_end`) VALUES
+(1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(3, 3, 0, 0, NULL, NULL, NULL, NULL),
+(7, 15, 1, 1, NULL, NULL, NULL, NULL),
+(8, 16, 0, 0, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sy_subjects`
 --
 
@@ -348,8 +410,75 @@ CREATE TABLE `sy_subjects` (
 --
 
 INSERT INTO `sy_subjects` (`id`, `subject_code`, `subject_name`, `lec_units`, `lab_units`, `pre_req`, `sem`, `course_id`, `year_level`, `sy_id`) VALUES
-(1, 'CC101', 'Computer Programming I', 3, 1, 'None', 1, 1, 1, 1),
-(3, 'CC101', 'Computer Programming II', 3, 1, 'None', 2, 1, 1, 1);
+(23, 'CC108', 'Computer Programming IV', 3, 1, 'CC102', 2, 2, 1, 16),
+(24, 'CC100', 'Introduction to Computing', 3, 1, 'None', 1, 2, 1, 16),
+(25, 'CC102', 'Computer Programming III', 3, 1, 'None', 1, 2, 1, 16),
+(27, 'CS 143', 'Thesis 2', 3, 0, 'CS 130', 1, 1, 4, 1),
+(28, 'HIST 100', 'Life and Works of Rizal', 3, 0, 'None', 1, 1, 4, 1),
+(29, 'CS 142', 'Social Issues and Professional Practice', 3, 0, 'CS 132', 2, 1, 4, 1),
+(30, 'HIST 101', 'Readings in Philippine History', 3, 0, 'None', 2, 1, 4, 1),
+(31, 'A&H', 'Art Appreciation', 3, 0, 'None', 2, 1, 4, 1),
+(32, 'CS 131', 'Automata Theory and Formal Languanges', 3, 0, 'CS 122', 1, 1, 3, 1),
+(33, 'CS 133', 'Information Assurance and Security', 2, 0, 'CC 104', 1, 1, 3, 1),
+(34, 'CS 135', 'Advanced Database Systems', 3, 3, 'CC 104', 1, 1, 3, 1),
+(35, 'CS 137', 'Software Engineering 1', 2, 3, 'CC 104', 1, 1, 3, 1),
+(36, 'CS 139', 'Web Programming and Development', 3, 3, ' CC 104', 1, 1, 3, 1),
+(37, 'CS 140', 'CS Elective 2', 2, 3, 'CC 104', 1, 1, 3, 1),
+(38, 'CC 105', 'Application Development and Emerging Technologies', 2, 3, 'CC 104', 1, 1, 3, 1),
+(39, 'CS 130', 'CS Thesis 1 ', 3, 0, '3rd Standing', 2, 1, 3, 1),
+(40, 'CS 132', 'Software Engineering 2 ', 2, 3, 'CS 137', 2, 1, 3, 1),
+(41, 'CS 134', 'Operating Systems', 3, 3, 'CS 120', 2, 1, 3, 1),
+(42, 'CS 136', 'Modeling and Simulation', 2, 3, 'CS 131', 2, 1, 3, 1),
+(43, 'CS 138', 'CS Electives 3', 3, 0, 'None', 2, 1, 3, 1),
+(44, 'CS 121', 'Object-Oriented Programming', 3, 3, 'CC 102', 1, 1, 2, 1),
+(45, 'CS 123', 'Discrete Structures 2', 3, 0, 'CS 111', 1, 1, 2, 1),
+(46, 'CS 125', 'Digital Design', 3, 3, 'CS 111', 1, 1, 2, 1),
+(47, 'CS 127', 'Human Computer Interaction', 0, 3, 'CC 102', 1, 1, 2, 1),
+(48, 'CC 103', 'Data Structures and Algorithms', 3, 3, 'CC 102', 1, 1, 2, 1),
+(49, 'MATH 104', 'Calculus 2', 3, 0, 'MATH 103', 1, 1, 2, 1),
+(50, 'LIT 101', 'Philippine Literature', 3, 0, 'None', 1, 1, 2, 1),
+(51, 'PE 103', 'Physical Education 3', 3, 0, 'None', 1, 1, 2, 1),
+(52, 'CS 120', 'Architecture and Organization', 3, 3, 'CS 111', 2, 1, 2, 1),
+(53, 'CS 122', 'Design and Analysis of Algorithms', 3, 0, 'CC 103', 2, 1, 2, 1),
+(54, 'CS 124', 'Programming Languages', 2, 3, 'CC 103', 2, 1, 2, 1),
+(55, 'CS 126', 'Networks and Communications', 2, 3, 'CC 102', 2, 1, 2, 1),
+(56, 'CS 128', 'CS Elective 1', 2, 3, '2nd Year Standing', 2, 1, 2, 1),
+(57, 'CC 104', 'Information Management', 3, 3, 'CS 121', 2, 1, 2, 1),
+(58, 'PE 104', 'Physical Education 4', 2, 0, 'None', 2, 1, 2, 1),
+(59, 'CC 100', 'Introduction to Computing', 2, 3, 'None', 1, 1, 1, 1),
+(60, 'CC 101', 'Computer Programming 1 ', 3, 3, 'None', 1, 1, 1, 1),
+(61, 'CAS 101', 'Purposive Communication', 3, 0, 'None', 1, 1, 1, 1),
+(62, 'MATH 100', 'Mathematics in the Modern World', 3, 0, 'None', 1, 1, 1, 1),
+(63, 'US 101', 'Understanding the Self', 3, 0, 'None', 1, 1, 1, 1),
+(64, 'FIL 101', 'Komunikasyon sa Akademikong Filipino', 3, 0, 'None', 1, 1, 1, 1),
+(65, 'PE 101', 'Physical Education 1', 2, 0, 'None', 1, 1, 1, 1),
+(66, 'NSTP', 'National Service Training Program 1', 3, 0, 'None', 1, 1, 1, 1),
+(67, 'EUTH A', 'Euthenics A', 2, 0, 'None', 1, 1, 1, 1),
+(68, 'CC 102', 'Computer Programming 2', 3, 3, 'CC 101', 2, 1, 1, 1),
+(69, 'CS 111', 'Discrete Structures 1', 3, 0, 'MATH 100', 2, 1, 1, 1),
+(70, 'MATH 103', 'Calculus 1 ', 3, 0, 'MATH 100', 2, 1, 1, 1),
+(71, 'CW 101', 'The Contemporary World', 3, 0, 'None', 2, 1, 1, 1),
+(72, 'STS 100', 'Science, Technology and Society', 3, 0, 'None', 2, 1, 1, 1),
+(73, 'FIL 102', 'Retorika', 3, 0, 'FIL 102', 2, 1, 1, 1),
+(74, 'PE 102', 'Physical Education 2', 2, 0, 'None', 2, 1, 1, 1),
+(75, 'NSTP 2', 'National Service Training Program 2', 3, 0, 'None', 2, 1, 1, 1),
+(76, 'EUTH B', 'Euthenics B', 2, 0, 'None', 2, 1, 1, 1),
+(77, 'IT 141', 'Capstone Project and Research 2', 3, 0, 'IT 140', 1, 2, 4, 15),
+(78, 'IT 143', 'Information Assurance and Security 2', 2, 3, 'IT 130', 1, 2, 4, 15),
+(79, 'IT 145', 'IT Elective 4', 2, 3, '4th Year Standing', 1, 2, 4, 15),
+(80, 'IT 142', 'Systems Administration and Maintenance', 2, 3, 'IT 143', 2, 2, 4, 15),
+(81, 'IT 144', 'Practicum / Industry Immersion', 0, 9, 'Graduating', 2, 2, 4, 15),
+(82, 'IT 130', 'Information Assurance and Security 1', 2, 3, 'IT 135', 2, 2, 3, 15),
+(83, 'IT 132', 'Software Engineering', 3, 3, 'CC 105', 2, 2, 3, 15),
+(84, 'IT 134', 'Social and Professional Practice', 3, 0, '3rd Year Standing', 2, 2, 3, 15),
+(85, 'IT 136', 'IT Elective 2', 2, 3, '3rd Year Standing', 2, 2, 3, 15),
+(86, 'IT 138', 'IT Elective 3', 2, 3, '3rd Year Standing', 2, 2, 3, 15),
+(87, 'IT 131', 'Advanced Database Systems', 3, 3, 'CC 104', 1, 2, 3, 15),
+(88, 'IT 133', 'Networking 2', 2, 3, 'IT 124', 1, 2, 3, 15),
+(89, 'IT 135', 'Systems Intergration and Architecture', 2, 3, 'IT 122', 1, 2, 3, 15),
+(90, 'IT 137', 'Web Systems and Technologies', 3, 3, 'CC 104', 1, 2, 3, 15),
+(91, 'IT 139', 'IT Elective 1', 2, 3, '3rd Year Standing', 1, 2, 3, 15),
+(92, 'CC 105', 'Application Development and Emerging Technologies', 2, 3, 'CC 104', 1, 2, 3, 15);
 
 -- --------------------------------------------------------
 
@@ -1462,15 +1591,19 @@ INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`,
 (45, 'lucyfelix@wmsu.edu.ph', 'password', 'Lucy Felix', 'Sadiwa', 'adviser', 'BSCS'),
 (46, 'janedoe@wmsu.edu.ph', 'password', 'Jane', 'Doe', 'student', 'BSCS'),
 (47, 'gadmarbelamide@wmsu.edu.ph', 'password', 'Gadmar', 'Belamide', 'admin', 'BSCS'),
-(48, 'daphnagata@wmsu.edu.ph', 'password', 'Daph', 'Nagata', 'student', 'BSCS'),
-(50, 'abdulasishamja@wmsu.edu.ph', 'password', 'Abdulasis', 'Hamja', 'student', 'BSCS'),
-(51, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student', 'BSCS'),
-(52, 'denisegerzon@wmsu.edu.ph', 'password', 'Denise', 'Gerzon', 'student', 'BSCS'),
-(54, 'joshuayasil@wmsu.edu.ph', 'password', 'Josh', 'Yasil', 'student', 'BSCS'),
-(55, 'koyawil@wmsu.edu.ph', 'password', 'Koya', 'Will', 'student', 'BSCS'),
-(56, 'andreicafino@wmsu.edu.ph', 'password', 'Andrei', 'Cafino', 'student', 'BSIT'),
-(57, 'ejaymcsing@wmsu.edu.ph', 'password', 'Ejay', 'McSing', 'student', 'BSCS'),
-(58, 'bushra@wmsu.edu.ph', 'password', 'Bushra', 'Adjaluddin', 'student', 'BSCS');
+(48, 'test123@wmsu.edu.ph', 'password', 'test', 'test', 'student', 'BSCS'),
+(49, 'wadwad@wmsu.edu.ph', 'password', 'wad', 'wad', 'student', 'BSCS'),
+(50, 'daphnagata@wmsu.edu.ph', 'password', 'Daph', 'Nagata', 'student', 'BSCS'),
+(51, 'denisegerzon@wmsu.edu.ph', 'password', 'Denise', 'Gerzon', 'student', 'BSCS'),
+(52, 'abdulasis@wmsu.edu.ph', 'password', 'Abdulasis', 'Hamja', 'student', 'BSCS'),
+(53, 'joshyasil@wmsu.edu.ph', 'password', 'Josh', 'Yasil', 'student', 'BSCS'),
+(54, 'markvladimir@wmsu.edu.ph', 'password', 'Mark', 'Vladimir', 'student', 'BSCS'),
+(55, 'bushra@wmsu.edu.ph', 'password', 'Bushra', 'Adjaluddin', 'student', 'BSCS'),
+(56, 'juandelacruz@wmsu.edu.ph', 'password', 'Juan', 'Dela Cruz', 'student', 'BSCS'),
+(57, 'faberdrive@wmsu.edu.ph', 'password', 'Faber', 'Drive', 'student', 'BSCS'),
+(58, 'aprilboy@wmsu.edu.ph', 'password', 'April', 'Boy', 'student', 'BSCS'),
+(59, 'andreicafino@wmsu.edu.ph', 'password', 'Andrei', 'Cafino', 'student', 'BSIT'),
+(60, 'peejayvidad@wmsu.edu.ph', 'password', 'Peejay', 'Vidad', 'student', 'BSCS');
 
 -- --------------------------------------------------------
 
@@ -1479,7 +1612,7 @@ INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_firstname`,
 --
 DROP TABLE IF EXISTS `grades_list`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `grades_list`  AS SELECT `applicants_grades`.`applicant_id` AS `applicant_id`, `tbl_subject`.`subject_name` AS `subject_name`, `applicants_grades`.`grade` AS `grade` FROM (`tbl_subject` join `applicants_grades` on(`tbl_subject`.`subject_id` = `applicants_grades`.`subject_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `grades_list`  AS SELECT `applicants_grades`.`applicant_id` AS `applicant_id`, `sy_subjects`.`subject_name` AS `subject_name`, `applicants_grades`.`grade` AS `grade` FROM (`applicants_grades` join `sy_subjects` on(`sy_subjects`.`id` = `applicants_grades`.`subject_id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -1512,7 +1645,8 @@ ALTER TABLE `course_schoolyear`
 ALTER TABLE `deanslist_applicants`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `adviser_id` (`adviser_id`);
+  ADD KEY `adviser_id` (`adviser_id`),
+  ADD KEY `sy` (`school_year_id`);
 
 --
 -- Indexes for table `deans_listers`
@@ -1539,6 +1673,13 @@ ALTER TABLE `faculty`
 ALTER TABLE `programs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `code` (`code`);
+
+--
+-- Indexes for table `sy_application_time`
+--
+ALTER TABLE `sy_application_time`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sy_time_id` (`sy_id`);
 
 --
 -- Indexes for table `sy_subjects`
@@ -1581,7 +1722,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `applicants_grades`
 --
 ALTER TABLE `applicants_grades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -1593,19 +1734,19 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `course_schoolyear`
 --
 ALTER TABLE `course_schoolyear`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `deanslist_applicants`
 --
 ALTER TABLE `deanslist_applicants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `deans_listers`
 --
 ALTER TABLE `deans_listers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `dean_applicants`
@@ -1626,10 +1767,16 @@ ALTER TABLE `programs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `sy_application_time`
+--
+ALTER TABLE `sy_application_time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `sy_subjects`
 --
 ALTER TABLE `sy_subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `tbl_list_grades`
@@ -1647,7 +1794,7 @@ ALTER TABLE `tlb_applicant`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- Constraints for dumped tables
@@ -1658,7 +1805,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `applicants_grades`
   ADD CONSTRAINT `applicant_id` FOREIGN KEY (`applicant_id`) REFERENCES `deanslist_applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subject` (`subject_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `subject_id` FOREIGN KEY (`subject_id`) REFERENCES `sy_subjects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `course_schoolyear`
@@ -1671,6 +1818,7 @@ ALTER TABLE `course_schoolyear`
 --
 ALTER TABLE `deanslist_applicants`
   ADD CONSTRAINT `adviser_id` FOREIGN KEY (`adviser_id`) REFERENCES `faculty` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sy` FOREIGN KEY (`school_year_id`) REFERENCES `course_schoolyear` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -1678,6 +1826,12 @@ ALTER TABLE `deanslist_applicants`
 --
 ALTER TABLE `deans_listers`
   ADD CONSTRAINT `app_id` FOREIGN KEY (`app_id`) REFERENCES `deanslist_applicants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sy_application_time`
+--
+ALTER TABLE `sy_application_time`
+  ADD CONSTRAINT `sy_time_id` FOREIGN KEY (`sy_id`) REFERENCES `course_schoolyear` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sy_subjects`

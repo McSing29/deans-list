@@ -45,7 +45,7 @@
 
             $user_id = $users -> getLatestUserId();
             
-            $_SESSION['user_id'] = $user_id;
+            $_SESSION['user_id'] = $user_id[0];
 
             header('location: ../dashboard/dashboard.php');
         }

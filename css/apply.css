@@ -183,7 +183,7 @@ html, body {
 .table-body {
     width: 90%;
     height: 80%;
-    overflow: auto;    
+    overflow: scroll;
 }
 
 .table-body h6 {

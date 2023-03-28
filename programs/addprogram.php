@@ -54,7 +54,7 @@ require_once '../class/database.php';
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>Add Programs | Dean's List Application System - CCS</title>
+    <title>Add Program | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -66,13 +66,16 @@ require_once '../class/database.php';
 		</div>
         <br>
         <ul class="nav-links">
+            
+
+
             <li>
                 <a href="../dashboard/dashboard.php">
                     <i class='bx bx-grid-alt' ></i>
                     <span class="links-name">Dashboard</span>
                 </a>
             </li>
-            
+
             <?php if($_SESSION['user_type'] == 'student') { ?>
             <li>
                 <a href="../apply/application-new.php">
@@ -99,25 +102,24 @@ require_once '../class/database.php';
                     </a>
                 </li>
             <?php } ?>
-            
+
             <li>
                 <a href="../listers/listers.php">
                 <i class='bx bx-list-check'></i>
                     <span class="links-name">Dean's Listers</span>
                 </a>
             </li>
-            
             <li>
-                <a href="../faculty/faculty.php" >
+                <a href="../faculty/faculty.php">
                     <i class='bx bx-group' ></i>
-                    <span class="links-name">Faculty</span>
+                    <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
-                <a href="../programs/programs.php" class ="active" >
-                <i class='bx bx-book-reader'></i>
-                    <span class="links-name">Programs</span>
+                <a href="../programs/programs.php" class="active">
+                    <i class='bx bx-book-reader'></i>
+                    <span class="links-name">CCS Courses</span>
                 </a>
             </li>
 
@@ -125,24 +127,34 @@ require_once '../class/database.php';
             <li>
                 <a href="../curriculum/curriculum.php">
                 <i class='bx bxs-edit'></i>
-                    <span class="links-name">CCS Curriculum</span>
+                    <span class="links-name">Curriculum</span>
                 </a>
             </li>
             <?php } ?>
 
+            <?php if ($_SESSION['user_type'] == 'admin') { ?>
             <li>
-                <a href="#">
+                <a href="../settings/settings.php">
                     <i class='bx bx-cog'></i>
                     <span class="links-name">Settings</span>
                 </a>
             </li>
+            <?php } ?>
+
+
             <hr class="line">
+
+
             <li id="logout-link">
                 <a class="logout-link" href="../login/logout.php" title="Logout">
                     <i class='bx bx-log-out-circle'></i>
                     <span class="links-name">Logout</span>
                 </a>
             </li>
+
+
+
+            
         </ul>
     </div>
     <div id="logout-dialog" class="dialog" title="Logout">

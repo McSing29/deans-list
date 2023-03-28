@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Dean's List Application System</title>
+    <title>Application | Dean's List Application System</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -23,18 +23,22 @@
     <div class="root d-flex flex-column align-items-center justify-content-center">
 
         <?php
-            $existing = false;
-            $user_id = $_SESSION['user_id'];
+        include_once '../class/program.class.php';
 
-            $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+        $programs = new Program();
 
-            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$user_id' AND (app_status = 'Pending' OR app_status = 'Accepted' OR app_status = 'Declined')";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                $existing = true;
-            }
+        $existing = false;
+        $userid = $_SESSION['user_id'];
+
+
+        $conn = mysqli_connect('localhost', 'u237957316_deanlist', 'U=lGFvA2ii3', 'u237957316_deanlist');
+        $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$userid' AND (app_status = 'Pending' OR app_status = 'Accepted' OR app_status = 'Declined')";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $existing = true;
+        }
         ?>
-        <div class="card">
+        <div class="card" style="overflow: hidden; <?php if (isset($_POST['firstStepSubmit']) || isset($_POST['secondStepSubmit'])) echo "margin-top: -10%; height: 70%" ?>">
             <div class="card-body">
                 <!-- Progress Bar -->
                 <div class="stepper-wrapper">
@@ -69,9 +73,9 @@
                         <h6 style="font-weight: bold">APPLICATION FOR DEAN LIST</h6>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Name: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">' . $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] . '</span>'; ?></h6>
-                            <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">Curriculum: <span class="ms-3 fw-light "><?php echo '<span class="admin-name">' . $_SESSION['curriculum'] . '</span>'; ?></h6>
+                        <div class="col-12 d-flex flex-row justify-content-between" style="width: 95%">
+                            <h6 class="fs-5" style="margin-left:40px; font-weight: bold; font-size: 100px">NAME: <span class="ms-3 fw-light "><?php echo '<span class="admin-name" style="font-weight: bold; font-size: 16px !important">' . $_SESSION['user_firstname'] . ' ' . $_SESSION['user_lastname'] . '</span>'; ?></h6>
+                            <h6 class="fs-5" style="margin-left:10px; font-weight: bold; font-size: 100px">COURSE: <span class="ms-3 fw-light "><?php echo '<span class="admin-name" style="font-weight: bold; font-size: 16px !important">' . $_SESSION['curriculum'] . '</span>'; ?></h6>
                         </div>
                     </div>
 
@@ -95,10 +99,9 @@
                         if (isset($_POST['secondStepSubmit']) || $existing) {
 
 
-                            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$user_id'";
+                            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$userid'";
                             $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
+                            
                         ?>
                                     <!-- Assessment UI -->
                                     <div class="third_step">
@@ -116,24 +119,32 @@
                                             </thead>
                                             <!--  -->
                                             <tbody>
+                                                <?php
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
                                                 <tr>
                                                     <td><?php echo '<span class="admin-name">' . $row["user_id"] . '</span>'; ?></td>
                                                     <td><?php echo '<span class="admin-name">' . $row["email"] . '</span>'; ?></td>
-                                                    <td><?php echo '<span class="admin-name">student</span>'; ?></td>
+                                                    <td><?php echo '<span class="admin-name">Student</span>'; ?></td>
                                                     <td><?php echo strtoupper($row["year_level"])  ?></td>
                                                     <td>
                                                         <p><?php echo $row["gpa"] ?></p>
                                                     </td>
-                                                    <td><mark style="<?php if($row["app_status"] == 'Accepted') echo "background-color: rgb(181, 247, 57)"; elseif($row["app_status"] == 'Declined') echo "background-color: rgb(238, 115, 32)" ?>"><?php echo ucfirst($row["app_status"]) ?></mark></td>
+                                                    <td><mark style="<?php if ($row["app_status"] == 'Accepted') echo "background-color: rgb(181, 247, 57)";
+                                                                        elseif ($row["app_status"] == 'Declined') echo "background-color: rgb(238, 115, 32)" ?>"><?php echo ucfirst($row["app_status"]) ?></mark></td>
                                                 </tr>
+                                                <?php
+                                                        }
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
 
                                     </div>
                             <?php
-                                }
-                            }
-                        } else {
+                              
+                        }  else {
                             ?>
 
                             <?php
@@ -146,8 +157,18 @@
                                         <div class="form-floating dropdown-select">
                                             <select class="form-select" name="schoolyear" id="schoolyear" required>
                                                 <option value="">-- Select --</option>
+                                                <?php
+                                                foreach ($programs->showSchoolYears($_SESSION['curriculum']) as $schoolyear) {
+                                                ?>
+
+                                                    <option value="<?php echo $schoolyear['id'] ?>">School Year <?php echo $schoolyear['school_year'] ?></option>
+                                                <?php
+                                                }
+                                                ?>
+
+                                                <!-- <option value="">-- Select --</option>
                                                 <option value="School Year 2022-2023">School Year 2022 - 2023</option>
-                                                <option value="School Year 2023-2024">School Year 2023 - 2024</option>
+                                                <option value="School Year 2023-2024">School Year 2023 - 2024</option> -->
                                             </select>
                                             <label for="floatingSelect">School Year</label>
                                         </div>
@@ -165,14 +186,16 @@
                                         $curriculumskie = " ";
                                         if ($_SESSION['curriculum'] == "BSCS") {
                                             $curriculumskie = "cs";
+                                            $courseid = 1;
                                         } else {
                                             $curriculumskie = "it";
+                                            $courseid = 2;
                                         }
 
 
                                         ?>
 
-                                        <input type="hidden" name="curriculum" value="<?php echo $curriculumskie ?>">
+                                        <input type="hidden" name="curriculum" value="<?php echo $courseid ?>">
 
                                         <div class="form-floating dropdown-select">
                                             <select class="form-select" name="yearlevel" id="yearlevel" required>
@@ -202,9 +225,9 @@
                                                 include_once '../class/program.class.php';
                                                 $faculty = new Program;
 
-                                                foreach($faculty->showAdvisers() as $advisers){
+                                                foreach ($faculty->showAdvisers() as $advisers) {
                                                 ?>
-                                                    <option value="<?php echo $advisers['id'] ?>"><?php echo $advisers['firstname'] . " " . $advisers['lastname'] ?></option> 
+                                                    <option value="<?php echo $advisers['id'] ?>"><?php echo $advisers['firstname'] . " " . $advisers['lastname'] ?></option>
                                                 <?php
                                                 }
 
@@ -214,65 +237,105 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php
+                                <?php
                                 /* Check if user have clicked the "Next" button */
                             } elseif (isset($_POST['firstStepSubmit'])) {
-                            ?>
-                                <!-- Application UI -->
-                                <div class="second_step">
-                                    <!-- Custom made table for subject list -->
-                                    <div class="table-div d-flex flex-column align-items-center">
-                                        <div class="table-header d-flex flex-row">
-                                            <h6>Subjects</h6>
-                                        </div>
+                                // Check for application availability
 
-                                        <input type="hidden" name="schoolyear" value="<?php echo $curriculumskie ?>">
-                                        <input type="hidden" name="yearlevel" value="<?php echo $curriculumskie ?>">
-                                        <input type="hidden" name="section" value="<?php echo $curriculumskie ?>">
+                                foreach ($programs->year_application($_POST['schoolyear']) as $yearapp) {
+                                    if ($sem == 1) {
+                                        $semstart = date("Y-m-d", $yearapp['1st_sem_start']);
+                                        $semend = date("Y-m-d", $yearapp['1st_sem_end']);
+                                        if ($yearapp['1st_sem_start'] != null) {
 
-                                        <div class="table-body">
-                                            <?php foreach ($listOfSubject as $subject) { ?>
-                                                <div class="table-row d-flex flex-row">
-                                                    <div class="subject-name-div d-flex flex-row">
-                                                        <h6><?php echo $subject['subject_name'] ?></h6>
-                                                    </div>
-                                                    <div class="lecture-units-div d-flex flex-row">
-                                                        <h6>Units: 3</h6>
-                                                    </div>
-                                                    <div class="grade-input-div d-flex flex-row">
-                                                        <h6>Grade: </h6>
-                                                        <input type="number" min="1" max="3.0" step=".25" name="grade[]" class="grade form-control" required>
-                                                        <input type="hidden" name="subjectId[]" value="<?php echo $subject['subject_id'] ?>">
-                                                    </div>
-                                                </div>
-                                            <?php
+                                            if (strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)) {
+                                                $semtocheck = false;
+                                            } else {
+                                                $semtocheck = true;
                                             }
-                                            ?>
+                                        } else {
+                                            $semtocheck = ($yearapp['1st_sem'] == 0) ? true : false;
+                                        }
+                                    } elseif ($sem == 2) {
+                                        $semstart = date("Y-m-d", $yearapp['2nd_sem_start']);
+                                        $semend = date("Y-m-d", $yearapp['2nd_sem_end']);
+                                        if ($yearapp['2nd_sem_start'] != null) {
+                                            if (strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)) {
+                                                $semtocheck = false;
+                                            } else {
+                                                $semtocheck = true;
+                                            }
+                                        } else {
+                                            $semtocheck = ($yearapp['2nd_sem'] == 0) ? true : false;
+                                        }
+                                    }
 
-                                            <!-- Add more rows as needed -->
-                                        </div>
-
-
-
-                                        <p style="margin-left: 525px" class="totalGrade"><?php echo isset($average) ? $average : "GPA:" ?></p>
-                                        <div class="row">
-
-                                            <div class="col">
-                                                <div class="d-flex justify-content-end">
-                                                    <input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 500px">
+                                    if ($semtocheck) {
+                                ?>
+                                        <script>
+                                            window.alert('Application is closed for this semester!');
+                                            window.location.href = 'application-new.php';
+                                        </script>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <!-- Application UI -->
+                                        <div class="second_step">
+                                            <!-- Custom made table for subject list -->
+                                            <div class="table-div d-flex flex-column align-items-center">
+                                                <div class="table-header d-flex flex-row">
+                                                    <h6>Subjects</h6>
                                                 </div>
+
+                                                <input type="hidden" name="schoolyear" value="<?php echo $curriculumskie ?>">
+                                                <input type="hidden" name="yearlevel" value="<?php echo $curriculumskie ?>">
+                                                <input type="hidden" name="section" value="<?php echo $curriculumskie ?>">
+
+                                                <div class="table-body" style="overflow:scroll">
+                                                    <?php foreach ($listOfSubject as $subject) { ?>
+                                                        <div class="table-row d-flex flex-row">
+                                                            <div class="subject-name-div d-flex flex-row">
+                                                                <h6><?php echo $subject['subject_name'] ?></h6>
+                                                            </div>
+                                                            <div class="lecture-units-div d-flex flex-row">
+                                                                <h6>Units: <?php echo $subject['lec_units'] + $subject['lab_units'] ?></h6>
+                                                            </div>
+                                                            <div class="grade-input-div d-flex flex-row">
+                                                                <h6>Grade: </h6>
+                                                                <input type="number" min="1" max="3.0" step=".25" name="grade[]" class="grade form-control" required>
+                                                                <input type="hidden" name="subjectId[]" value="<?php echo $subject['id'] ?>">
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                    ?>
+
+                                                    <!-- Add more rows as needed -->
+                                                </div>
+
+
+
+                                                <p style="margin-left: 525px" class="totalGrade"><?php echo isset($average) ? $average : "GPA:" ?></p>
+                                                <div class="row">
+
+                                                    <div class="col">
+                                                        <div class="d-flex justify-content-end">
+                                                            <input type="submit" class="btn rounded text-light" name="calculate" value="calculate" style="background-color:#107869; margin-left: 500px">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="file-input mb-3 d-flex flex-row justify-content-left">
+                                                <label for="formFile" class="form-label">Portal Screenshot: </label>
+                                                <input class="form-control" type="file" id="formFile" name="formFile" required>
                                             </div>
                                         </div>
 
-
-                                    </div>
-                                    <div class="file-input mb-3 d-flex flex-row justify-content-left">
-                                        <label for="formFile" class="form-label">Portal Screenshot: </label>
-                                        <input class="form-control" type="file" id="formFile" name="formFile" required>
-                                    </div>
-                                </div>
-
                         <?php
+                                    }
+                                }
                             }
                         }
                         ?>
@@ -295,8 +358,8 @@
                                             /* If on User Info UI, change buttton name to "firstStepSubmit" */
                                             if (!isset($_POST['firstStepSubmit'])) {
                                             ?> type="submit" name="firstStepSubmit" <?php
-                                                                            } else {
-                                                                                ?> type="button" data-bs-toggle="modal" data-bs-target="#successModal" <?php
+                                                                                } else {
+                                                                                    ?> type="button" data-bs-toggle="modal" data-bs-target="#successModal" <?php
                                                                                                                                                     }
                                                                                                                                                         ?> class="btn btn-success nxtBtn"><?php echo isset($_POST['firstStepSubmit']) ? "Submit" : "Next" ?></button>
 
