@@ -95,7 +95,7 @@
             <input type="text" id="user_lastname" name="user_lastname" placeholder="Enter Last Name" required tabindex="4">
 
             <div class="form-floating dropdown-select">
-            <label for="floatingSelect">Course</label>
+            <label for="floatingSelect">couwCOURSE</label>
                 <select class="form-select" name="curriculum" id="curriculum" required tabindex="5">
                     <option value="">-- Select --</option>
                     <option value="BSCS">Computer Science</option>
