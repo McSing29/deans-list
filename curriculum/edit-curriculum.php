@@ -299,7 +299,7 @@ if(isset($_POST["submit"])){
                             </div>
 
                             <button type="submit" form="editform" name="submit" class="btn btn-success edit-curr-btn d-flex flex-row align-items-center" style="height: 40px; margin-top: 5px"><i class='bx bx-plus'></i>
-                                <p class="add-text" style="color: white; margin-top: 8px; margin-left: 5px">Finish Edit</p>
+                                <p class="add-text" style="color: white; margin-top: 8px; margin-left: 5px">Save Curriculum</p>
                             </button>
                         </div>
                         <table class="table" id="inputTable" style="margin: 0">

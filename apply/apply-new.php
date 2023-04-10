@@ -38,7 +38,7 @@
             $existing = true;
         }
         ?>
-        <div class="card" style="overflow: hidden; <?php if (isset($_POST['firstStepSubmit']) || isset($_POST['secondStepSubmit'])) echo "margin-top: -10%; height: 70%" ?>">
+        <div class="card" style="overflow: hidden;">
             <div class="card-body">
                 <!-- Progress Bar -->
                 <div class="stepper-wrapper">
@@ -99,7 +99,7 @@
                         if (isset($_POST['secondStepSubmit']) || $existing) {
 
 
-                            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$userid'";
+                            $sql = "SELECT * FROM deanslist_applicants WHERE user_id = '$userid' AND (app_status = 'Pending' OR app_status = 'Accepted' OR app_status = 'Declined');";
                             $result = mysqli_query($conn, $sql);
                             
                         ?>
@@ -243,29 +243,34 @@
                                 // Check for application availability
 
                                 foreach ($programs->year_application($_POST['schoolyear']) as $yearapp) {
-                                    if ($sem == 1) {
-                                        $semstart = date("Y-m-d", $yearapp['1st_sem_start']);
-                                        $semend = date("Y-m-d", $yearapp['1st_sem_end']);
-                                        if ($yearapp['1st_sem_start'] != null) {
-
-                                            if (strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)) {
+                                    if($sem == 1){
+                                        $semstart = date("Y-m-d", strtotime($yearapp['1st_sem_start']));
+                                        $semend = date("Y-m-d", strtotime($yearapp['1st_sem_end']));
+                                        if($yearapp['1st_sem_start'] != null){
+                            
+                                            if(strtotime($currentDate) >= strtotime($semstart) && strtotime($currentDate) <= strtotime($semend)){
                                                 $semtocheck = false;
-                                            } else {
+                                            }
+                                            else {
                                                 $semtocheck = true;
                                             }
-                                        } else {
+                                        }
+                                        else {
                                             $semtocheck = ($yearapp['1st_sem'] == 0) ? true : false;
                                         }
-                                    } elseif ($sem == 2) {
-                                        $semstart = date("Y-m-d", $yearapp['2nd_sem_start']);
-                                        $semend = date("Y-m-d", $yearapp['2nd_sem_end']);
-                                        if ($yearapp['2nd_sem_start'] != null) {
-                                            if (strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)) {
+                                        
+                                    } elseif($sem == 2) {
+                                        $semstart = date("Y-m-d", strtotime($yearapp['2nd_sem_start']));
+                                        $semend = date("Y-m-d", strtotime($yearapp['2nd_sem_end']));
+                                        if($yearapp['2nd_sem_start'] != null){
+                                            if(strtotime($currentDate) >= strtotime($semstart) && strtotime($currentDate) <= strtotime($semend)){
                                                 $semtocheck = false;
-                                            } else {
+                                            }
+                                            else {
                                                 $semtocheck = true;
                                             }
-                                        } else {
+                                        }
+                                        else {
                                             $semtocheck = ($yearapp['2nd_sem'] == 0) ? true : false;
                                         }
                                     }

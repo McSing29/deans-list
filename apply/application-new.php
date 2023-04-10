@@ -7,7 +7,7 @@ require_once $path . "class/listers.class.php";
 
 include_once '../class/program.class.php';
 
-
+date_default_timezone_set('Asia/Manila');
 
 session_start();
 
@@ -38,17 +38,16 @@ if (isset($_POST['firstStepSubmit'])) {
     $semtocheck = false;
     // ADD A NEW APPLICANT WHEN FIRST STEP DONE
     $fullname = $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname'];
-    echo $_SESSION['user_id'];
 
     $currentDate = date("Y-m-d");
 
     foreach ($programs->year_application($_POST['schoolyear']) as $yearapp) {
         if($sem == 1){
-            $semstart = date("Y-m-d", $yearapp['1st_sem_start']);
-            $semend = date("Y-m-d", $yearapp['1st_sem_end']);
+            $semstart = date("Y-m-d", strtotime($yearapp['1st_sem_start']));
+            $semend = date("Y-m-d", strtotime($yearapp['1st_sem_end']));
             if($yearapp['1st_sem_start'] != null){
 
-                if(strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)){
+                if(strtotime($currentDate) >= strtotime($semstart) && strtotime($currentDate) <= strtotime($semend)){
                     $semtocheck = false;
                 }
                 else {
@@ -60,10 +59,10 @@ if (isset($_POST['firstStepSubmit'])) {
             }
             
         } elseif($sem == 2) {
-            $semstart = date("Y-m-d", $yearapp['2nd_sem_start']);
-            $semend = date("Y-m-d", $yearapp['2nd_sem_end']);
+            $semstart = date("Y-m-d", strtotime($yearapp['2nd_sem_start']));
+            $semend = date("Y-m-d", strtotime($yearapp['2nd_sem_end']));
             if($yearapp['2nd_sem_start'] != null){
-                if(strtotime($currentDate) <= strtotime($semstart) && strtotime($currentDate) >= strtotime($semend)){
+                if(strtotime($currentDate) >= strtotime($semstart) && strtotime($currentDate) <= strtotime($semend)){
                     $semtocheck = false;
                 }
                 else {
@@ -84,12 +83,7 @@ if (isset($_POST['firstStepSubmit'])) {
             </script>
             <?php
         } else {
-            if($applicant->addApplicant($_SESSION['user_id'], $fullname, $_SESSION['user_email'], $_SESSION['curriculum'], $sem, $yearlevel, $section, $sy, 0, "Incomplete", '', $_POST['adviser'], "Pending")){
-                echo "Success!";
-            }
-            else {
-                echo "Something Went Wrong!";
-            }
+            $applicant->addApplicant($_SESSION['user_id'], $fullname, $_SESSION['user_email'], $_SESSION['curriculum'], $sem, $yearlevel, $section, $sy, 0, "Incomplete", '', $_POST['adviser'], "Pending");
         }
     }
 }
@@ -129,7 +123,6 @@ if(isset($_POST['secondStepSubmit'])) {
 
         if($applicant->updateApplicant($_SESSION['tableid'], $average, "Pending", $fileNameNew)){
             move_uploaded_file($fileTmpName, $filesDestination);
-            echo "Success!";
         }
     }
     else {

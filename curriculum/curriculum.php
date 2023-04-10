@@ -373,7 +373,7 @@ if(isset($_POST['submit'])){
                                         <tr>
                                             <!-- always use echo to output PHP values -->
                                             <td style="font-size: 16px">Year <?php echo $value['school_year'] ?></td>
-                                            <td style="font-size: 16px"><button class="btn btn-warning" name="view_sy" type="submit" style="color: black !important; margin: 0; font-size: 16px; padding: 0 10px 0 10px">View</button><button class="btn btn-success" name="edit_sy" type="submit" style="color: black !important; margin: 0; margin-left: 5px; font-size: 16px; padding: 0 10px 0 10px">Edit</button><button class="btn btn-danger" name="del_sy" type="submit" style="color: black !important; margin: 0; margin-left: 5px; font-size: 16px; padding: 0 10px 0 10px">Delete</button></td>
+                                            <td style="font-size: 16px"><button class="btn btn-warning" name="view_sy" type="submit" style="color: black !important; margin: 0; font-size: 16px; padding: 0 10px 0 10px">View</button><button class="btn btn-success" name="edit_sy" type="submit" style="color: black !important; margin: 0; margin-left: 5px; font-size: 16px; padding: 0 10px 0 10px">Edit</button></td>
                                         </tr>
                                     </form>
                                 <?php
@@ -388,10 +388,8 @@ if(isset($_POST['submit'])){
             ?>
                 <div class="table-container course-select" style="width: 100%; height: 600px; background-color: white">
                     <div class="header-program d-flex flex-row">
-                        <h1 class=" text-center" style="margin: 0; margin-left: 100px;font-weight: bold; font-size: 28px; width: 100%">COURSE</h1>
-                        <button type="button" class="btn btn-success add-course-btn d-flex flex-row"><i class='bx bx-plus'></i>
-                            <p>Add New</p>
-                        </button>
+                        <h1 class=" text-center" style="margin: 0; margin-left: 100px;font-weight: bold; font-size: 28px; width: 100%">CCS COURSES</h1>
+                        
                     </div>
                     <div class="course-container d-flex flex-wrap flex-row justify-content-center" style="overflow: auto; width: 100%; padding-top: 20px; padding-bottom: 20px; height: 90%">
                         <a href="curriculum.php?course=BSCS" style="text-decoration: none;">

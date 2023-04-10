@@ -75,24 +75,19 @@
 
                        
                 <input class="button" type="submit" value="Login" name="login" tabindex="3">
-                
-            
-                
+
                 <br>
-                </br>
-            
-                <a class="create" href="create.php">Sign Up</a>
-                
-                
+
+                <p style="text-align: center;  padding-top: 12px;">Don't have an account? <a class="create" href="create.php">Sign up</a></p>
+
                 <?php
-                
+
                     if(isset($error)){
                         echo '<div><p class="error">'.$error.'</p></div>';
                     }
-                    
+
                 ?>
-            
-                
+
         </form>
     </div>
     

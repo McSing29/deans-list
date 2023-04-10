@@ -76,8 +76,8 @@
    display: flex;
    align-items: center;
    justify-items: center;
+   background-color: rgb(255, 255, 255);
    overflow: hidden;
-   background: rgb(255, 255, 255);
    background-position: center;
    background-size: cover;
    background-repeat: no-repeat;
@@ -124,11 +124,24 @@
    max-height:min-content;
    margin: 0 auto;
    background-color: rgb(255, 255, 255);
-   border-radius: 1%;
-   padding: 35px;
-
   
+   border-radius: 1%;
+   padding: 20px;
+
 }
+
+.create-form{
+   max-width: 400px;
+   max-height:min-content;
+   margin: 0 auto;
+   
+   
+   padding: 20px;
+
+   border-radius: 15px;
+   box-shadow: 0 5px 5px #a7a7a7;
+}
+
 
 .login-form .logo-details{
    height: 40px;
@@ -600,9 +613,9 @@ a.button{
     flex-direction: row;
     width: 40%;
     margin-left:33%;
-    border-style:outset;
     border-style: groove;
     border-color:#107869;
+    padding:10px;
 }
 
 .add-form-container p.error{
@@ -744,7 +757,6 @@ a.button{
   }
   a.create{
     text-decoration: none;
-    display: flex;
     justify-content: right;
     color: #107869;
   }

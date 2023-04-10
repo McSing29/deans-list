@@ -11,8 +11,7 @@ Class Program{
     public $description;
     public $years;
     public $level;
-    public $cet;
-    public $status;
+    
 
     protected $db;
 
@@ -24,16 +23,14 @@ Class Program{
     //Methods
 
     function add(){
-        $sql = "INSERT INTO programs (code, description, years, level, cet, status) VALUES 
-        (:code, :description, :years, :level, :cet, :status);";
+        $sql = "INSERT INTO programs (code, description, years, level) VALUES 
+        (:code, :description, :years, :level);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':description', $this->description);
         $query->bindParam(':code', $this->code);
         $query->bindParam(':years', $this->years);
         $query->bindParam(':level', $this->level);
-        $query->bindParam(':cet', $this->cet);
-        $query->bindParam(':status', $this->status);
         
         if($query->execute()){
             return true;
@@ -44,15 +41,13 @@ Class Program{
     }
 
     function edit(){
-        $sql = "UPDATE programs SET code=:code, description=:description, years=:years, level=:level, cet=:cet, status=:status WHERE id = :id;";
+        $sql = "UPDATE programs SET code=:code, description=:description, years=:years, level=:level WHERE id = :id;";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':description', $this->description);
         $query->bindParam(':code', $this->code);
         $query->bindParam(':years', $this->years);
         $query->bindParam(':level', $this->level);
-        $query->bindParam(':cet', $this->cet);
-        $query->bindParam(':status', $this->status);
         $query->bindParam(':id', $this->id);
         
         if($query->execute()){

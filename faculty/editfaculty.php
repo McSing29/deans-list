@@ -256,7 +256,7 @@
         <div class="home-content">
         <div class="table-container">
             <div class="table-heading form-size">
-                <h3 class="table-title">Add New Faculty</h3>
+                <h3 class="table-title">Edit Faculty</h3>
                 <a class="back" href="faculty.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
             <br>
@@ -305,12 +305,12 @@
                     ?>
                     <div>
                         <label for="status">Faculty Status</label><br>
-                        <label class="container" for="Active">Active
-                            <input type="radio" name="status" id="Active" value="Active" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active') echo ' checked'; }  elseif ($faculty->status == 'Active') echo ' checked'; ?>>
+                        <label class="container" for="Active Employee">Active Employee
+                            <input type="radio" name="status" id="Active Employee" value="Active Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == ' Active Employee') echo ' checked'; }  elseif ($faculty->status == 'Active Employee') echo ' checked'; ?>>
                             <span class="checkmark"></span>
-                        </label><br>
-                        <label class="container" for="Inactive">Inactive
-                            <input type="radio" name="status" id="Inactive" value="Inactive" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive') echo ' checked'; }  elseif ($faculty->status == 'Inactive') echo ' checked'; ?>>
+                        </label>
+                        <label class="container" for="Inactive Employee">Inactive Employee
+                            <input type="radio" name="status" id="Inactive Employee" value="Inactive Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive Employee') echo ' checked'; }  elseif ($faculty->status == 'Inactive Employee') echo ' checked'; ?>>
                             <span class="checkmark"></span>
                         </label>
                     </div>

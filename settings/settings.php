@@ -367,10 +367,8 @@ if (isset($_POST["submitStatus"])) {
             ?>
                 <div class="table-container course-select" style="width: 100%; height: 600px; background-color: white">
                     <div class="header-program d-flex flex-row">
-                        <h1 class=" text-center" style="margin: 0; margin-left: 100px;font-weight: bold; font-size: 28px; width: 100%">COURSE</h1>
-                        <button type="button" class="btn btn-success add-course-btn d-flex flex-row"><i class='bx bx-plus'></i>
-                            <p>Add New</p>
-                        </button>
+                    <h1 class=" text-center" style="margin: 0; margin-left: 100px;font-weight: bold; font-size: 28px; width: 100%">CCS COURSES</h1>
+                        
                     </div>
                     <div class="course-container d-flex flex-wrap flex-row justify-content-center" style="overflow: auto; width: 100%; padding-top: 20px; padding-bottom: 20px; height: 90%">
                         <a href="settings.php?course=BSCS" style="text-decoration: none;">

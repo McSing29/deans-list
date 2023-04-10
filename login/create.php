@@ -73,10 +73,11 @@
 </head>
 <body>
     <div class="login-container">
-        <form class="login-form" action="create.php" method="post">
+        <form class="create-form" action="create.php" method="post">
         <div class="box-image">
             <center><img src="ccslogo.png" width ="100" height = "100"></center>
-			<div class="title">Dean's List Application</div><br>
+			<div class="title">Dean's List Application System</div><br><br>
+            <h6 style ="font-weight:300; font-size:15px; text-align:center;">Create your account</h6>
 		</div>
 
             <label for="user_email"></label>
@@ -95,7 +96,7 @@
             <input type="text" id="user_lastname" name="user_lastname" placeholder="Enter Last Name" required tabindex="4">
 
             <div class="form-floating dropdown-select">
-            <label for="floatingSelect">couwCOURSE</label>
+            <label for="floatingSelect">Course</label>
                 <select class="form-select" name="curriculum" id="curriculum" required tabindex="5">
                     <option value="">-- Select --</option>
                     <option value="BSCS">Computer Science</option>

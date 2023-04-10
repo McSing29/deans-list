@@ -21,6 +21,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+
 
     <title>Dean's Listers | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
@@ -221,7 +227,7 @@
                     <?php
                         if($_SESSION['user_type'] == 'admin'){ 
                     ?>
-                        <a href="addlisters.php" class="button" style="color:white"><center>Add New Dean's List</center></a>
+                        <a href="addlisters.php" class="button" style="color:white"><center>Add New Dean's Lister</center></a>
                     <?php
                         }
                     ?>
@@ -231,7 +237,7 @@
                 require '../class/database.php';
                 ?>
 
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th>Rank</th>
@@ -272,7 +278,7 @@
                                     <td>
                                         <div class="action">
                                             <a class="action-edit" href="editlisters.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                            <br></br><a class="action-delete" href="deletelisters.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                           <a class="action-delete" href="deletelisters.php?id=<?php echo $value['id'] ?>">Delete</a>
                                         </div>
                                     </td>
                                 <?php
@@ -289,5 +295,12 @@
             </div>
         </div>
     </section>
+<script>
+$(document).ready(function() {
+    $('#myTable').dataTable( {
+        "sDom": '<"top"i>rt<"bottom"flp><"clear">'
+    } );
+} );
+</script>
 </body>
 </html>

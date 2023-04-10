@@ -171,14 +171,7 @@ function validate_level($POST){
     return true;
 }
 
-function validate_cet($POST){
-    if(!isset($POST['cet'])){
-        return false;
-    }else if($POST['cet'] < 55){
-        return false;
-    }
-    return true;
-}
+
 
 function validate_status($POST){
     if(!isset($POST['status'])){
@@ -188,8 +181,8 @@ function validate_status($POST){
 }
 
 function validate_add_program($POST){
-    if(!validate_program_code($POST) || !validate_program_desc($POST) || !validate_cet($POST) ||
-     !validate_level($POST) || !validate_status($POST) || !validate_program_code_duplicate($POST)){
+    if(!validate_program_code($POST) || !validate_program_desc($POST) ||
+     !validate_level($POST) || !validate_program_code_duplicate($POST)){
         return false;
      }
     return true;

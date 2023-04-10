@@ -25,11 +25,7 @@ require_once '../class/database.php';
         $program->description = htmlentities($_POST['description']);
         $program->years = $_POST['years'];
         $program->level = $_POST['level'];
-        $program->cet = htmlentities($_POST['cet']);
-        $program->status = 'Not Set';
-        if(isset($_POST['status'])){
-            $program->status = $_POST['status'];
-        }
+      
         if(validate_add_program($_POST)){
             if($program->add()){
                 //redirect user to program page after saving
@@ -54,7 +50,7 @@ require_once '../class/database.php';
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
-    <title>Add Program | Dean's List Application System - CCS</title>
+    <title>Add Course | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -248,13 +244,14 @@ require_once '../class/database.php';
     <div class="home-content">
         <div class="table-container">
             <div class="table-heading form-size">
-                <h3 class="table-title">Add New Program</h3>
+                <h3 class="table-title">Add New Course</h3>
                 <a class="back" href="programs.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
+            <br>
             <div class="add-form-container">
                 <form class="add-form" action="addprogram.php" method="post">
-                    <label for="code">Program Code</label>
-                    <input type="text" id="code" name="code" required placeholder="Enter Program Code" value="<?php if(isset($_POST['code'])) { echo $_POST['code']; } ?>">
+                    <label for="code">Course Code</label>
+                    <input type="text" id="code" name="code" required placeholder="Enter Course Code" value="<?php if(isset($_POST['code'])) { echo $_POST['code']; } ?>">
                     <?php
                         if(isset($_POST['save']) && !validate_program_code($_POST)){
                     ?>
@@ -267,19 +264,19 @@ require_once '../class/database.php';
                     <?php
                         }
                     ?>
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description" required placeholder="Enter Program Description" value="<?php if(isset($_POST['description'])) { echo $_POST['description']; } ?>">
+                    <label for="description">Course Description</label>
+                    <input type="text" id="description" name="description" required placeholder="Enter Course Description" value="<?php if(isset($_POST['description'])) { echo $_POST['description']; } ?>">
                     <?php
                         if(isset($_POST['save']) && !validate_program_desc($_POST)){
                     ?>
-                                <p class="error">Program description is invalid. Trailing spaces will be ignored.</p>
+                                <p class="error">Course description is invalid. Trailing spaces will be ignored.</p>
                     <?php
                         }
                     ?>
                     <label for="years">Years to Complete</label>
                     <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } ?>">
                     
-                    <label for="level">Level</label>
+                    <label for="level">Course Level</label>
                     <select name="level" id="level">
                         <option value="None" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
                         <option value="Diploma" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Diploma') echo ' selected="selected"'; } ?>>Diploma</option>
@@ -295,35 +292,8 @@ require_once '../class/database.php';
                     <?php
                         }
                     ?>
-                    <label for="cet">CET Requirements</label>
-                    <input type="text" id="cet" step="any" name="cet" required value="<?php if(isset($_POST['cet'])) { echo $_POST['cet']; } ?>">
-                    <?php
-                        if(isset($_POST['save']) && !validate_cet($_POST)){
-                    ?>
-                                <p class="error">Please input CET >= 55.</p>
-                    <?php
-                        }
-                    ?>
-
-                    <div>
-                        <label for="status">Status</label><br>
-                        <label class="container" for="Offering">Offering
-                            <input type="radio" name="status" id="Offering" value="Offering" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Offering') echo ' checked'; } ?>>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" for="Phase-Out">Phase-Out
-                            <input type="radio" name="status" id="Phase-Out" value="Phase-Out" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Phase-Out') echo ' checked'; } ?>>
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <?php
-                        if(isset($_POST['save']) && !validate_status($_POST)){
-                    ?>
-                                <p class="error">Please select program status.</p>
-                    <?php
-                        }
-                    ?>
-                    <input type="submit" class="button" value="Save Program" name="save" id="save">
+                    
+                    <input type="submit" class="button" value="Save Course" name="save" id="save">
                 </form>
             </div>
         </div>
