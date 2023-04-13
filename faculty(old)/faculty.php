@@ -246,7 +246,7 @@
                             <th>Name</th>
                             <th>Academic Rank</th>
                             <th>Email</th>
-                            <th>Role</th>
+                            <th>Status</th>
                             <?php
                                 if($_SESSION['user_type'] == 'admin'){ 
                             ?>
@@ -281,7 +281,7 @@
                                     <td>
                                         <div class="action">
                                             <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                            <a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Remove</a>
+                                            <a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Delete</a>
                                         </div>
                                     </td>
                                 <?php

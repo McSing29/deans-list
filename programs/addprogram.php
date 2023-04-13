@@ -273,8 +273,7 @@ require_once '../class/database.php';
                     <?php
                         }
                     ?>
-                    <label for="years">Years to Complete</label>
-                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } ?>">
+                    
                     
                     <label for="level">Course Level</label>
                     <select name="level" id="level">
@@ -292,6 +291,9 @@ require_once '../class/database.php';
                     <?php
                         }
                     ?>
+
+<label for="years">Years to Complete</label>
+                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } ?>">
                     
                     <input type="submit" class="button" value="Save Course" name="save" id="save">
                 </form>

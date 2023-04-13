@@ -285,8 +285,7 @@
                     <?php
                         }
                     ?>
-                    <label for="years">Years to Complete</label>
-                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } else { echo $program->years; }?>">
+                    
                     
                     <label for="level">Course Level</label>
                     <select name="level" id="level">
@@ -305,7 +304,10 @@
                         }
                     ?>
 
-                    <input type="submit" class="button" value="Save Program" name="save" id="save">
+<label for="years">Years to Complete</label>
+                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } else { echo $program->years; }?>">
+
+                    <input type="submit" class="button" value="Save Course" name="save" id="save">
                 </form>
             </div>
         </div>

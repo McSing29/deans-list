@@ -1,13 +1,50 @@
 <?php
 
-    session_start();
+    require_once '../functions/functions.php';
+    require_once '../class/program.class.php';
 
+    //resume session here to fetch session values
+    session_start();
+    /*
+        if user is not login then redirect to login page,
+        this is to prevent users from accessing pages that requires
+        authentication such as the dashboard
+    */
     if (!isset($_SESSION['logged-in'])){
         header('location: ../login/login.php');
     }
+    //if the above code is false then code and html below will be executed
+    $program = new Program;
+    //if add program is submitted
+    if(isset($_POST['save'])){
+        //sanitize user inputs
+        $program->id = $_POST['program-id'];
+        $program->code = htmlentities($_POST['code']);
+        $program->old_code = htmlentities($_POST['old-code']);
+        $program->description = htmlentities($_POST['description']);
+        $program->years = $_POST['years'];
+        $program->level = $_POST['level'];
+    
+        if(validate_add_program($_POST)){
+            if($program->edit()){
+                //redirect user to program page after saving
+                header('location: programs.php');
+            }
+        }
+    }else{
+        if ($program->fetch($_GET['id'])){
+            $data = $program->fetch($_GET['id']);
+            $program->id = $data['id'];
+            $program->code = $data['code'];
+            $program->old_code = $data['code'];
+            $program->description = $data['description'];
+            $program->years = $data['years'];
+            $program->level = $data['level'];
+            
+        }
+    }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +58,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
-
-    <title>CCS Courses | Dean's List Application System - CCS</title>
+    <title>Edit Course | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -219,97 +250,65 @@
         }
     </script>
         <!-- NAVBAR -->
-
         <div class="home-content">
         <div class="table-container">
-            <div class="table-heading">
-                <h3 class="table-title">Available CCS Courses</h3>
-                <?php
-                    if($_SESSION['user_type'] == 'admin'){ 
-                ?>
-                    <a href="addprogram.php" class="button"><center>Add Course</center></a>
-                <?php
-                    }
-                ?>
+            <div class="table-heading form-size">
+                <h3 class="table-title">Update Course</h3>
+                <a class="back" href="programs.php"><i class='bx bx-caret-left'></i>Back</a>
             </div>
             <br>
-            <table class="table" id="myTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Course Code</th>
-                        <th>Course Description</th>
-                        
-                        <th>Course Level</th>
-                        <th>Years to Complete</th>
-
-
-                        <?php
-                            if($_SESSION['user_type'] == 'admin'){ 
-                        ?>
-                            <th class="action">Action</th>
-                        <?php
-                            }
-                        ?>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="add-form-container">
+                <form class="add-form" action="editprogram.php" method="post">
+                    <input type="text" hidden name="program-id" value="<?php echo $program->id; ?>">
+                    <input type="text" hidden name="old-code" value="<?php echo $program->old_code; ?>">
+                    
+                    <label for="code">Course Code</label>
+                    <input type="text" id="code" name="code" required placeholder="Enter Course Code" value="<?php if(isset($_POST['code'])) { echo $_POST['code']; } else { echo $program->code; }?>">
                     <?php
-                        require_once '../class/program.class.php';
-
-                        $program = new Program();
-                        //We will now fetch all the records in the array using loop
-                        //use as a counter, not required but suggested for the table
-                        $i = 1;
-                        //loop for each record found in the array
-                        foreach ($program->show() as $value){ //start of loop
+                        if(isset($_POST['save']) && !validate_program_code($_POST)){
                     ?>
-                        <tr>
-                            <!-- always use echo to output PHP values -->
-                            <td><?php echo $i ?></td>
-                            <td><?php echo $value['code']?></td>
-                            <td><?php echo $value['description'] ?></td>
-                            
-                            <td><?php echo $value['level'] ?></td>
-                            <td><?php echo $value['years'] ?></td>
-                            
-                            <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
-                            ?>
-                                <td>
-                                    <div class="action">
-                                        <a class="action-edit" href="editprogram.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                        <a class="action-delete" href="deleteprogram.php?id=<?php echo $value['id'] ?>">Remove</a>
-                                    </div>
-                                </td>
-                            <?php
-                                }
-                            ?>
-                        </tr>
+                                <p class="error">Course Code is invalid. Trailing spaces will be ignored.</p>
                     <?php
-                        $i++;
-                    //end of loop
-                    }
+                        }
+                        else if(isset($_POST['save']) && !validate_program_code_duplicate($_POST)){
                     ?>
-                </tbody>
-            </table>
+                                <p class="error">Course Code already exist.</p>
+                    <?php
+                        }
+                    ?>
+                    <label for="description">Course Description</label>
+                    <input type="text" id="description" name="description" required placeholder="Enter Program Description" value="<?php if(isset($_POST['description'])) { echo $_POST['description']; } else { echo $program->description; }?>">
+                    <?php
+                        if(isset($_POST['save']) && !validate_program_desc($_POST)){
+                    ?>
+                                <p class="error">Program description is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                    ?>
+                    <label for="years">Years to Complete</label>
+                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } else { echo $program->years; }?>">
+                    
+                    <label for="level">Course Level</label>
+                    <select name="level" id="level">
+                        <option value="None" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'None') echo ' selected="selected"'; } elseif ($program->level == 'None') echo ' selected="selected"'; ?>>--Select--</option>
+                        <option value="Diploma" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Diploma') echo ' selected="selected"'; } elseif ($program->level == 'Diploma') echo ' selected="selected"'; ?>>Diploma</option>
+                        <option value="Associate" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Associate') echo ' selected="selected"'; } elseif ($program->level == 'Associate') echo ' selected="selected"'; ?>>Associate</option>
+                        <option value="Bachelor" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Bachelor') echo ' selected="selected"'; } elseif ($program->level == 'Bachelor') echo ' selected="selected"'; ?>>Bachelor</option>
+                        <option value="Masteral" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Masteral') echo ' selected="selected"'; } elseif ($program->level == 'Masteral') echo ' selected="selected"'; ?>>Masteral</option>
+                        <option value="Doctorate" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Doctorate') echo ' selected="selected"'; } elseif ($program->level == 'Doctorate') echo ' selected="selected"'; ?>>Doctorate</option>
+                    </select>
+                    <?php
+                        if(isset($_POST['save']) && !validate_level($_POST)){
+                    ?>
+                                <p class="error">Please select a program level from the dropdown.</p>
+                    <?php
+                        }
+                    ?>
+
+                    <input type="submit" class="button" value="Save Program" name="save" id="save">
+                </form>
+            </div>
         </div>
-
-
-
-        </div>
-
-
-    </section>
-<script>
-$(document).ready(function() {
-    $('#myTable').dataTable( {
-        "sDom": '<"top"i>rt<"bottom"flp><"clear">'
-    } );
-} );
-</script>
-
-        
+    </div>
 </body>
-
 </html>

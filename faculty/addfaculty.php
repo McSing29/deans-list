@@ -293,20 +293,24 @@
                         }
                     ?>
                    <div>
-                        <label for="status">Faculty Status</label><br>
-                        <label class="container" for="Active Employee">Active Employee
-                            <input type="checkbox" name="status" id="Active Employee" value="Active Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Active Employee') echo ' checked'; } ?>>
+                        <label for="status">Faculty Role</label><br>
+                        <label class="container" for="Admin">Admin
+                            <input type="checkbox" name="status" id="Admin" value="Admin" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Admin') echo ' checked'; } ?>>
                             <span class="checkmark"></span>
                         </label><br>
-                        <label class="container" for="Inactive Employee">Inactive Employee
-                            <input type="checkbox" name="status" id="Inactive Employee" value="Inactive Employee" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Inactive Employee') echo ' checked'; } ?>>
+                        <label class="container" for="Adviser">Adviser
+                            <input type="checkbox" name="status" id="Adviser" value="Adviser" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'Adviser') echo ' checked'; } ?>>
+                            <span class="checkmark"></span>
+                        </label><br>
+                        <label class="container" for="None">None
+                            <input type="checkbox" name="status" id="None" value="None" <?php if(isset($_POST['status'])) { if ($_POST['status'] == 'None') echo ' checked'; } ?>>
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <?php
                         if(isset($_POST['save']) && !validate_status($_POST)){
                     ?>
-                                <p class="error">Please select Faculty status.</p>
+                                <p class="error">Please select Faculty role.</p>
                     <?php
                         }
                     ?>

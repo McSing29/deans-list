@@ -1,13 +1,41 @@
 <?php
 
-    session_start();
+require_once '../functions/functions.php';
+require_once '../class/program.class.php';
+require_once '../class/database.php';
 
+    //resume session here to fetch session values
+    session_start();
+    /*
+        if user is not login then redirect to login page,
+        this is to prevent users from accessing pages that requires
+        authentication such as the dashboard
+    */
     if (!isset($_SESSION['logged-in'])){
         header('location: ../login/login.php');
     }
+    //if the above code is false then code and html below will be executed
 
+    //if add faculty is submitted
+    if(isset($_POST['save'])){
+
+        $program = new Program;
+        //sanitize user inputs
+        $program->code = htmlentities($_POST['code']);
+        $program->description = htmlentities($_POST['description']);
+        $program->years = $_POST['years'];
+        $program->level = $_POST['level'];
+      
+        if(validate_add_program($_POST)){
+            if($program->add()){
+                //redirect user to program page after saving
+                header('location: programs.php');
+            }
+        }
+    }
+
+   
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +49,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
-
-
-    <title>Faculty and Staff | Dean's List Application System - CCS</title>
+    <title>Add Course | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -41,7 +62,7 @@
 		</div>
         <br>
         <ul class="nav-links">
-           
+            
 
 
             <li>
@@ -85,14 +106,14 @@
                 </a>
             </li>
             <li>
-                <a href="../faculty/faculty.php" class="active">
+                <a href="../faculty/faculty.php">
                     <i class='bx bx-group' ></i>
                     <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
-                <a href="../programs/programs.php">
+                <a href="../programs/programs.php" class="active">
                     <i class='bx bx-book-reader'></i>
                     <span class="links-name">CCS Courses</span>
                 </a>
@@ -178,35 +199,35 @@
         </nav>
 
         <script>
-            var reference = (function self(){
-                if(sessionStorage.getItem("sidebar") == "small"){
-                    small();
-                }else{
-                    large();
-                }
-            }());
-
-            $('.bx-menu.small').on('click', function(){
+        var reference = (function self(){
+            if(sessionStorage.getItem("sidebar") == "small"){
                 small();
-            });
-            $('.bx-menu.large').on('click', function(){
+            }else{
                 large();
-            });
-
-            function small(){
-                $('.bx-menu.small').hide();
-                $('.bx-menu.large').show();
-
-                $('.side-bar').css('width', '60px');
-                $('.home-section').css('width', 'calc(100%)');
-                $('.home-section').css('left', '60px');
-                $('.home-section nav').css('width', 'calc(100% - 60px)');
-                $('.home-section nav').css('left', '60px');
-
-                sessionStorage.setItem("sidebar", "small");
             }
+        }());
 
-            function large(){
+        $('.bx-menu.small').on('click', function(){
+            small();
+        });
+        $('.bx-menu.large').on('click', function(){
+            large();
+        });
+
+        function small(){
+            $('.bx-menu.small').hide();
+            $('.bx-menu.large').show();
+
+            $('.side-bar').css('width', '60px');
+            $('.home-section').css('width', 'calc(100% - 60px)');
+            $('.home-section').css('left', '60px');
+            $('.home-section nav').css('width', 'calc(100% - 60px)');
+            $('.home-section nav').css('left', '60px');
+
+            sessionStorage.setItem("sidebar", "small");
+        }
+
+        function large(){
                 $('.bx-menu.small').show();
                 $('.bx-menu.large').hide();
 
@@ -217,95 +238,66 @@
                 $('.home-section nav').css('left', '250px');
 
                 sessionStorage.setItem("sidebar", "large");
-            }
-        </script>
+        }
+    </script>
         <!-- NAVBAR -->
-
-        <div class="home-content">
-            <div class="table-container">
-                <div class="table-heading">
-                    <h3 class="table-title">Faculty and Staff</h3>
+    <div class="home-content">
+        <div class="table-container">
+            <div class="table-heading form-size">
+                <h3 class="table-title">Add New Course</h3>
+                <a class="back" href="programs.php"><i class='bx bx-caret-left'></i>Back</a>
+            </div>
+            <br>
+            <div class="add-form-container">
+                <form class="add-form" action="addprogram.php" method="post">
+                    <label for="code">Course Code</label>
+                    <input type="text" id="code" name="code" required placeholder="Enter Course Code" value="<?php if(isset($_POST['code'])) { echo $_POST['code']; } ?>">
                     <?php
-                        if($_SESSION['user_type'] == 'admin'){ 
+                        if(isset($_POST['save']) && !validate_program_code($_POST)){
                     ?>
-                        <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
+                                <p class="error">Program Code is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                        else if(isset($_POST['save']) && !validate_program_code_duplicate($_POST)){
+                    ?>
+                                <p class="error">Program Code already exist.</p>
                     <?php
                         }
                     ?>
-                </div>
-                <br>
-                <?php
-                require '../class/database.php';
-                ?>
-
-                <table class="table" id="myTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Academic Rank</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <?php
-                                if($_SESSION['user_type'] == 'admin'){ 
-                            ?>
-                                <th class="action">Action</th>
-                            <?php
-                                }
-                            ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            require_once '../class/faculty.class.php';
-
-                            $faculty = new Faculty();
-                            //We will now fetch all the records in the array using loop
-                            //use as a counter, not required but suggested for the table
-                            $i = 1;
-                            //loop for each record found in the array
-                            foreach ($faculty->show() as $value){ //start of loop
-                        ?>
-                            <tr>
-                                <!-- always use echo to output PHP values -->
-                                <td><?php echo $i ?></td>
-                                <td> <img src="img/<?php echo $value["img"]; ?>" width = 100 title="<?php echo $value['img']; ?>"> </td>
-                                <td><?php echo $value['firstname'] . ' ' . $value['lastname'] ?>
-                                <td><?php echo $value['rank'] ?></td>
-                                <td><?php echo $value['email'] ?></td>
-                                <td><?php echo $value['status'] ?></td>
-                                <?php
-                                    if($_SESSION['user_type'] == 'admin'){
-                                ?>
-                                    <td>
-                                        <div class="action">
-                                            <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                            <a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Remove</a>
-                                        </div>
-                                    </td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                            <?php
-                                $i++;
-                            //end of loop
-                            }
-                            ?>
-                    </tbody>
-                </table>
+                    <label for="description">Course Description</label>
+                    <input type="text" id="description" name="description" required placeholder="Enter Course Description" value="<?php if(isset($_POST['description'])) { echo $_POST['description']; } ?>">
+                    <?php
+                        if(isset($_POST['save']) && !validate_program_desc($_POST)){
+                    ?>
+                                <p class="error">Course description is invalid. Trailing spaces will be ignored.</p>
+                    <?php
+                        }
+                    ?>
+                    <label for="years">Years to Complete</label>
+                    <input type="number" id="years" min="1" max="5" name="years" required value="<?php if(isset($_POST['years'])) { echo $_POST['years']; } ?>">
+                    
+                    <label for="level">Course Level</label>
+                    <select name="level" id="level">
+                        <option value="None" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'None') echo ' selected="selected"'; } ?>>--Select--</option>
+                        <option value="Diploma" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Diploma') echo ' selected="selected"'; } ?>>Diploma</option>
+                        <option value="Associate" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Associate') echo ' selected="selected"'; } ?>>Associate</option>
+                        <option value="Bachelor" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Bachelor') echo ' selected="selected"'; } ?>>Bachelor</option>
+                        <option value="Masteral" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Masteral') echo ' selected="selected"'; } ?>>Masteral</option>
+                        <option value="Doctorate" <?php if(isset($_POST['level'])) { if ($_POST['level'] == 'Doctorate') echo ' selected="selected"'; } ?>>Doctorate</option>
+                    </select>
+                    <?php
+                        if(isset($_POST['save']) && !validate_level($_POST)){
+                    ?>
+                                <p class="error">Please select a program level from the dropdown.</p>
+                    <?php
+                        }
+                    ?>
+                    
+                    <input type="submit" class="button" value="Save Course" name="save" id="save">
+                </form>
             </div>
         </div>
-    </section>
-
-<script>
-$(document).ready(function() {
-    $('#myTable').dataTable( {
-        "sDom": '<"top"i>rt<"bottom"flp><"clear">'
-    } );
-} );
-</script>
+    </div>
 
 </body>
 </html>

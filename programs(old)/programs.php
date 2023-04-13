@@ -28,8 +28,7 @@
     <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
 
 
-
-    <title>Faculty and Staff | Dean's List Application System - CCS</title>
+    <title>CCS Courses | Dean's List Application System - CCS</title>
     <link rel="icon" href="../img/ccslogo.png" type="image/icon type">
 </head>
 <body>
@@ -41,7 +40,7 @@
 		</div>
         <br>
         <ul class="nav-links">
-           
+            
 
 
             <li>
@@ -85,14 +84,14 @@
                 </a>
             </li>
             <li>
-                <a href="../faculty/faculty.php" class="active">
+                <a href="../faculty/faculty.php">
                     <i class='bx bx-group' ></i>
                     <span class="links-name">CCS Faculty</span>
                 </a>
             </li>
 
             <li>
-                <a href="../programs/programs.php">
+                <a href="../programs/programs.php" class="active">
                     <i class='bx bx-book-reader'></i>
                     <span class="links-name">CCS Courses</span>
                 </a>
@@ -178,35 +177,35 @@
         </nav>
 
         <script>
-            var reference = (function self(){
-                if(sessionStorage.getItem("sidebar") == "small"){
-                    small();
-                }else{
-                    large();
-                }
-            }());
-
-            $('.bx-menu.small').on('click', function(){
+        var reference = (function self(){
+            if(sessionStorage.getItem("sidebar") == "small"){
                 small();
-            });
-            $('.bx-menu.large').on('click', function(){
+            }else{
                 large();
-            });
-
-            function small(){
-                $('.bx-menu.small').hide();
-                $('.bx-menu.large').show();
-
-                $('.side-bar').css('width', '60px');
-                $('.home-section').css('width', 'calc(100%)');
-                $('.home-section').css('left', '60px');
-                $('.home-section nav').css('width', 'calc(100% - 60px)');
-                $('.home-section nav').css('left', '60px');
-
-                sessionStorage.setItem("sidebar", "small");
             }
+        }());
 
-            function large(){
+        $('.bx-menu.small').on('click', function(){
+            small();
+        });
+        $('.bx-menu.large').on('click', function(){
+            large();
+        });
+
+        function small(){
+            $('.bx-menu.small').hide();
+            $('.bx-menu.large').show();
+
+            $('.side-bar').css('width', '60px');
+            $('.home-section').css('width', 'calc(100% - 60px)');
+            $('.home-section').css('left', '60px');
+            $('.home-section nav').css('width', 'calc(100% - 60px)');
+            $('.home-section nav').css('left', '60px');
+
+            sessionStorage.setItem("sidebar", "small");
+        }
+
+        function large(){
                 $('.bx-menu.small').show();
                 $('.bx-menu.large').hide();
 
@@ -217,88 +216,89 @@
                 $('.home-section nav').css('left', '250px');
 
                 sessionStorage.setItem("sidebar", "large");
-            }
-        </script>
+        }
+    </script>
         <!-- NAVBAR -->
 
         <div class="home-content">
-            <div class="table-container">
-                <div class="table-heading">
-                    <h3 class="table-title">Faculty and Staff</h3>
-                    <?php
-                        if($_SESSION['user_type'] == 'admin'){ 
-                    ?>
-                        <a href="addfaculty.php" class="button" style="color:white"><center>Add Faculty</center></a>
-                    <?php
-                        }
-                    ?>
-                </div>
-                <br>
+        <div class="table-container">
+            <div class="table-heading">
+                <h3 class="table-title">Available CCS Courses</h3>
                 <?php
-                require '../class/database.php';
+                    if($_SESSION['user_type'] == 'admin'){ 
                 ?>
+                    <a href="addprogram.php" class="button"><center>Add Course</center></a>
+                <?php
+                    }
+                ?>
+            </div>
+            <br>
+            <table class="table" id="myTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Course Code</th>
+                        <th>Course Description</th>
+                        <th>Years to Complete</th>
+                        <th>Course Level</th>
 
-                <table class="table" id="myTable">
-                    <thead>
+
+                        <?php
+                            if($_SESSION['user_type'] == 'admin'){ 
+                        ?>
+                            <th class="action">Action</th>
+                        <?php
+                            }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        require_once '../class/program.class.php';
+
+                        $program = new Program();
+                        //We will now fetch all the records in the array using loop
+                        //use as a counter, not required but suggested for the table
+                        $i = 1;
+                        //loop for each record found in the array
+                        foreach ($program->show() as $value){ //start of loop
+                    ?>
                         <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Academic Rank</th>
-                            <th>Email</th>
-                            <th>Role</th>
+                            <!-- always use echo to output PHP values -->
+                            <td><?php echo $i ?></td>
+                            <td><?php echo $value['code']?></td>
+                            <td><?php echo $value['description'] ?></td>
+                            <td><?php echo $value['years'] ?></td>
+                            <td><?php echo $value['level'] ?></td>
+                            
                             <?php
                                 if($_SESSION['user_type'] == 'admin'){ 
                             ?>
-                                <th class="action">Action</th>
+                                <td>
+                                    <div class="action">
+                                        <a class="action-edit" href="editprogram.php?id=<?php echo $value['id'] ?>">Edit</a>
+                                        <a class="action-delete" href="deleteprogram.php?id=<?php echo $value['id'] ?>">Delete</a>
+                                    </div>
+                                </td>
                             <?php
                                 }
                             ?>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            require_once '../class/faculty.class.php';
-
-                            $faculty = new Faculty();
-                            //We will now fetch all the records in the array using loop
-                            //use as a counter, not required but suggested for the table
-                            $i = 1;
-                            //loop for each record found in the array
-                            foreach ($faculty->show() as $value){ //start of loop
-                        ?>
-                            <tr>
-                                <!-- always use echo to output PHP values -->
-                                <td><?php echo $i ?></td>
-                                <td> <img src="img/<?php echo $value["img"]; ?>" width = 100 title="<?php echo $value['img']; ?>"> </td>
-                                <td><?php echo $value['firstname'] . ' ' . $value['lastname'] ?>
-                                <td><?php echo $value['rank'] ?></td>
-                                <td><?php echo $value['email'] ?></td>
-                                <td><?php echo $value['status'] ?></td>
-                                <?php
-                                    if($_SESSION['user_type'] == 'admin'){
-                                ?>
-                                    <td>
-                                        <div class="action">
-                                            <a class="action-edit" href="editfaculty.php?id=<?php echo $value['id'] ?>">Edit</a>
-                                            <a class="action-delete" href="deletefaculty.php?id=<?php echo $value['id'] ?>">Remove</a>
-                                        </div>
-                                    </td>
-                                <?php
-                                    }
-                                ?>
-                            </tr>
-                            <?php
-                                $i++;
-                            //end of loop
-                            }
-                            ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php
+                        $i++;
+                    //end of loop
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
-    </section>
 
+
+
+        </div>
+
+
+    </section>
 <script>
 $(document).ready(function() {
     $('#myTable').dataTable( {
@@ -307,5 +307,7 @@ $(document).ready(function() {
 } );
 </script>
 
+        
 </body>
+
 </html>
